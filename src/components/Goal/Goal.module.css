@@ -2,6 +2,7 @@
 .goalContainerStat {
   margin: 34px auto;
   max-width: 325px;
+  order: 2;
 }
 
 .goalContainer {
@@ -234,11 +235,9 @@
 @media (min-width: 1280px) {
   .goalContainer,
   .goalContainerStat {
-    margin: 34px auto;
+    margin: 0 auto 34px auto;
     width: 300px;
     display: block;
-    flex-basis: 30%;
-    order: 3;
   }
 
   .goalContainer {
@@ -246,7 +245,7 @@
   }
 
   .goalContainerStat {
-    height: 217px;
+    height: 238px;
   }
 
   .goalTitleBox,

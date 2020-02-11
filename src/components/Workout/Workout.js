@@ -10,8 +10,8 @@ import Select from '@material-ui/core/Select';
 import style from './Workout.module.css';
 import TrainingBookTable from '../TrainingBooksTable/TrainingBooksTable';
 import { addUserTraining } from '../../redux/userTraining/userTrainingActions';
-import TrainingTableInfo from '../TrainingTableInfo/TrainingTableInfo';
 import { postTraining } from '../../services/API';
+import TableItemCreate from '../TrainingBooksTable/TableItemCreate/TableItemCreate';
 
 const useStyles = makeStyles(theme => ({
   selectEmpty: {
@@ -22,7 +22,6 @@ const useStyles = makeStyles(theme => ({
     '.MuiSelect-selectMenu': {
       paddingLeft: 10,
     },
-    // marginTop: theme.spacing(2),
     '&$:focus': {
       backgroundColor: '#fff',
     },
@@ -50,7 +49,6 @@ const Workout = ({ handleChangeToGoal }) => {
 
   const dispatch = useDispatch();
   const token = useSelector(state => state.session.token);
-  const haveTraining = useSelector(state => state.user.haveTraining);
 
   const plannedBooks = useSelector(state =>
     state.books.filter(book => book.status === 'planned'),
@@ -65,10 +63,6 @@ const Workout = ({ handleChangeToGoal }) => {
     setTimeEnd(date.toISOString());
     handleChangeToGoal({ finishTime: date.toISOString() });
   };
-
-  // const addBook = evt => {
-  //   setSelectedBookId(evt.target.options[evt.target.selectedIndex].dataset.id);
-  // };
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -109,10 +103,6 @@ const Workout = ({ handleChangeToGoal }) => {
       };
       dispatch(addUserTraining(training));
       dispatch(postTraining(training, token));
-      // setSelectedBookId('');
-      // setBooks([]);
-      // setBooksForRender([]);
-      // setTimeEnd(new Date().toISOString());
     }
   };
 
@@ -123,67 +113,75 @@ const Workout = ({ handleChangeToGoal }) => {
 
   return (
     <div className={style.container}>
-      {haveTraining ? (
-        <TrainingTableInfo />
-      ) : (
-        <>
-          <div className={style.pickers}>
-            <MuiPickersUtilsProvider
-              className={style.pickerOverlay}
-              utils={DateFnsUtils}
-            >
-              <DatePicker
-                value={timeStart}
-                onChange={handleTimeStart}
-                disablePast
-                disableFuture
-                format="dd/MM/yyyy"
-                InputProps={{ className: style.picker }}
-              />
-            </MuiPickersUtilsProvider>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <DatePicker
-                value={timeEnd}
-                onChange={handleTimeEnd}
-                disablePast
-                format="dd/MM/yyyy"
-                InputProps={{ className: style.picker }}
-              />
-            </MuiPickersUtilsProvider>
-          </div>
-          <div className={style.selectContainer}>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              fullWidth
-              value={selectedBook}
-              onChange={handleSelectBook}
-              className={classes.selectEmpty}
-              inputProps={{
-                placeholder: 'Виберіть книгу...',
-                style: { paddingLeft: '10px' },
-              }}
-            >
-              {plannedBooks.map(el => (
-                <MenuItem data-id={el._id} value={el._id} key={el._id}>
-                  {el.title}
-                </MenuItem>
-              ))}
-            </Select>
-            <button
-              type="button"
-              className={style.button}
-              onClick={handleSubmit}
-            >
-              Додати
-            </button>
-          </div>
-          <TrainingBookTable books={booksForRender} deleteBook={deleteBook} />
-          <button type="submit" className={style.submit} onClick={addTraining}>
-            Почати тренування
-          </button>
-        </>
-      )}
+      <div className={style.titleContainer}>
+        <p className={style.title}>Моє тренування</p>
+      </div>
+      <div className={style.pickers}>
+        <MuiPickersUtilsProvider
+          className={style.pickerOverlay}
+          utils={DateFnsUtils}
+        >
+          <DatePicker
+            value={timeStart}
+            onChange={handleTimeStart}
+            disablePast
+            disableFuture
+            format="dd/MM/yyyy"
+            InputProps={{ className: style.picker }}
+          />
+        </MuiPickersUtilsProvider>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <DatePicker
+            value={timeEnd}
+            onChange={handleTimeEnd}
+            disablePast
+            format="dd/MM/yyyy"
+            InputProps={{ className: style.picker }}
+          />
+        </MuiPickersUtilsProvider>
+      </div>
+      <div className={style.selectContainer}>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          fullWidth
+          value={selectedBook}
+          onChange={handleSelectBook}
+          className={classes.selectEmpty}
+          inputProps={{
+            placeholder: 'Виберіть книгу...',
+            style: { paddingLeft: '10px' },
+          }}
+        >
+          {plannedBooks.map(el => (
+            <MenuItem data-id={el._id} value={el._id} key={el._id}>
+              {el.title}
+            </MenuItem>
+          ))}
+        </Select>
+        <button type="button" className={style.button} onClick={handleSubmit}>
+          Додати
+        </button>
+      </div>
+      <TrainingBookTable>
+        {booksForRender.length > 0 &&
+          booksForRender.map(el => (
+            <TableItemCreate
+              key={el._id}
+              id={el._id}
+              title={el.title}
+              author={el.author}
+              year={el.year}
+              pagesCount={el.pagesCount}
+              deleteBook={deleteBook}
+            />
+          ))}
+      </TrainingBookTable>
+      <div className={style.submitOverlay}>
+        <button type="submit" className={style.submit} onClick={addTraining}>
+          Почати тренування
+        </button>
+      </div>
     </div>
   );
 };

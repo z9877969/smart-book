@@ -1,0 +1,21 @@
+.container {
+  position: absolute;
+  top: 540px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+  .container {
+    top: 310px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    width: 880px;
+    top: 140px;
+    left: 4%;
+    transform: none;
+  }
+}

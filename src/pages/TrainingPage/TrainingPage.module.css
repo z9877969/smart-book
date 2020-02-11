@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   padding: 36px 10px;
   min-width: 320px;
   display: flex;
@@ -21,12 +22,15 @@
   .container {
     padding: 30px 40px 50px 40px;
     min-width: 1280px;
+  }
+
+  .wrapper {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .someContainer {
     display: flex;
-    flex-direction: column;
-    max-width: 70%;
+    flex-wrap: wrap;
   }
 }

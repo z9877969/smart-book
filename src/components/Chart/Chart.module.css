@@ -2,10 +2,21 @@
 
 .ChartWrapper {
   height: 500px !important;
+  width: 300px;
+  order: 4;
 }
 
 @media (min-width: 768px) {
   .ChartWrapper {
     height: 300px !important;
+    width: 748px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .ChartWrapper {
+    margin-top: 80px;
+    flex-basis: 70%;
+    order: 3;
   }
 }

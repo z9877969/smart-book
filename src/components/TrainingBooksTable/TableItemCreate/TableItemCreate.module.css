@@ -1,0 +1,117 @@
+.bookListItem {
+  display: flex;
+  justify-content: flex-start;
+  padding: 18px 0 8px 0;
+  font-family: 'Open Sans';
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--pale-blue);
+}
+
+.bookListItemBody {
+  width: 280px;
+}
+
+.btnDelete {
+  margin-right: 0;
+  height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.bookTitle {
+  margin: 0 20px 0 0;
+  padding: 0 0 16px 0;
+  color: var(--dark);
+}
+
+.bookInfo {
+  display: flex;
+}
+
+.bookName {
+  margin: 0;
+  padding: 0 0 12px 0;
+  width: 76px;
+  color: var(--blue-grey);
+}
+
+.bookName:last-child {
+  padding: 0;
+}
+
+.bookData {
+  margin: 0;
+  padding: 0;
+}
+
+.iconBook {
+  margin-right: 18px;
+  color: var(--light-grey-blue-three);
+}
+
+.iconDelete {
+  color: var(--light-grey-blue-three);
+}
+
+@media (min-width: 768px) {
+  .bookListItem {
+    padding: 12px 0 8px 0;
+    align-items: center;
+  }
+
+  .bookListItemBody {
+    width: 678px;
+    display: flex;
+    align-items: center;
+  }
+
+  .bookTitle {
+    padding: 0;
+    width: 262px;
+  }
+
+  .bookAuthor {
+    width: 142px;
+    margin-right: 20px;
+  }
+
+  .bookYear {
+    width: 90px;
+  }
+
+  .bookListItem {
+    display: flex;
+  }
+
+  .bookName {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bookListItem {
+    padding: 0;
+    margin-bottom: 12px;
+    border: none;
+  }
+
+  .bookTitle {
+    width: 322px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .bookAuthor {
+    width: 142px;
+    margin-right: 20px;
+  }
+
+  .bookYear {
+    width: 90px;
+  }
+}

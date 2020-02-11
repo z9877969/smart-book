@@ -1,5 +1,6 @@
 .panel {
   margin: 0 auto;
+  order: 1;
 }
 
 @media (min-width: 768px) {
@@ -12,8 +13,6 @@
 
 @media (min-width: 1280px) {
   .panel {
-    max-width: 645px;
-    flex-basis: 70%;
-    order: 0;
+    width: 860px;
   }
 }

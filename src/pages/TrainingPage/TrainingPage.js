@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, connect, useDispatch } from 'react-redux';
-
 import PropTypes from 'prop-types';
 import style from './TrainingPage.module.css';
 import PanelOfTimers from '../../components/Timer/PanelOfTimers';
@@ -10,7 +9,7 @@ import Workout from '../../components/Workout/Workout';
 import Goal from '../../components/Goal/Goal';
 import Chart from '../../components/Chart/Chart';
 import { getTrainingFromServer } from '../../services/API';
-
+import WorkoutInfo from '../../components/WorkoutInfo/WorkoutInfo';
 import CreateTraningGoal from '../../components/CreateTraningGoal/CreateTraningGoal';
 
 const TrainingPage = ({ modalCongratsOpen, training }) => {
@@ -38,18 +37,17 @@ const TrainingPage = ({ modalCongratsOpen, training }) => {
       {haveTraining ? (
         <div className={style.wrapper}>
           <PanelOfTimers />
-          <Workout />
           <Goal />
+          <WorkoutInfo />
           <Results />
+          <Chart training={training} />
         </div>
       ) : (
-        <>
-          <CreateTraningGoal {...goal} />
-          <div className={style.someContainer}>
-            <Workout handleChangeToGoal={handleChangeToGoal} />
-            {training.trainingId && <Chart training={training} />}
-          </div>
-        </>
+        <div className={style.someContainer}>
+          <Workout handleChangeToGoal={handleChangeToGoal} />
+          <CreateTraningGoal style={{ order: 2 }} {...goal} />
+          {training.trainingId && <Chart training={training} />}
+        </div>
       )}
     </div>
   );

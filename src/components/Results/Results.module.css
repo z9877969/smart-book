@@ -1,9 +1,10 @@
 .container {
   max-width: 320px;
-  margin: 0 auto;
+  margin: 450px auto 40px auto;
   padding: 10px;
   background-color: var(--white);
   box-shadow: 0px 2px 1px 0px rgba(193, 196, 206, 0.4);
+  order: 4;
 }
 
 .inner_container {
@@ -186,6 +187,7 @@
 @media (min-width: 768px) {
   .container {
     max-width: 678px;
+    margin-top: 190px;
   }
 
   .inner_container {
@@ -227,9 +229,9 @@
 
 @media (min-width: 1280px) {
   .container {
+    margin-top: 0;
     max-width: 300px;
-    flex-basis: 30%;
-    order: 4;
+    order: 5;
   }
 
   .inner_container {

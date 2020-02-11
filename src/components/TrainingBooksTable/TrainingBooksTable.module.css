@@ -13,69 +13,9 @@
   border-top: 1px solid var(--pale-blue);
 }
 
-.bookListItem {
-  display: flex;
-  justify-content: flex-start;
-  padding: 18px 0 8px 0;
-  font-family: 'Open Sans';
-  font-size: 13px;
-  line-height: 16px;
-  font-weight: 600;
-  border-bottom: 1px solid var(--pale-blue);
-}
-
-.bookListItemBody {
-  width: 100%;
-}
-
-.iconBook {
-  margin-right: 18px;
-  color: var(--light-grey-blue-three);
-}
-
-.iconDelete {
-  color: var(--light-grey-blue-three);
-}
-
-.btnDelete {
-  margin-right: 0;
-  height: 24px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  outline: none;
-}
-
-.bookTitle {
-  margin: 0 20px 0 0;
-  padding: 0 0 16px 0;
-  color: var(--dark);
-}
-
-.bookInfo {
-  display: flex;
-}
-
-.bookName {
-  margin: 0;
-  padding: 0 0 12px 0;
-  width: 28%;
-  color: var(--blue-grey);
-}
-
-.bookName:last-child {
-  padding: 0;
-}
-
-.bookData {
-  margin: 0;
-  padding: 0;
-}
-
 @media (min-width: 768px) {
   .tableHeader {
     display: flex;
-    width: 100%;
     border-top: 1px solid var(--pale-blue);
   }
 
@@ -95,30 +35,15 @@
   }
 
   .columnTitle {
-    width: 46%;
-  }
-
-  .bookTitle {
-    padding: 0;
-    width: 42%;
+    width: 326px;
   }
 
   .columnAuthor {
-    width: 26%;
+    width: 164px;
   }
 
-  .bookAuthor {
-    width: 32%;
-  }
-
-  .columnYear,
-  .bookYear {
-    width: 14%;
-  }
-
-  .columnPages,
-  .bookPages {
-    width: 10%;
+  .columnYear {
+    width: 80px;
   }
 
   .headerTitle {
@@ -130,31 +55,24 @@
     line-height: 16px;
     color: var(--blue-grey);
   }
-
-  .bookListItem {
-    display: flex;
-  }
-
-  .bookName {
-    display: none;
-  }
 }
 
 @media (min-width: 1280px) {
   .bookList {
     padding: 18px 0 0 0;
+    height: 166px;
     border-bottom: 1px solid var(--pale-blue);
   }
 
-  .bookListItem {
-    padding: 0;
-    margin-bottom: 12px;
-    border: none;
+  .columnTitle {
+    width: 384px;
   }
 
-  .bookTitle {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+  .columnAuthor {
+    width: 164px;
+  }
+
+  .columnYear {
+    width: 80px;
   }
 }
