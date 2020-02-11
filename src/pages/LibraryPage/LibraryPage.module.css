@@ -1,0 +1,21 @@
+.libraryPage__wrapper {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  background: #f5f7fa;
+  padding: 10%;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .libraryPage__wrapper {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .libraryPage__wrapper {
+    padding: 80px;
+    padding-top: 30px;
+  }
+}

@@ -1,0 +1,31 @@
+:root {
+  --light-blue-grey-40: rgba(193, 196, 206, 0.4);
+  --orange: #ff6b08;
+  --pale-grey: #f5f7fa;
+  --pale-blue: #e0e5eb;
+  --rusty-orange: #d15807;
+  --white: #ffffff;
+  --dark-indigo: #091e3f;
+  --dark: #242a37;
+  --dusty-orange: #fe781e;
+  --light-grey-blue: #b1b5c2;
+  --light-grey-blue-two: #b1b5c1;
+  --blue-grey: #898f9f;
+  --dull-orange: #d97833;
+  --dull-orange-two: #e18337;
+  --black: #000000;
+  --battleship-grey: #6d7a8d;
+  --dusty-orange-two: #ff781e;
+  --light-grey-blue-three: #a6abb9;
+  --light-periwinkle: #dce0e9;
+  --orangey-red: #f25137;
+  --almost-black-30: rgba(2, 2, 1, 0.3);
+  --dark-indigo-15: rgba(9, 30, 63, 0.15);
+  --dark-indigo-80: rgba(9, 30, 63, 0.8);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rusty-orange: #76411d;
+  }
+}

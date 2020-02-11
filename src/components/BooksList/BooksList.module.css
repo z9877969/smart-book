@@ -1,0 +1,151 @@
+.wrapper {
+  width: 100%;
+  background-color: var(--pale-grey);
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  width: 310px;
+  box-shadow: 1px 1.7px 1px 0 var(--light-blue-grey-40);
+  background-color: var(--white);
+}
+
+.title {
+  font-family: Montserrat;
+  font-size: 17px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.76;
+  letter-spacing: 0.77px;
+  text-align: left;
+  color: var(--dark);
+}
+
+.bookIcon {
+  color: var(--light-grey-blue-three);
+  width: 22px;
+  height: 26px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.arrowIcon {
+  width: 22px;
+  height: 17px;
+  color: var(--orange);
+}
+.flagIcon {
+  color: var(--light-grey-blue-three);
+  width: 22px;
+  height: 26px;
+}
+.secondTitle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.secondTitle p {
+  margin-left: 28px;
+}
+.bodyText {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.titleText {
+  margin: 0;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: 0.63px;
+  text-align: left;
+  color: var(--dark);
+}
+
+.text {
+  margin: 0;
+  font-family: OpenSans;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: var(--blue-grey);
+}
+
+.text:nth-last-child(-n + 1) {
+  margin-bottom: 15px;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  width: 130px;
+  height: 39px;
+  box-shadow: 1px 1.7px 3px 0 rgba(0, 0, 0, 0.15);
+  background-color: var(--orange);
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: center;
+  color: var(--white);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 549px;
+    height: 293px;
+  }
+  .title {
+    font-size: 19px;
+    line-height: 1.58;
+    letter-spacing: 0.86px;
+  }
+  .titleText {
+    font-size: 16px;
+    line-height: 1.88;
+    letter-spacing: 0.72px;
+  }
+  .bodyText {
+    width: 82%;
+    padding-left: 15px;
+  }
+  .button {
+    display: none;
+  }
+  .bookIcon {
+    width: 27px;
+    height: 28px;
+  }
+  .arrowIcon {
+    width: 30px;
+    height: 19px;
+  }
+  .flagIcon {
+    width: 27px;
+    height: 28px;
+  }
+  .secondTitle {
+    padding-left: 15px;
+  }
+  .title {
+    padding-left: 15px;
+  }
+}

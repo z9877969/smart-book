@@ -1,0 +1,397 @@
+.conteiner {
+  margin-top: 37px;
+  background: #f5f7fa;
+  margin: 0 auto;
+  width: 100%;
+}
+.wrapper_mob {
+  display: flex;
+}
+.tittle {
+  margin-left: 7%;
+  margin-top: 62px;
+  width: 69px;
+  height: 15px;
+  font-family: 'Montserrat';
+  font-size: 19px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.58;
+  letter-spacing: 0;
+  color: #242a37;
+}
+.tittle__text {
+  padding-top: 16px;
+  margin-left: 55px;
+  width: 160px;
+  height: 31px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.list {
+  margin-top: 23px;
+  background: #fff;
+  position: relative;
+  box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
+  margin-left: 24px;
+  width: 325px;
+  min-height: 167px;
+  list-style: none;
+}
+.icon__book {
+  top: 19px;
+  left: 15px;
+
+  position: absolute;
+}
+.item__text {
+  padding-top: 31px;
+  margin-left: 55px;
+  width: 42px;
+  height: 14px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #898f9f;
+}
+.item__words {
+  padding-left: 50px;
+  width: 136px;
+  height: 14px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #242a37;
+}
+.item {
+  list-style: none;
+  margin-top: 20px;
+  margin-left: 24px;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 100%;
+  height: 135px;
+  box-shadow: 1px 1.7px 1px 0 grey;
+}
+.display {
+  position: relative;
+  padding-top: 3px;
+  display: flex;
+}
+.icon {
+  top: 19px;
+  left: 15px;
+  position: absolute;
+}
+.cardTitle {
+  margin-top: 14px;
+  padding-left: 55px;
+  width: 205px;
+  height: 30px;
+  font-family: 'OpenSans';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.flex {
+  display: flex;
+}
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 29px;
+  margin-top: 3px;
+  margin-left: 27px;
+}
+.label {
+  margin-top: 10px;
+  width: 63px;
+  height: 11px;
+  font-family: 'OpenSans';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: grey;
+}
+.quantity {
+  width: 109px;
+  margin-top: 10px;
+  height: 11px;
+  font-family: 'OpenSans';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.quantity_year {
+  width: 82px;
+  margin-top: 10px;
+  height: 11px;
+  font-family: 'OpenSans';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+
+/* tablet */
+.tablet {
+  display: none;
+  background: #f5f7fa;
+  margin: 0 auto;
+  width: 768px;
+}
+.wrapper {
+  margin-left: 44px;
+}
+.tittle__tablet {
+  margin: 0;
+  margin-top: 45px;
+  padding-bottom: 35px;
+  width: 69px;
+  height: 15px;
+  font-family: 'Montserrat';
+  font-size: 19px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.58;
+  letter-spacing: 0.86px;
+  text-align: left;
+}
+.text__name_book {
+  padding-bottom: 25px;
+  color: #898f9f;
+  display: inline-block;
+  width: 98px;
+  height: 10px;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.text__avtor {
+  padding-bottom: 15px;
+  padding-left: 269px;
+  color: #898f9f;
+  display: inline-block;
+  width: 88px;
+  height: 10px;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.text__year {
+  padding-bottom: 15px;
+  padding-left: 224px;
+  color: #898f9f;
+  display: inline-block;
+  width: 88px;
+  height: 10px;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.text__page {
+  padding-bottom: 15px;
+  padding-left: 45px;
+  color: #898f9f;
+  display: inline-block;
+  width: 88px;
+  height: 10px;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.read__book {
+  margin: 0;
+  padding: 0;
+}
+.wrapper_text {
+  margin: 0 auto;
+}
+.list_tablet {
+  box-shadow: 1px 1.7px 1px 0 grey;
+  margin-bottom: 15px;
+  display: flex;
+  position: relative;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+
+  list-style: none;
+  width: 678px;
+  background: #fff;
+  height: 60px;
+}
+.icon__tablet {
+  width: 22px;
+  height: 18px;
+  top: 21px;
+  left: 15px;
+  position: absolute;
+}
+.name_book {
+  padding-top: 8px;
+  padding-left: 55px;
+  width: 363px;
+  height: 31px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #242a37;
+}
+.author {
+  margin: 0;
+  width: 232px;
+  padding-top: 8px;
+  height: 31px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #242a37;
+}
+.year {
+  padding-top: 23px;
+  width: 47px;
+  height: 31px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #242a37;
+}
+.page {
+  padding-top: 23px;
+  height: 31px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #242a37;
+}
+.p_name_book {
+  padding-top: 14px;
+  width: 200px;
+}
+.p_avtor {
+  padding-top: 14px;
+  width: 125px;
+}
+@media (min-width: 768px) {
+  .conteiner {
+    display: none;
+  }
+  .tablet {
+    display: block;
+  }
+}
+@media (min-width: 1280px) {
+  .author {
+    width: 380px;
+  }
+  .tablet {
+    margin: 0 auto;
+    width: 1280px;
+  }
+  .wrapper {
+    margin: 0 auto;
+  }
+  .list_tablet {
+    margin: 0 auto;
+    width: 1200px;
+  }
+  .wrapper_text {
+    width: 1200px;
+  }
+
+  .text__avtor {
+    padding-left: 540px;
+  }
+  .text__year {
+    padding-left: 381px;
+  }
+  .text__page {
+    padding-left: 109px;
+  }
+  .name_book {
+    width: 638px;
+  }
+  .p_avtor {
+    width: 226px;
+  }
+  .avtor {
+    width: 375px;
+  }
+  .year {
+    width: 130px;
+  }
+}

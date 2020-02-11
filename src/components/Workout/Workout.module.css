@@ -1,0 +1,133 @@
+.container {
+  padding: 28px 10px;
+  min-width: 320px;
+}
+
+.header {
+  margin: 0 0 26px 0;
+  width: 100%;
+  height: 60px;
+  box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
+  background-color: var(--light-grey-blue);
+  color: var(--white);
+  line-height: 60px;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.pickers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.picker {
+  margin-bottom: 26px;
+  width: 300px;
+  height: 40px;
+  color: var(--pale-grey);
+  border: solid 1px #cdd0d9;
+}
+
+.picker input {
+  font-size: 13px;
+  line-height: 40px;
+  font-family: 'Montserrat';
+  color: var(--black);
+  padding: 0 10px;
+  text-align: center;
+}
+
+.picker::before,
+.picker::after {
+  display: none;
+}
+
+.submit {
+  margin: 0;
+  width: 180px;
+  background-color: var(--orange);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+  border: none;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  line-height: 40px;
+  color: var(--white);
+  cursor: pointer;
+  outline: none;
+}
+
+.select {
+  width: 300px;
+  height: 39px;
+  box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
+  background-color: #fff;
+  border: none;
+  text-align: center;
+  padding-left: 20px;
+  color: #b1b5c2;
+  margin: 0 auto;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  width: 180px;
+  height: 39px;
+  background-color: #ffffff;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border: 1px solid black;
+  font-size: 13px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 30px 44px 48px 44px;
+    min-width: 768px;
+  }
+
+  .pickers {
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: nowrap;
+  }
+
+  .picker {
+    margin-left: 16px;
+    margin-right: 16px;
+    width: 190px;
+  }
+
+  .selectContainer {
+    margin-bottom: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .select {
+    width: 100%;
+    margin-right: 21px;
+  }
+
+  .button {
+    margin: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 38px 40px 48px 40px;
+    max-width: 862px;
+    flex-basis: 70%;
+    /* order: 1; */
+  }
+}

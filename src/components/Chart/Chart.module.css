@@ -1,0 +1,11 @@
+/* your css code */
+
+.ChartWrapper {
+  height: 500px !important;
+}
+
+@media (min-width: 768px) {
+  .ChartWrapper {
+    height: 300px !important;
+  }
+}

@@ -1,0 +1,256 @@
+.container {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: var(--white);
+  box-shadow: 0px 2px 1px 0px rgba(193, 196, 206, 0.4);
+}
+
+.inner_container {
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.title {
+  max-width: 250px;
+  width: 100%;
+  font-size: 13px;
+  line-height: 16px;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  color: var(--dark-indigo);
+  text-transform: uppercase;
+  text-align: center;
+  margin: 12px auto 10px;
+}
+
+.form {
+  max-width: 250px;
+  margin: 0 auto 30px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.errorMessage {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0.5px;
+  color: var(--orange);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input_title {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0.5px;
+  color: var(--blue-grey);
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+.input {
+  width: 112px;
+  border: solid 1px #cdd0d9;
+  font-size: 13px;
+  line-height: 38px;
+  font-family: 'Montserrat';
+  color: var(--black);
+  padding: 0 10px;
+  margin-bottom: 20px;
+  text-align: center;
+
+  /* resolve from stack overflow */
+  -moz-appearance: textfield; /* Firefox */ /* remove arrows in input[type="number"] */
+}
+
+/* resolve from stack overflow */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.picker {
+  width: 112px;
+  border: solid 1px #cdd0d9;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.picker input {
+  font-size: 13px;
+  line-height: 40px;
+  font-family: 'Montserrat';
+  color: var(--black);
+  padding: 0 10px;
+  text-align: center;
+}
+
+/* disable default styles for picker underliner */
+.picker::before,
+.picker::after {
+  display: none;
+}
+
+.submit {
+  width: 100%;
+  background-color: var(--orange);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+  border: none;
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 0;
+  color: var(--white);
+  font-family: 'Montserrat';
+  font-size: 13px;
+  line-height: 40px;
+}
+
+.statistic {
+  max-width: 250px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.title_statistic {
+  composes: title;
+  position: relative;
+  z-index: 0;
+}
+
+.title_statisticText {
+  background-color: var(--white);
+  padding: 0 6px;
+}
+
+.title_statistic:before {
+  content: '';
+  position: absolute;
+  top: calc(50%);
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--pale-blue);
+  z-index: -1;
+}
+
+.table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+.table_date,
+.table_time,
+.table_pages {
+  width: 33%;
+  font-size: 13px;
+  line-height: 16px;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  color: var(--dark-indigo);
+}
+
+.table_time,
+.table_pages_text {
+  color: var(--blue-grey);
+}
+
+.table_pages {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.table_pages_value {
+  flex-basis: 45%;
+  text-align: right;
+  margin: 0 5px 0 0;
+  overflow: hidden;
+}
+.table_pages_text {
+  flex-basis: 45%;
+  font-family: 'Montserrat';
+  text-align: left;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 678px;
+  }
+
+  .inner_container {
+    max-width: 522px;
+    margin-bottom: 40px;
+  }
+
+  .title {
+    margin-bottom: 24px;
+  }
+
+  .form {
+    max-width: 522px;
+  }
+
+  .input,
+  .picker {
+    margin-bottom: 0;
+  }
+
+  .submit {
+    width: 250px;
+    margin: 18px 0 0 0;
+  }
+
+  .statistic {
+    margin: 0;
+  }
+
+  .title_statistic {
+    text-align: left;
+    margin-bottom: 16px;
+  }
+
+  .title_statisticText {
+    padding: 0 9px 0 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 300px;
+    flex-basis: 30%;
+    order: 4;
+  }
+
+  .inner_container {
+    max-width: 250px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .submit {
+    margin-top: 20px;
+  }
+
+  .title_statistic {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .title_statisticText {
+    padding: 0 6px 0 0;
+  }
+}

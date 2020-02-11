@@ -1,0 +1,137 @@
+.container {
+  min-width: 320px;
+  height: 60px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 1px 1.7px 1px 0 var(--light-blue-grey-40);
+  background-color: var(--white);
+}
+
+.modalLogOut {
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 12;
+  background-color: rgba(0, 0, 0, 0.102);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  position: relative;
+}
+
+.icon {
+  fill: #a6abb9;
+  outline: none;
+  margin-right: -30px;
+  margin-left: 0px;
+}
+
+.btnIcon {
+  margin-right: -30px;
+  margin-left: 0px;
+}
+
+.bookName {
+  display: none;
+}
+
+.bookNameLetter {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  padding-top: 8px;
+  background-color: var(--pale-grey);
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.buttonExit {
+  padding: 0;
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 1.23;
+  color: var(--dark);
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid;
+  cursor: pointer;
+  margin-left: 7px;
+}
+.buttonExit::after {
+  content: '';
+  clear: both;
+  display: block;
+  position: absolute;
+  top: 15%;
+  left: 53%;
+  width: 1px;
+  height: 35px;
+  background-color: #e0e5eb;
+}
+.bookPars {
+  margin-left: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 2%;
+  }
+  .nav {
+    justify-content: flex-end;
+    width: 50%;
+  }
+
+  .bookName {
+    display: inline;
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 3.08;
+    letter-spacing: 0.46px;
+    color: var(--dark);
+  }
+
+  .bookPars {
+    order: -1;
+    margin-right: auto;
+  }
+  .bookNameLetter {
+    margin-right: 9px;
+  }
+  .buttonExit::after {
+    left: 88%;
+  }
+  .buttonExit {
+    margin-left: 14px;
+  }
+}
+
+@media screen and (min-width: 1220px) {
+  .container {
+    width: 100%;
+    padding: 2.5%;
+  }
+
+  .nav {
+    width: 57%;
+  }
+  .buttonExit::after {
+    left: 90%;
+  }
+
+  .buttonExit {
+    margin-left: 33px;
+  }
+}

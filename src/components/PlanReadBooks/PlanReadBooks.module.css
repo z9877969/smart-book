@@ -1,0 +1,344 @@
+.conteiner {
+  background: #f5f7fa;
+}
+.title {
+  padding-left: 7%;
+  height: 60px;
+  padding-top: 20px;
+  padding-bottom: 16px;
+  font-family: 'Montserrat';
+  font-size: 19px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.58;
+  letter-spacing: 0.86px;
+}
+.cardBook {
+  margin-left: 40px;
+  list-style-type: none;
+  width: 100%;
+  height: 167px;
+}
+.item {
+  margin-left: -15px;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 100%;
+  height: 135px;
+  box-shadow: 1px 1.7px 1px 0 grey;
+}
+.display {
+  display: flex;
+}
+.wrapper_mob {
+  display: flex;
+}
+.icon {
+  padding: 14px;
+  width: 48px;
+  height: 43px;
+}
+.cardTitle {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 205px;
+  height: 30px;
+  font-family: 'OpenSans';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 18px;
+  margin-top: 3px;
+  margin-left: 27px;
+}
+.label {
+  margin-top: 10px;
+  width: 63px;
+  height: 11px;
+  font-family: 'OpenSans';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #b4b7be;
+  padding-bottom: 6px;
+}
+.quantity {
+  margin-top: 10px;
+  width: 109px;
+  display: block;
+  height: 11px;
+  font-family: 'OpenSans';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.quantity_year {
+  margin-top: 10px;
+  min-width: 82px;
+  display: block;
+  height: 11px;
+  font-family: 'OpenSans';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+
+/* tablet */
+.tablet {
+  display: none;
+  background: #f5f7fa;
+  margin: 0 auto;
+  width: 768px;
+}
+.wrapper {
+  margin-left: 44px;
+}
+.tittle__tablet {
+  margin-top: 35px;
+  padding-bottom: 22px;
+  width: 240px;
+  height: 15px;
+  font-family: 'Montserrat';
+  font-size: 19px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.58;
+  letter-spacing: 0.86px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.text__name_book {
+  padding-bottom: 15px;
+  color: #898f9f;
+  display: inline-block;
+  width: 90px;
+  height: 10px;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  margin-bottom: 15px;
+}
+.text__avtor {
+  padding-bottom: 15px;
+  padding-left: 269px;
+  color: #898f9f;
+  display: inline-block;
+  width: 88px;
+  height: 10px;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.text__year {
+  padding-bottom: 15px;
+  padding-left: 232px;
+  color: #898f9f;
+  display: inline-block;
+  width: 88px;
+  height: 10px;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.text__page {
+  padding-bottom: 15px;
+  padding-left: 45px;
+  color: #898f9f;
+  display: inline-block;
+  width: 88px;
+  height: 10px;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+}
+.read__book {
+  margin: 0;
+  padding: 0;
+}
+.flex {
+  display: flex;
+}
+.wrapper_text {
+  margin: 0 auto;
+}
+.list_tablet {
+  box-shadow: 1px 1.7px 1px 0 grey;
+
+  display: flex;
+  position: relative;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  width: 678px;
+  background: #fff;
+  height: 60px;
+  margin-bottom: 10px;
+}
+.icon__tablet {
+  width: 22px;
+  height: 18px;
+  top: 21px;
+  left: 15px;
+  position: absolute;
+}
+.table_book {
+  padding-top: 13px;
+}
+.name_book {
+  padding-left: 55px;
+  width: 358px;
+  height: 31px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #242a37;
+}
+.avtor {
+  margin: 0;
+
+  width: 230px;
+  height: 31px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #242a37;
+}
+.year {
+  padding-top: 7px;
+  width: 47px;
+  height: 31px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #242a37;
+}
+.page {
+  height: 31px;
+  padding-top: 7px;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: #242a37;
+}
+.p_name_book {
+  padding-top: 7px;
+  width: 200px;
+}
+.p_avtor {
+  padding-top: 7px;
+  width: 125px;
+}
+
+@media (min-width: 768px) {
+  .conteiner {
+    display: none;
+  }
+  .tablet {
+    display: block;
+  }
+}
+@media (min-width: 1280px) {
+  .tablet {
+    margin: 0 auto;
+    width: 1280px;
+  }
+  .wrapper {
+    margin: 0 auto;
+  }
+  .list_tablet {
+    margin: 0 auto;
+    width: 1200px;
+    margin-bottom: 10px;
+  }
+  .table_book {
+    padding-top: 13px;
+  }
+  .wrapper_text {
+    width: 1200px;
+  }
+
+  .text__avtor {
+    padding-left: 540px;
+  }
+  .text__year {
+    padding-left: 381px;
+  }
+  .text__page {
+    padding-left: 109px;
+  }
+  .name_book {
+    width: 625px;
+  }
+  .p_avtor {
+    width: 226px;
+  }
+  .avtor {
+    width: 376px;
+  }
+  .year {
+    width: 113px;
+  }
+}

@@ -1,0 +1,87 @@
+.modal {
+  padding: 20px;
+  background-color: var(--white);
+  box-shadow: 6.5px 11.3px 35px 0 rgba(1, 1, 0, 0.23);
+  border: solid 1px #dce0e9;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  fill: var(--light-grey-blue-two);
+  display: block;
+}
+
+.text {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.43;
+  letter-spacing: 0.45px;
+  text-align: center;
+  color: var(--dark);
+  margin-top: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonContainer button {
+  background-color: var(--white);
+  padding: 12px 38px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.39px;
+  text-align: center;
+  color: #091e3f;
+  border: solid 2px #091e3f;
+  cursor: pointer;
+  outline: none;
+  transition-property: color, background-color;
+  transition-duration: 0.3s, 0.3s;
+  width: 130px;
+}
+
+.buttonContainer button:hover {
+  box-shadow: 6.5px 11.3px 35px 0 rgba(1, 1, 0, 0.23);
+  border: solid 1px #dce0e9;
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 406px;
+    height: 204px;
+    padding: 22px 55px;
+  }
+
+  .text {
+    line-height: 1.33;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .modal {
+    width: 436px;
+    height: 270px;
+    padding: 46px 74px;
+  }
+
+  .text {
+    line-height: 1.33;
+  }
+}

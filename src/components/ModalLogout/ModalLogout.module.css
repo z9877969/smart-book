@@ -1,0 +1,75 @@
+.modal {
+  padding: 50px 76px;
+  margin: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #dce0e9;
+  z-index: 12;
+}
+
+.text {
+  width: 288px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.43;
+  letter-spacing: 0.45px;
+  text-align: center;
+  color: #242a37;
+  margin-top: 0;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonContainer button {
+  background-color: #fff;
+  padding: 12px 38px;
+  flex: 0 0 46%;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.39px;
+  text-align: center;
+  color: #091e3f;
+  border: solid 2px #091e3f;
+  cursor: pointer;
+  outline: none;
+  transition-property: color, background-color;
+  transition-duration: 0.3s, 0.3s;
+}
+
+.buttonContainer button:hover {
+  box-shadow: 6.5px 11.3px 35px 0 rgba(1, 1, 0, 0.23);
+  border: solid 1px #dce0e9;
+  background-color: #ff6b08;
+  color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 436px;
+    height: 204px;
+    padding: 53px 77px;
+  }
+
+  .text {
+    font-size: 15px;
+    line-height: 1.33;
+    letter-spacing: 0.45px;
+  }
+
+  .buttonContainer button {
+    flex: 0 0 46%;
+    font-size: 13px;
+    letter-spacing: 0.39px;
+  }
+}

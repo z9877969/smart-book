@@ -1,0 +1,331 @@
+.goalContainer,
+.goalContainerStat {
+  margin: 34px auto;
+  max-width: 325px;
+}
+
+.goalContainer {
+  height: 282px;
+}
+
+.goalContainerStat {
+  height: 240px;
+}
+
+.goalTitleBox,
+.goalTitleBoxStat {
+  width: 325px;
+  height: 60px;
+  box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
+  background-color: #b1b5c2;
+}
+
+.goalTitle {
+  padding: 20px 50px;
+  margin: 0;
+  height: 18px;
+  font-family: 'Montserrat';
+  font-size: 19px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.86px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.goalBodyBox,
+.goalBodyBoxStat {
+  width: 325px;
+  box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.goalBodyBox {
+  height: 222px;
+}
+
+.goalBodyBoxStat {
+  height: 180px;
+}
+
+.goalDigitsBox,
+.goalDigitsBoxStat {
+  box-shadow: 3px 5.2px 6px 0 rgba(9, 30, 63, 0.15);
+  background-color: #f5f7fa;
+}
+
+.goalDigitsBox {
+  width: 118px;
+  height: 98px;
+  margin: 43px 7px;
+}
+
+.goalDigitsBoxStat {
+  width: 80px;
+  height: 80px;
+  margin: 30px 4px;
+}
+
+.goalDigits,
+.goalDigitsStat,
+.goalDigitsStatLast {
+  font-family: 'Open Sans';
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 80px;
+  text-align: center;
+  color: #091e3f;
+}
+
+.goalDigits {
+  font-size: 46px;
+  line-height: 98px;
+}
+
+.goalDigitsStat,
+.goalDigitsStatLast {
+  font-size: 36px;
+}
+
+.goalDigitsStatLast {
+  color: #ff6b07;
+}
+
+.goalText,
+.goalTextStat {
+  margin: 0 auto;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.15;
+  letter-spacing: 0.39px;
+  text-align: center;
+  color: #898f9f;
+}
+
+.goalText {
+  width: 100px;
+  font-size: 14px;
+  padding-top: 12px;
+  overflow: hidden;
+}
+
+.goalTextStat {
+  width: 70px;
+  font-size: 10px;
+  padding-top: 8px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .goalContainer,
+  .goalContainerStat {
+    width: 680px;
+    display: flex;
+    box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
+  }
+
+  .goalContainer {
+    height: 106px;
+    padding: 0;
+  }
+
+  .goalContainerStat {
+    margin-top: 20px;
+    height: 123px;
+    /* padding: 0 0 20px 0; */
+  }
+
+  .goalTitleBox,
+  .goalTitleBoxStat {
+    margin-left: 22px;
+    width: 312px;
+    margin-right: 22px;
+  }
+
+  .goalTitleBoxStat {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .goalTitleBox {
+    margin-top: 22px;
+  }
+
+  .goalBodyBox,
+  .goalBodyBoxStat {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .goalBodyBox {
+    height: 106px;
+    width: 323px;
+    /* margin: 0 auto; */
+    /* display: flex;
+    justify-content: center; */
+  }
+
+  .goalBodyBoxStat {
+    width: 374px;
+    height: 123px;
+    margin-left: 8px;
+  }
+
+  .goalDigitsBox,
+  .goalDigitsBoxStat {
+    height: 60px;
+  }
+
+  .goalDigitsBox {
+    width: 118px;
+    margin: 22px 6px;
+  }
+
+  .goalDigitsBoxStat {
+    width: 100px;
+    margin: 0px 8px;
+  }
+
+  .goalTitle {
+    padding: 0;
+    line-height: 60px;
+  }
+
+  .goalDigits,
+  .goalDigitsStat,
+  .goalDigitsStatLast {
+    font-size: 40px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    /* margin-top: 28px; */
+    text-align: center;
+    color: #091e3f;
+    line-height: 60px;
+  }
+
+  .goalDigitsStatLast {
+    color: #ff6b07;
+  }
+
+  .goalText,
+  .goalTextStat {
+    width: 110px;
+    /* height: 10px; */
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 1280px) {
+  .goalContainer,
+  .goalContainerStat {
+    margin: 34px auto;
+    width: 300px;
+    display: block;
+    flex-basis: 30%;
+    order: 3;
+  }
+
+  .goalContainer {
+    height: 282px;
+  }
+
+  .goalContainerStat {
+    height: 217px;
+  }
+
+  .goalTitleBox,
+  .goalTitleBoxStat {
+    width: 300px;
+    height: 60px;
+    margin: 0;
+  }
+
+  .goalTitleBoxStat {
+    margin-left: 0;
+  }
+
+  .goalBodyBox,
+  .goalBodyBoxStat {
+    width: 300px;
+    justify-content: center;
+  }
+
+  .goalBodyBox {
+    height: 222px;
+  }
+
+  .goalBodyBoxStat {
+    height: 178px;
+    margin-left: 0;
+  }
+
+  .goalDigitsBox {
+    width: 118px;
+    height: 98px;
+    margin: 43px 7px;
+  }
+
+  .goalDigitsBoxStat {
+    width: 74px;
+    height: 80px;
+    margin: 28px 7px;
+  }
+
+  .goalDigits,
+  .goalDigitsStat {
+    line-height: 80px;
+    color: #091e3f;
+  }
+
+  .goalDigits {
+    font-size: 46px;
+    line-height: 98px;
+  }
+
+  .goalDigitsStat,
+  .goalDigitsStatLast {
+    font-size: 36px;
+  }
+
+  .goalDigitsStatLast {
+    line-height: 80px;
+    color: #ff6b07;
+  }
+
+  .goalText,
+  .goalTextStat {
+    margin: auto;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .goalText {
+    width: 100px;
+    font-size: 14px;
+    padding-top: 8px;
+  }
+
+  .goalTextStat {
+    width: 75px;
+    font-size: 11px;
+    padding-top: 8px;
+  }
+}

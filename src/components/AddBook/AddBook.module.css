@@ -1,0 +1,152 @@
+.addBookForm {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.inputTitle,
+.addBtn,
+.inputData::placeholder {
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  color: #898f9f;
+  line-height: 16px;
+  margin-bottom: 8px;
+}
+
+.inputData {
+  border-width: 1px;
+  border-color: rgb(205, 208, 217);
+  border-style: solid;
+  width: 100%;
+  height: 40px;
+  background-color: #f5f7fa;
+  color: #242a37;
+  padding-left: 14px;
+}
+
+.labelTitle > .inputData,
+.labelAutor > .inputData,
+.labelYear > .inputData {
+  margin-bottom: 16px;
+}
+
+.labelPages > .inputData {
+  margin-bottom: 42px;
+}
+
+.inputData:focus {
+  background-color: #fff;
+  outline: none;
+  border-width: 0px;
+  box-shadow: 0px -1px 2px 1px rgba(0, 0, 0, 0.45);
+}
+
+.addBtn {
+  position: relative;
+  margin-bottom: 5px;
+  background-color: #f5f7fa;
+  width: 180px;
+  height: 40px;
+  border: 1px solid #091e3f;
+  color: #242a37;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.addBtn:hover {
+  cursor: pointer;
+  outline: auto;
+}
+
+.backArrowIcon {
+  width: 20px;
+  height: 20px;
+  fill: #ff6b08;
+}
+
+.goBackBtn {
+  margin-bottom: 22px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.goBackBtn:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .tabletWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .labelAutor {
+    width: 48%;
+  }
+
+  .labelYear {
+    width: 20%;
+  }
+
+  .labelPages {
+    width: 24%;
+  }
+
+  .labelTitle > .inputData {
+    margin-bottom: 20px;
+  }
+
+  .labelAutor > .inputData,
+  .labelYear > .inputData,
+  .labelPages > .inputData {
+    margin-bottom: 48px;
+  }
+
+  .addBtn {
+    margin-bottom: 46px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .addBookForm {
+    width: 1100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .labelTitle {
+    width: 380px;
+  }
+
+  .tabletWrapper {
+    width: 496px;
+  }
+
+  .labelAutor {
+    width: 210px;
+  }
+
+  .labelYear,
+  .labelPages > .inputData {
+    width: 116px;
+  }
+
+  .labelPages {
+    width: 132px;
+  }
+
+  .addBtn {
+    margin-top: 24px;
+    margin-bottom: 56px;
+  }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

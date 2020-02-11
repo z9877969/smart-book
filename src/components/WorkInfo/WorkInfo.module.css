@@ -1,0 +1,33 @@
+.page {
+  min-width: 376px;
+  height: calc(100vh - 60px); /*60px is height of header*/
+  margin: 0 auto;
+  padding: 28px 25px 0;
+  overflow: scroll;
+  background-color: var(--pale-grey);
+}
+
+.insideContainer {
+  max-width: 326px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding: 18px 45px 0;
+  }
+
+  .insideContainer {
+    max-width: 679px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page {
+    padding: 22px 40px 0;
+  }
+
+  .insideContainer {
+    max-width: 1199px;
+  }
+}

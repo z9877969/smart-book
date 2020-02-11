@@ -1,0 +1,111 @@
+/* your css code */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapperQuote {
+  padding: 35px 70px 25px;
+  width: 100%;
+  text-align: center;
+  color: var(--dark);
+}
+
+.quote {
+  position: relative;
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.39px;
+  margin-bottom: 22px;
+  color: var(--dark);
+}
+
+.quote::before {
+  display: block;
+  content: '\201c';
+  font-family: 'AbrilFatface';
+  padding-top: 10px;
+  font-size: 45px;
+  line-height: 0;
+  color: var(--orange);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.quote::after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 45%;
+  height: 1px;
+  background-color: #e0e5eb;
+  margin-top: 10px;
+  text-align: center;
+  left: 26%;
+}
+
+.quoteAuthor {
+  margin-bottom: 31px;
+  color: var(--blue-grey);
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .wrapperQuote {
+    padding-left: 100px;
+    padding-right: 100px;
+    width: 100%;
+    background-color: #fff;
+  }
+
+  .quote {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.58;
+    letter-spacing: 0.72px;
+    margin-bottom: 32px;
+  }
+
+  .quote::before {
+    padding-top: 60px;
+    font-size: 70px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .quote::after {
+    width: 30%;
+    margin-top: 15px;
+    text-align: center;
+    left: 35%;
+  }
+
+  .quoteAuthor {
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    margin-bottom: 57px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrapperQuote {
+    align-self: start;
+    padding-top: 120px;
+    height: 92vh;
+    background-color: #fff;
+    margin: 0;
+  }
+
+  .wrapper {
+    margin: 180px 60px 183px 5%;
+  }
+}
