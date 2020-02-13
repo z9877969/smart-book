@@ -5,10 +5,8 @@ import { changeDateFormatToMs } from './timerHelpers';
 import css from './Timer.module.css';
 
 const Completionist = () => (
-  <div className={css.container}>
-    <span className={css.timerPanel}>
-      Asta La&lsquo;Vista Baby - Time finished!
-    </span>
+  <div className={css.congratsModal}>
+    Asta La&lsquo;Vista Baby - Time finished!
   </div>
 );
 
