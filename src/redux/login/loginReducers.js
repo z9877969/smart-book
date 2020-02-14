@@ -24,7 +24,10 @@ const authenticated = (state = false, { type }) => {
     case ActionType.LOGOUT:
       return false;
     case 'USER_HAVE_TRAINING':
-      return { ...state, haveTraining: true };
+      return {
+        ...state,
+        haveTraining: true,
+      };
     default:
       return state;
   }
