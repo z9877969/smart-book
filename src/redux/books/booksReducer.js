@@ -1,6 +1,6 @@
 import { ActionBooks } from './booksActions';
 
-const booksReducer = (state = null, { type, payload }) => {
+const booksReducer = (state = [], { type, payload }) => {
   switch (type) {
     case ActionBooks.BOOKS_SUCCESS:
     case ActionBooks.BOOKS_ERROR:
