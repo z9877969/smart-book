@@ -18,7 +18,7 @@ const BooksList = () => {
   useEffect(() => {
     if (books) {
       setPlanedBooks(books.filter(book => book.status === 'planned'));
-      setReadBooks(books.filter(book => book.status === 'read'));
+      setReadBooks(books.filter(book => book.status === 'readed'));
       setNowReadBooks(books.filter(book => book.status === 'reading'));
     }
   }, [books]);
