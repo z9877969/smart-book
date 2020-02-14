@@ -8,7 +8,7 @@ import CustomButton from '../../shared-ui/CustomButton/CustomButton';
 
 import css from './RegistrationForm.module.css';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   emailInput: {
     '& label.Mui-focused': {
       color: 'var(--orangey-red)',
@@ -54,7 +54,7 @@ const FormOfRegistration = ({
           onBlur={onBlur}
         />
         {formik.errors.userName && formik.touched.userName ? (
-          <div className={css.error}>{formik.errors.userName}</div>
+          <div className={css.nameError}>{formik.errors.userName}</div>
         ) : null}
       </label>
 
@@ -76,7 +76,7 @@ const FormOfRegistration = ({
         />
 
         {formik.errors.email && formik.touched.email ? (
-          <div className={css.error}>{formik.errors.email}</div>
+          <div className={css.emailError}>{formik.errors.email}</div>
         ) : null}
       </label>
       <label className={css.label} htmlFor="password">
@@ -96,7 +96,7 @@ const FormOfRegistration = ({
           onBlur={onBlur}
         />
         {formik.errors.password && formik.touched.password ? (
-          <div className={css.error}>{formik.errors.password}</div>
+          <div className={css.passwordError}>{formik.errors.password}</div>
         ) : null}
       </label>
       <label className={css.label} htmlFor="passwordRepeat">
@@ -116,15 +116,18 @@ const FormOfRegistration = ({
           onBlur={onBlur}
         />
         {formik.errors.passwordRepeat && formik.touched.passwordRepeat ? (
-          <div className={css.error}>{formik.errors.passwordRepeat}</div>
+          <div className={css.repeatPasswordError}>
+            {formik.errors.passwordRepeat}
+          </div>
         ) : null}
       </label>
       <CustomButton
-        size="100%"
+        size="large"
         type="submit"
         variant="contained"
-        // className={styles.logInButton}
-        color="var(--rusty-orange)"
+        // className={css.logInButton}
+        // color="var(--rusty-orange)"
+        color="primary"
       >
         Зареєструватися
       </CustomButton>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { useDispatch } from 'react-redux';
@@ -11,7 +12,7 @@ import styles from './LoginForm.module.css';
 import CustomButton from '../../shared-ui/CustomButton/CustomButton';
 import withConnectByGoogle from '../../hoc/WithConnectByGoogle';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   emailInput: {
     '& label.Mui-focused': {
       color: 'var(--orangey-red)',
