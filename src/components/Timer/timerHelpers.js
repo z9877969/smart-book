@@ -21,3 +21,12 @@ export const getTimeTrainingAfterEndObj = dateStartISO => {
 
   return timeObj;
 };
+
+export const getLocalTime = timeUTS => {
+  const a = moment(timeUTS);
+  const timeZone = a.format() / 60;
+  a._tzm = timeZone;
+  return a.format().split('+')[0];
+};
+
+export const timeEndState = '2020-02-14T11:14:00.000Z';
