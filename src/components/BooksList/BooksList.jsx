@@ -25,7 +25,7 @@ const BooksList = () => {
 
   return (
     <>
-      {books ? (
+      {books.length > 0 ? (
         <>
           {!userHaveTraining && <NextStepButton />}
           {!!readBooks.length && <ReadBooks books={readBooks} />}
@@ -33,7 +33,9 @@ const BooksList = () => {
           {!!planedBooks.length && <PlanReadBooks books={planedBooks} />}
         </>
       ) : (
-        <StartingSteps />
+        <>
+          <StartingSteps />
+        </>
       )}
     </>
   );
