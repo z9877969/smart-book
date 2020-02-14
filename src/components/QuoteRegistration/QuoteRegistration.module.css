@@ -1,0 +1,111 @@
+.wrapperQuote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 35px 20% 25px;
+  width: 100%;
+  text-decoration: none;
+  list-style: none;
+  color: var(--dark);
+}
+
+.quoteTitle {
+  margin: 0;
+  font-family: 'AbrilFatface';
+  font-weight: bold;
+  font-size: 34px;
+  margin-bottom: 5px;
+}
+
+ul {
+  margin-bottom: 15px;
+}
+
+.helpList,
+.canList {
+  align-self: flex-start;
+  list-style: none;
+}
+
+.quoteSubtitle {
+  align-self: flex-start;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.39px;
+  margin-bottom: 12px;
+  color: var(--dark);
+}
+
+.helpListItem,
+.canListItem {
+  position: relative;
+  font-family: 'Montserrat';
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--blue-grey);
+  line-height: 1.21;
+  margin-bottom: 5px;
+}
+
+.helpListItem::before,
+.canListItem::before {
+  content: '>';
+  color: var(--orange);
+  display: block;
+  position: absolute;
+  left: -3%;
+  padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .wrapperQuote {
+    padding: 35px 17% 25px;
+  }
+
+  .quoteTitle {
+    align-self: center;
+    margin-bottom: 30px;
+  }
+
+  .quoteSubtitle {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .helpListItem,
+  .canListItem {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrapperQuote {
+    padding: 35px 8% 25px;
+    padding-top: 144px;
+    height: 927px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  .quoteTitle {
+    margin-bottom: 50px;
+  }
+
+  .quoteSubtitle {
+    margin-bottom: 25px;
+  }
+
+  .helpListItem::before,
+  .canListItem::before {
+    left: -4%;
+  }
+
+  .helpListItem,
+  .canListItem {
+    margin-bottom: 16px;
+  }
+}

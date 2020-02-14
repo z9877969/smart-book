@@ -79,12 +79,14 @@ export const refreshUser = () => (dispatch, getState) => {
 };
 
 export const logOut = token => dispatch => {
+  setAuthToken(token);
   axios
-    .post(`${process.env.REACT_APP_BASE_API_URL}/auth/logout`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    // .post(`${process.env.REACT_APP_BASE_API_URL}/auth/logout`, {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // })
+    .post(`${process.env.REACT_APP_BASE_API_URL}/auth/logout`)
     .then(() => {
       dispatch(logOutSuccess());
       clearAuthToken();
@@ -122,7 +124,9 @@ export const postTraining = (training, token) => dispatch => {
     })
     .then(res => {
       dispatch(getTraining(res.data.training));
-      dispatch({ type: 'USER_HAVE_TRAINING' });
+      dispatch({
+        type: 'USER_HAVE_TRAINING',
+      });
     })
     .catch(err => {
       console.log(err);

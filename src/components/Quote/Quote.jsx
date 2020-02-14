@@ -1,15 +1,14 @@
 import React from 'react';
 import styles from './Quote.module.css';
 
-const Quote = props => {
+const Quote = () => {
   return (
     <div className={styles.wrapperQuote}>
       <p className={styles.quote}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima labore
-        praesentium enim,jrenfekrfnjfnjkndkjnfkjd orengfernfeinrign jfdnjfd
-        nrfgeoigr rneogreg
+        Книги — это корабли мысли, странствующие по волнам времени и бережно
+        несущие свой драгоценный груз от поколения к поколению.
       </p>
-      <p className={styles.quoteAuthor}>Author</p>
+      <p className={styles.quoteAuthor}>Бэкон Ф.</p>
     </div>
   );
 };
