@@ -8,7 +8,7 @@ import styles from './Auth.module.css';
 import Quote from '../../components/Quote/Quote';
 import QuoteRegistration from '../../components/QuoteRegistration/QuoteRegistration';
 
-function Auth(props) {
+const Auth = (props) => {
   const { pathname } = useLocation();
 
   return (
