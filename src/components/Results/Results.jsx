@@ -2,47 +2,30 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import 'date-fns';
+import PropTypes from 'prop-types';
+import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, DateTimePicker } from '@material-ui/pickers';
-
 import { postResultsOnServer } from '../../redux/results/resultsActions';
 import { getTrainingFromServer } from '../../services/API';
-
+import {
+  formatDate,
+  formatTime,
+  getLastTenReadPagesSortedByDateDesc,
+} from './resHelpers';
 import styles from './Results.module.css';
 
-function formatDate(date) {
-  let dd = new Date(date).getDate();
-  if (dd < 10) dd = `0${dd}`;
-  let mm = new Date(date).getMonth() + 1;
-  if (mm < 10) mm = `0${mm}`;
-  const yyyy = new Date(date).getFullYear();
-  return `${dd}.${mm}.${yyyy}`;
-}
-function formatTime(date) {
-  let hh = new Date(date).getHours();
-  if (hh < 10) hh = `0${hh}`;
-  let mm = new Date(date).getMinutes();
-  if (mm < 10) mm = `0${mm}`;
-  let ss = new Date(date).getSeconds();
-  if (ss < 10) ss = `0${ss}`;
-  return `${hh}:${mm}:${ss}`;
-}
-
-const Results = () => {
+const Results = ({ training }) => {
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString());
   const [selectedPages, setSelectedPages] = useState('');
-  const [trainingId, setTrainingId] = useState('');
+  const [trainingId, setTrainingId] = useState(training.trainingId);
   const [pagesReadResult, setPagesReadResult] = useState([]);
 
   const token = useSelector(state => state.session.token);
-  const training = useSelector(state => state.training);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (training) {
-      console.log(training);
-
       const {
         pagesReadResult: initPageReadResult,
         trainingId: initTrainingId,
@@ -51,10 +34,9 @@ const Results = () => {
       setTrainingId(initTrainingId);
 
       if (initPageReadResult.length !== pagesReadResult.length) {
-        const lastTenPagesReadResult = [...initPageReadResult].sort((a, b) =>
-          a.date > b.date ? -1 : 1,
+        const lastTenPagesReadResult = getLastTenReadPagesSortedByDateDesc(
+          initPageReadResult,
         );
-        lastTenPagesReadResult.length = 10;
 
         setPagesReadResult(lastTenPagesReadResult);
       }
@@ -69,7 +51,7 @@ const Results = () => {
     setSelectedPages(target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     if (!trainingId) {
@@ -86,8 +68,8 @@ const Results = () => {
         count: Number(selectedPages), // count	number
       };
 
-      dispatch(postResultsOnServer(token, trainingId, addedResult));
-      // dispatch(getTrainingFromServer(token));
+      dispatch(await postResultsOnServer(token, trainingId, addedResult));
+      dispatch(await getTrainingFromServer(token));
 
       // clear inputs
       setSelectedDate(new Date().toISOString());
@@ -163,10 +145,8 @@ const Results = () => {
   );
 };
 
-// Results.propTypes = {
-//   token: PropTypes.string.isRequired,
-//   training: PropTypes.string.isRequired,
-//   dispatch: PropTypes.string.isRequired,
-// };
+Results.propTypes = {
+  training: PropTypes.shape().isRequired,
+};
 
 export default Results;
