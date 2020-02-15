@@ -4,8 +4,8 @@
   "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
   "workbench.colorCustomizations": {
-    "activityBar.background": "#3D2A12",
-    "titleBar.activeBackground": "#563A19",
+    "activityBar.background": "#546463",
+    "titleBar.activeBackground": "#546463",
     "titleBar.activeForeground": "#FCF9F6"
   },
   "editor.codeActionsOnSave": {

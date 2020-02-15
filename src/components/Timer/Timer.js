@@ -1,20 +1,13 @@
 import React from 'react';
 import Countdown, { zeroPad } from 'react-countdown-now';
 import PropTypes from 'prop-types';
+import Clock from './Clock';
 import { changeDateFormatToMs } from './timerHelpers';
 import css from './Timer.module.css';
 
-const Completionist = () => (
-  <div className={css.container}>
-    <span className={css.timerPanel}>
-      Asta La&lsquo;Vista Baby - Time finished!
-    </span>
-  </div>
-);
-
 const Timer = ({ days, hours, minutes, seconds, completed }) => {
   if (completed) {
-    return <Completionist />;
+    return <Clock />;
   }
   return (
     <div>

@@ -1,8 +1,8 @@
-.visibilityWrapper {
+<<<<<<< head .visibilityWrapper {
   display: none;
 }
 
-.wrapperQuote {
+=======>>>>>>>dev .wrapperQuote {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,12 +65,12 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .visibilityWrapper {
+  <<<<<<< head .visibilityWrapper {
     display: block;
     width: 100%;
   }
 
-  .wrapperQuote {
+  =======>>>>>>>dev .wrapperQuote {
     padding: 35px 17% 25px;
   }
 

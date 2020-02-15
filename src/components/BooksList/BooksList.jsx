@@ -18,14 +18,14 @@ const BooksList = () => {
   useEffect(() => {
     if (books) {
       setPlanedBooks(books.filter(book => book.status === 'planned'));
-      setReadBooks(books.filter(book => book.status === 'read'));
+      setReadBooks(books.filter(book => book.status === 'readed'));
       setNowReadBooks(books.filter(book => book.status === 'reading'));
     }
   }, [books]);
 
   return (
     <>
-      {books ? (
+      {books.length > 0 ? (
         <>
           {!userHaveTraining && <NextStepButton />}
           {!!readBooks.length && <ReadBooks books={readBooks} />}
@@ -33,7 +33,9 @@ const BooksList = () => {
           {!!planedBooks.length && <PlanReadBooks books={planedBooks} />}
         </>
       ) : (
-        <StartingSteps />
+        <>
+          <StartingSteps />
+        </>
       )}
     </>
   );

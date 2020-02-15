@@ -66,15 +66,17 @@ const Workout = ({ handleChangeToGoal }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    const getSelectedBook = plannedBooks.find(el => el._id === selectedBookId);
-    if (booksForRender.find(el => el._id === selectedBookId)) return;
-    setBooksForRender([...booksForRender, getSelectedBook]);
-    setBooks([...books, { book: selectedBookId }]);
-
     setSelectedBook({
       _id: null,
       title: '',
     });
+    const getSelectedBook = [...plannedBooks]
+      .filter(el => !booksForRender.includes(el))
+      .find(el => el._id === selectedBookId);
+
+    if (!getSelectedBook) return;
+    setBooksForRender([...booksForRender, getSelectedBook]);
+    setBooks([...books, { book: selectedBookId }]);
   };
 
   const deleteBook = id => {
@@ -153,11 +155,13 @@ const Workout = ({ handleChangeToGoal }) => {
             style: { paddingLeft: '10px' },
           }}
         >
-          {plannedBooks.map(el => (
-            <MenuItem data-id={el._id} value={el._id} key={el._id}>
-              {el.title}
-            </MenuItem>
-          ))}
+          {[...plannedBooks]
+            .filter(el => !booksForRender.includes(el))
+            .map(el => (
+              <MenuItem data-id={el._id} value={el._id} key={el._id}>
+                {el.title}
+              </MenuItem>
+            ))}
         </Select>
         <button type="button" className={style.button} onClick={handleSubmit}>
           Додати

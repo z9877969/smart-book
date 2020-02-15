@@ -9,10 +9,10 @@ const QuoteRegistration = () => (
       <ul className={styles.helpList}>
         <li className={styles.helpListItem}>
           Швидше сформулювати свою ціль і розпочати читати
-      </li>
+        </li>
         <li className={styles.helpListItem}>
           Пропорційно розподілити навантаження на кожний день
-      </li>
+        </li>
         <li className={styles.helpListItem}>Відстежувати особистий успіх</li>
       </ul>
 
@@ -21,10 +21,10 @@ const QuoteRegistration = () => (
       <ul className={styles.canList}>
         <li className={styles.canListItem}>
           Формувати особисту думку незалежну від інших
-      </li>
+        </li>
         <li className={styles.canListItem}>
           Підвищити свої професійні якості опираючись на нові знання
-      </li>
+        </li>
         <li className={styles.canListItem}>Стати цікавим співрозмовником</li>
       </ul>
     </div>
