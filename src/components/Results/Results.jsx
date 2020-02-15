@@ -2,9 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import PropTypes from 'prop-types';
-// import axios from 'axios';
-import 'date-fns';
+// import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, DateTimePicker } from '@material-ui/pickers';
 
@@ -24,13 +22,10 @@ function formatDate(date) {
 function formatTime(date) {
   let hh = new Date(date).getHours();
   if (hh < 10) hh = `0${hh}`;
-
   let mm = new Date(date).getMinutes();
   if (mm < 10) mm = `0${mm}`;
-
   let ss = new Date(date).getSeconds();
   if (ss < 10) ss = `0${ss}`;
-
   return `${hh}:${mm}:${ss}`;
 }
 
@@ -43,34 +38,28 @@ const Results = () => {
   const token = useSelector(state => state.session.token);
   const training = useSelector(state => state.training);
   const dispatch = useDispatch();
-  // const pagesReadResult = useSelector(state => state.training.pagesReadResult);
 
   useEffect(() => {
     if (training) {
+      console.log(training);
+
       const {
         pagesReadResult: initPageReadResult,
         trainingId: initTrainingId,
       } = training;
+
       setTrainingId(initTrainingId);
+
       if (initPageReadResult.length !== pagesReadResult.length) {
         const lastTenPagesReadResult = [...initPageReadResult].sort((a, b) =>
           a.date > b.date ? -1 : 1,
         );
         lastTenPagesReadResult.length = 10;
-        setPagesReadResult(
-          lastTenPagesReadResult,
-          // initPageReadResult.sort((a, b) => (a.date > b.date ? -1 : 1)),
-        );
+
+        setPagesReadResult(lastTenPagesReadResult);
       }
     }
   }, [training]);
-
-  // useEffect(() => {
-  //   if (training.pagesReadResult > pagesReadResult) {
-  //     console.log(pagesReadResult);
-  //     setPagesReadResult(training.pagesReadResult);
-  //   }
-  // }, [training]);
 
   const handleDateInput = date => {
     setSelectedDate(date);
@@ -97,12 +86,8 @@ const Results = () => {
         count: Number(selectedPages), // count	number
       };
 
-      console.log('trainingId: ', trainingId);
-      console.log('addedResult: ', addedResult);
-      console.log('token: ', token);
-
       dispatch(postResultsOnServer(token, trainingId, addedResult));
-      dispatch(getTrainingFromServer(token));
+      // dispatch(getTrainingFromServer(token));
 
       // clear inputs
       setSelectedDate(new Date().toISOString());
