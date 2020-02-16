@@ -97,11 +97,10 @@ const LoginPage = () => {
         <span className={styles.passwordError}>{formik.errors.password}</span>
       ) : null}
       <CustomButton
-        size="100%"
+        size="large"
         type="submit"
         variant="contained"
         className={styles.logInButton}
-        color="var(--rusty-orange)"
       >
         Увійти
       </CustomButton>

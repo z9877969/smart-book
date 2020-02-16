@@ -19,7 +19,7 @@ const TrainingPage = ({ modalCongratsOpen, training }) => {
     countBooks: 0,
   });
   const token = useSelector(state => state.session.token);
-  const haveTraining = useSelector(state => state.user.haveTraining);
+  const haveTraining = useSelector(state => state.training.trainingId);
 
   const dispatch = useDispatch();
 
@@ -39,7 +39,7 @@ const TrainingPage = ({ modalCongratsOpen, training }) => {
           <PanelOfTimers />
           <Goal />
           <WorkoutInfo />
-          <Results />
+          <Results training={training} />
           <Chart training={training} />
         </div>
       ) : (
@@ -60,8 +60,14 @@ const mapStateToProps = state => ({
 
 TrainingPage.propTypes = {
   modalCongratsOpen: PropTypes.bool.isRequired,
-  training: PropTypes.exact({
+  training: PropTypes.shape({
     trainingId: PropTypes.string.isRequired,
+    isDone: PropTypes.bool.isRequired,
+    timeStart: PropTypes.any,
+    timeEnd: PropTypes.any,
+    avgReadPages: PropTypes.number,
+    booksCount: PropTypes.number,
+    unreadCount: PropTypes.number,
   }).isRequired,
 };
 

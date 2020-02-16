@@ -32,7 +32,7 @@
       url('../../assets/images/tabletSignupBg.png');
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 63px 183px 61px;
+    padding: 63px 20% 61px;
   }
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
@@ -63,7 +63,7 @@
       url('../../assets/images/desktopSignupBg.png');
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 92px 91px 91px;
+    padding: 50px 91px 40px;
   }
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {

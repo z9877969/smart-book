@@ -41,11 +41,15 @@ export const makeAverage = (number, lenght) => {
   return arr;
 };
 
-export const findDifference = (start, end, arrayOfDate) => {
+export const findDifference = (
+  start,
+  end,
+  // arrayOfDate
+) => {
   const startOfTraining = moment(start).dayOfYear();
   const endOfTraining = moment(end).dayOfYear();
   const difference = endOfTraining - startOfTraining;
-
-  const differenceWithDeadline = difference + (arrayOfDate.length - difference);
-  return differenceWithDeadline;
+  return difference;
+  // const differenceWithDeadline = difference + (arrayOfDate.length - difference);
+  // return differenceWithDeadline;
 };
