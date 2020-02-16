@@ -4,6 +4,8 @@
   height: 500px !important;
   width: 300px;
   order: 4;
+
+  background-color: var(--white);
 }
 
 @media (min-width: 768px) {
