@@ -10,8 +10,6 @@ const booksReducer = (state = [], { type, payload }) => {
     case ActionBooks.BOOK_UPDATE: {
       state.find(book => {
         if (book._id === payload._id) {
-          // book.rating = payload.rating;
-          // book.comment = payload.comment ? payload.comment : book.comment;
           const updatedBook = { ...book, payload };
           return updatedBook;
         }
