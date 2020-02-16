@@ -6,9 +6,18 @@ const booksReducer = (state = [], { type, payload }) => {
     case ActionBooks.BOOKS_ERROR:
       return payload;
     case ActionBooks.BOOK_DELETE:
-      return state.filter(book => book.id !== payload);
+      return state.filter(book => book._id !== payload);
     case ActionBooks.BOOK_UPDATE: {
-      return state.map(book => book.id === payload);
+      state.find(book => {
+        if (book._id === payload._id) {
+          // book.rating = payload.rating;
+          // book.comment = payload.comment ? payload.comment : book.comment;
+          const updatedBook = { ...book, payload };
+          return updatedBook;
+        }
+        return book;
+      });
+      return [...state];
     }
     case ActionBooks.ADD_BOOK:
       return [...state, payload];
