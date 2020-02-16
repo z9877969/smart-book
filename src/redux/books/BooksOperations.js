@@ -40,19 +40,17 @@ export const bookDelete = (token, id) => dispatch => {
 };
 
 export const bookUpdate = (token, id, data) => dispatch => {
+  // console.log('token', token, '\nid', id, '\ndata', data);
   axios
     .patch(`${process.env.REACT_APP_BASE_API_URL}/books/${id}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then(
-      dispatch(
-        BookUpdate({
-          rating: data,
-        }),
-      ),
-    )
+    .then(res => {
+      // console.log(res);
+      dispatch(BookUpdate(res.data.books, id));
+    })
     .catch(err => {
       dispatch(BooksError(err));
     });
