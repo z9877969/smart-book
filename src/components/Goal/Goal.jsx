@@ -6,13 +6,12 @@ import moment from 'moment';
 
 const Goal = () => {
   const training = useSelector(state => state.training);
-  const start = moment('2019-12-08T13:56:30+02:00').dayOfYear();
-  const finish = moment('2019-12-15T13:56:30+02:00').dayOfYear();
+  const start = moment(training.timeStart).dayOfYear();
+  // const finish = moment('2019-12-15T13:56:30+02:00').dayOfYear();
+  const finish = moment(training.timeEnd).dayOfYear();
   const leftDays = finish - start;
-  // let isThisStatPage = !!(training != null && training.unreadCount);
   let isThisStatPage = !!(training && training.unreadCount);
-  console.log(isThisStatPage);
-  // console.log(leftDays);
+  // console.log(training);
   return (
     <>
       <div
@@ -97,12 +96,12 @@ const Goal = () => {
     </>
   );
 };
-// Goal.propTypes = {
-//   isThisStatPage: PropTypes.bool,
-// };
+Goal.propTypes = {
+  isThisStatPage: PropTypes.bool,
+};
 
-// Goal.defaultProps = {
-//   isThisStatPage: true,
-// };
+Goal.defaultProps = {
+  isThisStatPage: true,
+};
 
 export default Goal;
