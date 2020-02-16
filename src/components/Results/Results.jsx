@@ -150,23 +150,3 @@ Results.propTypes = {
 };
 
 export default Results;
-
-// export const getItems = () => {
-
-//   return async dispatch => {
-//     function onSuccess(success) {
-//       dispatch({ type: UPDATE_AJAX_PARAMS, payload:  success.data});
-//     }
-
-//     function onError(error) {
-//       dispatch({ type: UPDATE_AJAX_PARAMS, error });
-//     }
-
-//     try {
-//       const success = await axios.post( 'http://....');
-//       return onSuccess(success);
-//     } catch (error) {
-//       return onError(error);
-//     }
-
-//   }
