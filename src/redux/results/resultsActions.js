@@ -21,8 +21,9 @@ export const postResultsOnServer = (
       },
     })
     .then(res => {
-      // console.log(res.data.pagesReadResult),
       dispatch(addResult(res.data.pagesReadResult));
     })
-    .catch(console.log);
+    .catch(err => {
+      console.log(err);
+    });
 };

@@ -1,8 +1,8 @@
 import { ActionType } from './trainingActions';
 
 const initialState = {
-  trainingId: null,
-  isDone: null,
+  trainingId: '',
+  isDone: true,
   timeStart: 0,
   timeEnd: 0,
   avgReadPages: 0,

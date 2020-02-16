@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 import {
   createArrayOfDate,
@@ -11,7 +12,7 @@ import styles from './Chart.module.css';
 const Chart = ({ training }) => {
   const { pagesReadResult, timeStart, timeEnd, allPagesCount } = training;
 
-  const arrayOfDate = createArrayOfDate(pagesReadResult);
+  const arrayOfDate = createArrayOfDate(pagesReadResult).sort();
   const difference = findDifference(timeStart, timeEnd, arrayOfDate);
   const arrayOfCount = createArrayOfCount(arrayOfDate, pagesReadResult);
   const averageCountPage = (allPagesCount / difference).toFixed(0);
@@ -51,7 +52,7 @@ const Chart = ({ training }) => {
             padding: 20,
             left: 0,
             horizontalAlign: 'right',
-            text: `КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ 56`,
+            text: `КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ ${averageCountPage}`,
             fontSize: 12,
           },
           legend: {
@@ -114,6 +115,10 @@ const Chart = ({ training }) => {
       />
     </div>
   );
+};
+
+Chart.propTypes = {
+  training: PropTypes.shape().isRequired,
 };
 
 export default Chart;
