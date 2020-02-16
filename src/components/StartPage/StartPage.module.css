@@ -1,13 +1,9 @@
-.visibilityWrapper {
-  display: none;
-}
-
 .wrapperQuote {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding: 35px 20% 25px;
+  padding: 35px 15% 25px;
   width: 100%;
   text-decoration: none;
   list-style: none;
@@ -15,11 +11,12 @@
 }
 
 .quoteTitle {
+  align-self: flex-start;
   margin: 0;
   font-family: 'AbrilFatface';
   font-weight: bold;
   font-size: 34px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 ul {
@@ -35,24 +32,23 @@ ul {
 .quoteSubtitle {
   align-self: flex-start;
   font-family: 'Montserrat';
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: 0.39px;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   color: var(--dark);
-  margin-left: -2%;
 }
 
 .helpListItem,
 .canListItem {
   position: relative;
   font-family: 'Montserrat';
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--blue-grey);
   line-height: 1.21;
-  margin-bottom: 5px;
+  margin-bottom: 12px;
 }
 
 .helpListItem::before,
@@ -61,16 +57,38 @@ ul {
   color: var(--orange);
   display: block;
   position: absolute;
-  left: -3%;
+  left: -4%;
   padding-right: 20px;
 }
 
-@media (min-width: 768px) {
-  .visibilityWrapper {
-    display: block;
-    width: 100%;
-  }
+.wrapperButton {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
 
+.singInLink {
+  color: 'rgba(254, 120, 30, 1)';
+}
+
+a {
+  text-decoration: none;
+}
+
+.logInLink,
+.logInLink:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.signInLink,
+.signInLink:hover {
+  color: white;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
   .wrapperQuote {
     padding: 35px 17% 25px;
   }
@@ -93,14 +111,10 @@ ul {
 }
 
 @media (min-width: 1280px) {
-  .visibilityWrapper {
-    min-width: 750px;
-  }
-
   .wrapperQuote {
-    padding: 35px 15% 25px;
+    padding: 35px 8% 25px;
     padding-top: 144px;
-    height: 833px;
+    height: 830px;
     overflow: hidden;
     background-color: #fff;
     box-shadow: inset 0px 5px 6px -1px var(--light-blue-grey-40);
