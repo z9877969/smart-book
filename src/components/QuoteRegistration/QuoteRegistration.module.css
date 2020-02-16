@@ -1,8 +1,8 @@
-<<<<<<< head .visibilityWrapper {
+.visibilityWrapper {
   display: none;
 }
 
-=======>>>>>>>dev .wrapperQuote {
+.wrapperQuote {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,6 +41,7 @@ ul {
   letter-spacing: 0.39px;
   margin-bottom: 12px;
   color: var(--dark);
+  margin-left: -2%;
 }
 
 .helpListItem,
@@ -65,12 +66,12 @@ ul {
 }
 
 @media (min-width: 768px) {
-  <<<<<<< head .visibilityWrapper {
+  .visibilityWrapper {
     display: block;
     width: 100%;
   }
 
-  =======>>>>>>>dev .wrapperQuote {
+  .wrapperQuote {
     padding: 35px 17% 25px;
   }
 
@@ -92,8 +93,12 @@ ul {
 }
 
 @media (min-width: 1280px) {
+  .visibilityWrapper {
+    min-width: 750px;
+  }
+
   .wrapperQuote {
-    padding: 35px 8% 25px;
+    padding: 35px 15% 25px;
     padding-top: 144px;
     height: 833px;
     overflow: hidden;
