@@ -64,12 +64,12 @@ const Results = ({ training }) => {
     } else {
       // set pages result
       const addedResult = {
-        date: new Date(selectedDate).toISOString(), // date	string($date)
-        count: Number(selectedPages), // count	number
+        date: new Date(selectedDate).toISOString(),
+        count: Number(selectedPages),
       };
 
-      dispatch(await postResultsOnServer(token, trainingId, addedResult));
-      dispatch(await getTrainingFromServer(token));
+      await dispatch(postResultsOnServer(token, trainingId, addedResult));
+      dispatch(getTrainingFromServer(token));
 
       // clear inputs
       setSelectedDate(new Date().toISOString());
@@ -150,3 +150,23 @@ Results.propTypes = {
 };
 
 export default Results;
+
+// export const getItems = () => {
+
+//   return async dispatch => {
+//     function onSuccess(success) {
+//       dispatch({ type: UPDATE_AJAX_PARAMS, payload:  success.data});
+//     }
+
+//     function onError(error) {
+//       dispatch({ type: UPDATE_AJAX_PARAMS, error });
+//     }
+
+//     try {
+//       const success = await axios.post( 'http://....');
+//       return onSuccess(success);
+//     } catch (error) {
+//       return onError(error);
+//     }
+
+//   }
