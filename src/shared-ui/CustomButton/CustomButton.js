@@ -30,6 +30,7 @@ const CustomButton = ({ variant, size, className, children, ...rest }) => {
       className={`${className} ${classes[variant]} `}
       {...rest}
     >
+      {' '}
       {children}{' '}
     </Button>
   );

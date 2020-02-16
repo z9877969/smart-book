@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import PropTypes from 'prop-types's
 import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,6 +7,7 @@ import LibraryPage from '../../pages/LibraryPage/LibraryPage';
 import TrainingPage from '../../pages/TrainingPage/TrainingPage';
 import Header from '../../components/Header/Header';
 import ProtectedRoute from '../../components/ProtectedRoute/ProtectedRoute';
+import StartPage from '../../components/StartPage/StartPage';
 
 import Loader from '../../components/Loader/LoaderContainer';
 
@@ -27,6 +27,8 @@ function App() {
       <Loader />
 
       <Switch>
+        <Route path="/registration" exact component={Auth} />
+        <Route path="/login" component={Auth} />
         <ProtectedRoute
           component={LibraryPage}
           path="/library"
@@ -37,7 +39,7 @@ function App() {
           path="/training"
           redirectTo="/login"
         />
-        <Route path="/" component={Auth} />
+        <Route path="/" component={StartPage} />
         <Route path="*">
           <div>create page for 404</div>
         </Route>
