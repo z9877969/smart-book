@@ -6,10 +6,13 @@ import TableItemInfo from '../TrainingBooksTable/TableItemInfo/TableItemInfo';
 
 const WorkoutInfo = () => {
   const training = useSelector(state => state.training);
-  let trainingBooks = [];
-  if (training !== null) {
-    trainingBooks = training.books;
-  }
+
+  const trainingBooks = training ? training.books : [];
+
+  // let trainingBooks = [];
+  // if (training !== null) {
+  //   trainingBooks = training.books;
+  // }
 
   return (
     <div className={style.container}>
