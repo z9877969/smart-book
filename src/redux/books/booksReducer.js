@@ -6,21 +6,17 @@ const booksReducer = (state = [], { type, payload }) => {
     case ActionBooks.BOOKS_ERROR:
       return payload;
     case ActionBooks.BOOK_DELETE:
-      return state.filter(book => book.id !== payload);
-    case ActionBooks.BOOK_UPDATE:
-      return state.books;
-    // {
-    //   state.forEach(book => {
-    //     if (book._id === payload.data._id) {
-    //       return { ...book, ...payload.data };
-    //       // console.log('object');
-    //     }
-    //     if (book._id !== payload.data._id) {
-    //       return book;
-    //     }
-    //   });
-    // }
-
+      return state.filter(book => book._id !== payload);
+    case ActionBooks.BOOK_UPDATE: {
+      state.find(book => {
+        if (book._id === payload._id) {
+          const updatedBook = { ...book, payload };
+          return updatedBook;
+        }
+        return book;
+      });
+      return [...state];
+    }
     case ActionBooks.ADD_BOOK:
       return [...state, payload];
     default:

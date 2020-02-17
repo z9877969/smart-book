@@ -1,68 +1,114 @@
-import React from 'react'; // , { useState }
-// import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-// import CheckBoxSharp from '@material-ui/icons/CheckBoxSharp';
+import CheckBoxSharp from '@material-ui/icons/CheckBoxSharp';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import PropTypes from 'prop-types';
-// import { getUserToken } from '../../../redux/selectors/sessionSelectors';
-// import { bookUpdate } from '../../../redux/books/BooksOperations';
+import { getUserToken } from '../../../redux/selectors/sessionSelectors';
+import { bookUpdate } from '../../../redux/books/BooksOperations';
 import style from './TableItemInfo.module.css';
 
 const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
-  // const token = useSelector(state => getUserToken(state));
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const [toggleInput, setToggleInput] = useState(false);
-  // const [bookId, setBookId] = useState('');
+  const token = useSelector(state => getUserToken(state));
+  const books = useSelector(state => state.books);
 
-  // const pagesReadResultArr = useSelector(
-  //   state => state.training.pagesReadResult,
-  // );
-  // const bookPagesCount = useSelector(state =>
-  //   state.training.books.find(book => book.bookId === bookId),
-  // );
-  // const allPagesCount = useSelector(state => state.training.allPagesCount);
-  // const books = useSelector(state => state.books);
+  const book = books.find(bookObj => bookObj._id === id);
+  const status = book ? book.status : '';
 
-  // const pagesReadResult = pagesReadResultArr
-  //   ? [...pagesReadResultArr].reduce((acc, el) => acc + el.count, 0)
-  //   : 0;
-  // // console.log(pagesCount);
+  // state
+  const [toggleInput, setToggleInput] = useState(status === 'readed');
+  const [bookId, setBookId] = useState('');
 
-  // const handleInputToggle = ({ target }) => {
-  //   const { name, value } = target;
+  // selectors
+  const pagesReadResultArr = useSelector(
+    state => state.training.pagesReadResult,
+  );
+  const bookPagesCount = useSelector(
+    state =>
+      state.training.books.find(bookObj => bookObj.book.bookId === id).book
+        .pagesCount,
+  );
 
-  //   const book = books.find(book => book._id === name)
+  // helpers
+  const pagesReadResult = pagesReadResultArr
+    ? [...pagesReadResultArr].reduce((acc, el) => acc + el.count, 0)
+    : 0;
 
-  //   setToggleInput(prev => !prev);
-  //   setBookId(name);
-  //   const fetchData = dispatch(bookUpdate(token, book));
+  const trainingBooksArr = useSelector(state => [...state.training.books]);
 
-  //   // console.log('token', token, '\nid', name, '\ndata', fetchData);
+  const trainingBook = idBook => {
+    return trainingBooksArr.find(bookObj => bookObj.book.bookId === idBook)
+      .book;
+  };
 
-  //   if (true) {
-  //   }
+  const canCheckTrainingBook = () => {
+    const bookIdArr = trainingBooksArr.map(bookObj => bookObj.book.bookId);
 
-  //   console.log('handleInputChange\n', name, '\n', value);
-  // };
+    const booksFilterByStatus = statusBook =>
+      [...books]
+        .filter(
+          bookObj =>
+            bookIdArr.find(idBook => idBook === bookObj._id) === bookObj._id,
+        )
+        .filter(bookObj => bookObj.status === statusBook);
+
+    const readedTrainingBooksFromBooks = booksFilterByStatus('readed');
+
+    if (
+      readedTrainingBooksFromBooks.length === 0 &&
+      pagesReadResult >= bookPagesCount
+    )
+      return true;
+    if (
+      readedTrainingBooksFromBooks.length > 0 &&
+      pagesReadResult >=
+        [...readedTrainingBooksFromBooks].reduce(
+          (acc, bookB) => acc + trainingBook(bookB._id).pagesCount,
+          0,
+        ) +
+          trainingBook(id).pagesCount
+    )
+      return true;
+
+    return false;
+  };
+
+  // handlers
+  const handleInputToggle = ({ target }) => {
+    const { name } = target;
+    const idBook = name;
+
+    setBookId(idBook);
+
+    if (book.status === 'reading' && canCheckTrainingBook()) {
+      book.status = 'readed';
+      dispatch(bookUpdate(token, book));
+      setToggleInput(true);
+    } else if (book.status === 'readed') {
+      book.status = 'reading';
+      dispatch(bookUpdate(token, book));
+      setToggleInput(false);
+    }
+  };
 
   return (
     <li key={id} className={style.bookListItem}>
       <input
         className={style.input}
         type="checkbox"
-        name={id}
-        // value={toggleInput}
+        name={bookId}
+        value={toggleInput}
         id={title}
-        // onClick={handleInputToggle}
+        onClick={handleInputToggle}
       />
       <label htmlFor={title} className={style.label}>
-        {/* {!toggleInput ? ( */}
-        <CheckBoxOutlineBlankIcon className={style.icon} />
-        {/* ) : (
+        {!toggleInput ? (
+          <CheckBoxOutlineBlankIcon className={style.icon} />
+        ) : (
           <CheckBoxSharp className={style.icon} />
-        )} */}
-        {/* <CheckBoxIcon className={style.icon} /> */}
+        )}
         <div className={style.bookListItemBody}>
           <p className={style.bookTitle}>{title}</p>
           <div className={`${style.bookInfo} ${style.bookAuthor}`}>
@@ -87,7 +133,7 @@ TableItemInfo.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
   pagesCount: PropTypes.number.isRequired,
 };
 

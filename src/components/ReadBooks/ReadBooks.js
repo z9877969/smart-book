@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './ReadBooks.module.css';
 import { openModalSummary } from '../../redux/summaryModal/summaryModalActions';
+import { bookUpdate } from '../../redux/books/BooksOperations';
+import { getUserToken } from '../../redux/selectors/sessionSelectors';
 import img from './images/library.png';
 
 const ReadBooks = ({ books }) => {
-  const [value, setValue] = useState(null);
+  const token = useSelector(state => getUserToken(state));
   const dispatch = useDispatch();
 
   const handleClick = () => {
     dispatch(openModalSummary());
   };
-
+  const handleBookUpdate = (book, event, value) => {
+    const updatedBooks = book;
+    updatedBooks.rating = value;
+    dispatch(bookUpdate(token, updatedBooks));
+  };
   return (
     <>
       {books ? (
@@ -22,7 +28,7 @@ const ReadBooks = ({ books }) => {
             <h1 className={styles.title}>Прочитано</h1>
             <ul className={styles.cardBook}>
               {books.map(book => (
-                <li className={styles.item} key={book.id}>
+                <li className={styles.item} key={book._id}>
                   <div className={styles.display}>
                     <img src={img} alt="book-icon" className={styles.icon} />
                     <h2 className={styles.cardTitle}>{book.title}</h2>
@@ -44,12 +50,12 @@ const ReadBooks = ({ books }) => {
                       <div className={styles.label}>Рейтинг:</div>
                       <div className={styles.quantity}>
                         <Rating
-                          name="simple-controlled "
+                          name={book._id}
                           size="small"
-                          value={value}
-                          onChange={newValue => {
-                            setValue(newValue);
-                          }}
+                          value={book.rating}
+                          onChange={(event, value) =>
+                            handleBookUpdate(book, event, value)
+                          }
                         />
                       </div>
                     </div>
@@ -80,13 +86,12 @@ const ReadBooks = ({ books }) => {
               </div>
               <ul className={styles.read__book}>
                 {books.map(book => (
-                  <li className={styles.list_tablet} key={book.id}>
+                  <li className={styles.list_tablet} key={book._id}>
                     <img
                       src={img}
                       alt="book-icon"
                       className={styles.icon__tablet}
                     />
-
                     <div className={styles.table_book}>
                       <div className={styles.name_book}>
                         <p className={styles.p_name_book}>{book.title}</p>
@@ -98,12 +103,12 @@ const ReadBooks = ({ books }) => {
                       <div className={styles.page}>{book.pagesCount}</div>
                       <div className={styles.rating}>
                         <Rating
-                          name="simple-controlled"
+                          name={book._id}
                           size="small"
-                          value={value}
-                          onChange={newValue => {
-                            setValue(newValue);
-                          }}
+                          value={book.rating}
+                          onChange={(event, value) =>
+                            handleBookUpdate(book, event, value)
+                          }
                         />
                       </div>
                     </div>
@@ -133,7 +138,7 @@ ReadBooks.defaultProps = {
   books: null,
 };
 ReadBooks.propTypes = {
-  books: PropTypes.arrayOf(),
+  books: PropTypes.arrayOf(Object),
 };
 
 export default ReadBooks;

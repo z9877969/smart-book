@@ -10,12 +10,15 @@ const loaderReducers = (state = false, { type }) => {
     case ActionType.REGISTRATION_REQUEST:
     case ActionType.SET_GOOGLE_TOKEN:
     case trainingActions.ActionType.TRAINING_REQUEST:
+    case ActionBooks.BOOK_UPDATE_START:
       return true;
     case ActionBooks.BOOKS_SUCCESS:
     case ActionType.LOGIN_SUCCESS:
     case ActionType.REFRESH_USER_SUCCESS:
     case ActionType.REGISTRATION_SUCCESS:
     case trainingActions.ActionType.GET_TRAINING:
+    case ActionBooks.BOOK_UPDATE:
+    case ActionBooks.BOOKS_ERROR:
       return false;
     default:
       return state;
