@@ -40,7 +40,7 @@ const TrainingPage = ({ modalCongratsOpen, training }) => {
           <Goal />
           <WorkoutInfo />
           <Results />
-          <Chart training={training} />
+          <Chart className={style.canvasContainer} training={training} />
         </div>
       ) : (
         <div className={style.someContainer}>

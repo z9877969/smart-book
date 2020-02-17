@@ -40,78 +40,82 @@ const Chart = ({ training }) => {
 
   return (
     <div className={styles.ChartWrapper}>
-      <Line
-        data={data}
-        options={{
-          title: {
-            display: true,
-            position: 'top',
-            fontColor: '#091e3f',
-            fontStyle: 'normal',
-            padding: 20,
-            left: 0,
-            horizontalAlign: 'right',
-            text: `КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ 56`,
-            fontSize: 12,
-          },
-          legend: {
-            position: 'right',
-            labels: {
+      <article className={styles.canvasContainer}>
+        <Line
+          data={data}
+          options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+              display: true,
+              position: 'top',
+              fontColor: '#091e3f',
+              fontStyle: 'normal',
+              padding: 20,
+              left: 0,
+              horizontalAlign: 'right',
+              text: `КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ 56`,
               fontSize: 12,
-              fontFamily: 'Montserrat',
-              fontColor: '#242a37',
-              boxWidth: 8,
-              padding: 10,
-              fullWidth: false,
-              usePointStyle: true,
             },
-          },
-          layout: {
-            padding: {
-              left: 30,
-              right: 30,
-              top: 30,
-              bottom: 0,
+            legend: {
+              position: 'right',
+              labels: {
+                fontSize: 12,
+                fontFamily: 'Montserrat',
+                fontColor: '#242a37',
+                boxWidth: 8,
+                padding: 10,
+                fullWidth: false,
+                usePointStyle: true,
+              },
             },
-          },
-          scales: {
-            yAxes: [
-              {
-                scaleLabel: {
-                  display: true,
-                  position: 'left',
-                },
-                ticks: {
-                  display: true,
-                },
-                gridLines: {
-                  color: 'rgba(193, 196, 206, 0.4)',
-                },
-                display: true,
+            layout: {
+              padding: {
+                left: 30,
+                right: 30,
+                top: 30,
+                bottom: 0,
               },
-            ],
-            xAxes: [
-              {
-                scaleLabel: {
+            },
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    position: 'left',
+                  },
+                  ticks: {
+                    display: true,
+                  },
+                  gridLines: {
+                    color: 'rgba(193, 196, 206, 0.4)',
+                  },
                   display: true,
-                  labelString: 'ЧАС',
-                  fontSize: 12,
-                  fontFamily: 'Montserrat',
-                  fontColor: '#242a37',
-                  fontStyle: 'bold',
                 },
-                ticks: {
-                  display: true,
-                  minRotation: 30,
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'ЧАС',
+                    fontSize: 12,
+                    fontFamily: 'Montserrat',
+                    fontColor: '#242a37',
+                    fontStyle: 'bold',
+                  },
+                  ticks: {
+                    display: true,
+                    minRotation: 30,
+                  },
+                  gridLines: {
+                    color: 'rgba(193, 196, 206, 0.4)',
+                  },
                 },
-                gridLines: {
-                  color: 'rgba(193, 196, 206, 0.4)',
-                },
-              },
-            ],
-          },
-        }}
-      />
+              ],
+            },
+          }}
+        />
+      </article>
     </div>
   );
 };

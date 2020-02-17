@@ -1,9 +1,13 @@
 /* your css code */
 
 .ChartWrapper {
+  margin: 0 auto;
   height: 500px !important;
   width: 300px;
   order: 4;
+}
+.canvasContainer {
+  height: 60vh;
 }
 
 @media (min-width: 768px) {
@@ -15,8 +19,15 @@
 
 @media (min-width: 1280px) {
   .ChartWrapper {
-    margin-top: 80px;
-    flex-basis: 70%;
+    flex-basis: 73%;
+    margin: 0;
+    margin-top: -30px;
     order: 3;
+  }
+}
+
+@media (min-width: 1980px) {
+  .ChartWrapper {
+    margin-right: 2em;
   }
 }

@@ -1,7 +1,7 @@
 .goalContainer,
 .goalContainerStat {
-  margin: 34px auto;
-  max-width: 325px;
+  margin: 0 auto;
+  margin-bottom: 34px;
   order: 2;
 }
 
@@ -15,18 +15,17 @@
 
 .goalTitleBox,
 .goalTitleBoxStat {
-  width: 325px;
+  width: 300px;
+  padding: 20px 40px;
   height: 60px;
   box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
   background-color: #b1b5c2;
 }
 
 .goalTitle {
-  padding: 20px 50px;
   margin: 0;
-  height: 18px;
   font-family: 'Montserrat';
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
@@ -37,7 +36,7 @@
 
 .goalBodyBox,
 .goalBodyBoxStat {
-  width: 325px;
+  width: 300px;
   box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
   background-color: #ffffff;
   display: flex;
@@ -59,9 +58,9 @@
 }
 
 .goalDigitsBox {
-  width: 118px;
-  height: 98px;
-  margin: 43px 7px;
+  width: 80px;
+  height: 80px;
+  margin: 30px 4px;
 }
 
 .goalDigitsBoxStat {
@@ -83,8 +82,8 @@
 }
 
 .goalDigits {
-  font-size: 46px;
-  line-height: 98px;
+  font-size: 36px;
+  /* line-height: 98px; */
 }
 
 .goalDigitsStat,
@@ -126,7 +125,7 @@
 @media (min-width: 768px) {
   .goalContainer,
   .goalContainerStat {
-    width: 680px;
+    max-width: 748px;
     display: flex;
     box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
   }
@@ -137,7 +136,10 @@
   }
 
   .goalContainerStat {
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    display: flex;
+    justify-content: space-between;
+    width: 720px;
     height: 123px;
     /* padding: 0 0 20px 0; */
   }
@@ -152,6 +154,7 @@
   .goalTitleBoxStat {
     display: flex;
     justify-content: center;
+    margin: 0;
     margin-top: auto;
     margin-bottom: auto;
   }
@@ -197,7 +200,6 @@
 
   .goalTitle {
     padding: 0;
-    line-height: 60px;
   }
 
   .goalDigits,

@@ -1,18 +1,21 @@
 .panel {
   margin: 0 auto;
+  margin-bottom: 34px;
   order: 1;
 }
 
 @media (min-width: 768px) {
   .panel {
-    width: 679px;
+    width: 720px;
     display: flex;
     justify-content: space-between;
+    /* margin-bottom: 0; */
   }
 }
 
 @media (min-width: 1280px) {
   .panel {
     width: 860px;
+    justify-content: space-evenly;
   }
 }
