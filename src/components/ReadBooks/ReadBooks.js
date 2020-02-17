@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Rating from '@material-ui/lab/Rating';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './ReadBooks.module.css';
-import { openModalSummary } from '../../redux/summaryModal/summaryModalActions';
+import { openModalSummary } from '../../redux/modals/modalsActions';
 import { bookUpdate } from '../../redux/books/BooksOperations';
 import { getUserToken } from '../../redux/selectors/sessionSelectors';
 import img from './images/library.png';

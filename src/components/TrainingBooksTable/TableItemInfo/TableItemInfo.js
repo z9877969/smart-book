@@ -6,6 +6,7 @@ import CheckBoxSharp from '@material-ui/icons/CheckBoxSharp';
 import PropTypes from 'prop-types';
 import { getUserToken } from '../../../redux/selectors/sessionSelectors';
 import { bookUpdate } from '../../../redux/books/BooksOperations';
+import { openCongratsModal } from '../../../redux/modals/modalsActions';
 import style from './TableItemInfo.module.css';
 
 const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
@@ -30,6 +31,10 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
       state.training.books.find(bookObj => bookObj.book.bookId === id).book
         .pagesCount,
   );
+  // const isCongratsOpen = useSelector(
+  //   state => state.isModalsOpen.congratsModalReducer,
+  // );
+  // console.log('isCongratsOpen', isCongratsOpen);
 
   // helpers
   const pagesReadResult = pagesReadResultArr
@@ -43,17 +48,18 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
       .book;
   };
 
-  const canCheckTrainingBook = () => {
+  const booksFilterByStatus = statusBook => {
     const bookIdArr = trainingBooksArr.map(bookObj => bookObj.book.bookId);
 
-    const booksFilterByStatus = statusBook =>
-      [...books]
-        .filter(
-          bookObj =>
-            bookIdArr.find(idBook => idBook === bookObj._id) === bookObj._id,
-        )
-        .filter(bookObj => bookObj.status === statusBook);
+    return [...books]
+      .filter(
+        bookObj =>
+          bookIdArr.find(idBook => idBook === bookObj._id) === bookObj._id,
+      )
+      .filter(bookObj => bookObj.status === statusBook);
+  };
 
+  const canCheckTrainingBook = () => {
     const readedTrainingBooksFromBooks = booksFilterByStatus('readed');
 
     if (
@@ -90,6 +96,10 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
       book.status = 'reading';
       dispatch(bookUpdate(token, book));
       setToggleInput(false);
+    }
+
+    if (booksFilterByStatus('readed').length === trainingBooksArr.length) {
+      dispatch(openCongratsModal());
     }
   };
 
