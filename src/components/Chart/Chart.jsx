@@ -44,35 +44,39 @@ const Chart = ({ training }) => {
       <Line
         data={data}
         options={{
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: {
+            padding: {
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            },
+          },
           title: {
             display: true,
             position: 'top',
             fontColor: '#091e3f',
             fontStyle: 'normal',
-            padding: 20,
+            padding: 10,
             left: 0,
-            horizontalAlign: 'right',
+            // horizontalAlign: 'right',
             text: `КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ ${averageCountPage}`,
             fontSize: 12,
           },
           legend: {
+            display: false,
             position: 'right',
+            padding: 20,
             labels: {
               fontSize: 12,
               fontFamily: 'Montserrat',
               fontColor: '#242a37',
-              boxWidth: 8,
+              boxWidth: 5,
               padding: 10,
               fullWidth: false,
               usePointStyle: true,
-            },
-          },
-          layout: {
-            padding: {
-              left: 30,
-              right: 30,
-              top: 30,
-              bottom: 0,
             },
           },
           scales: {
