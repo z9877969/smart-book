@@ -8,6 +8,7 @@ import TrainingPage from '../../pages/TrainingPage/TrainingPage';
 import Header from '../../components/Header/Header';
 import ProtectedRoute from '../../components/ProtectedRoute/ProtectedRoute';
 import StartPage from '../../components/StartPage/StartPage';
+import CongratsModal from '../../components/ModalCongrats/ModalCongrats';
 
 import Loader from '../../components/Loader/LoaderContainer';
 
@@ -25,6 +26,7 @@ function App() {
       <CssBaseline />
       <Header />
       <Loader />
+      {/* <CongratsModal /> */}
 
       <Switch>
         <Route path="/registration" exact component={Auth} />
