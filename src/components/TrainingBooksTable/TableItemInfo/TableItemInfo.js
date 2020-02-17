@@ -1,49 +1,50 @@
-import React from 'react'; // , { useState } //uncomment
-// import { useSelector, useDispatch } from 'react-redux'; //uncomment
+import React from 'react'; // , { useState }
+// import { useSelector, useDispatch } from 'react-redux';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-// import CheckBoxSharp from '@material-ui/icons/CheckBoxSharp'; //uncomment
+// import CheckBoxSharp from '@material-ui/icons/CheckBoxSharp';
 // import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import PropTypes from 'prop-types';
-// import { getUserToken } from '../../../redux/selectors/sessionSelectors'; //uncomment
-// import { bookUpdate } from '../../../redux/books/BooksOperations'; //uncomment
+// import { getUserToken } from '../../../redux/selectors/sessionSelectors';
+// import { bookUpdate } from '../../../redux/books/BooksOperations';
 import style from './TableItemInfo.module.css';
 
 const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
-  // const token = useSelector(state => getUserToken(state)); // uncomment
-  // const dispatch = useDispatch(); // uncomment
+  // const token = useSelector(state => getUserToken(state));
+  // const dispatch = useDispatch();
 
-  // const [toggleInput, setToggleInput] = useState(false); // uncomment
-  // const [bookId, setBookId] = useState(''); // uncomment
+  // const [toggleInput, setToggleInput] = useState(false);
+  // const [bookId, setBookId] = useState('');
 
   // const pagesReadResultArr = useSelector(
   //   state => state.training.pagesReadResult,
-  // );// uncomment
-
+  // );
   // const bookPagesCount = useSelector(state =>
   //   state.training.books.find(book => book.bookId === bookId),
-  // );// uncomment
-
-  // const allPagesCount = useSelector(state => state.training.allPagesCount);// uncomment
+  // );
+  // const allPagesCount = useSelector(state => state.training.allPagesCount);
+  // const books = useSelector(state => state.books);
 
   // const pagesReadResult = pagesReadResultArr
   //   ? [...pagesReadResultArr].reduce((acc, el) => acc + el.count, 0)
-  //   : 0; // uncomment
-
-  // console.log(pagesCount, bookPagesCount, allPagesCount, pagesReadResult); // last 3 arg must delete
+  //   : 0;
+  // // console.log(pagesCount);
 
   // const handleInputToggle = ({ target }) => {
   //   const { name, value } = target;
+
+  //   const book = books.find(book => book._id === name)
+
   //   setToggleInput(prev => !prev);
   //   setBookId(name);
-  //   const fetchData = dispatch(bookUpdate(token, name, { status: 'readed' })); // uncomment
+  //   const fetchData = dispatch(bookUpdate(token, book));
 
-  //   console.log('token', token, '\nid', name, '\ndata', fetchData); // uncomment
+  //   // console.log('token', token, '\nid', name, '\ndata', fetchData);
 
   //   if (true) {
-  //   } // uncomment
+  //   }
 
   //   console.log('handleInputChange\n', name, '\n', value);
-  // }; // uncomment
+  // };
 
   return (
     <li key={id} className={style.bookListItem}>
@@ -56,11 +57,11 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
         // onClick={handleInputToggle}
       />
       <label htmlFor={title} className={style.label}>
-        {/* {!toggleInput ? (  // uncomment */}
+        {/* {!toggleInput ? ( */}
         <CheckBoxOutlineBlankIcon className={style.icon} />
-        {/* // ) : ( // uncomment */}
-        {/* // <CheckBoxSharp className={style.icon} /> // uncomment */}
-        {/* // )} // uncomment */}
+        {/* ) : (
+          <CheckBoxSharp className={style.icon} />
+        )} */}
         {/* <CheckBoxIcon className={style.icon} /> */}
         <div className={style.bookListItemBody}>
           <p className={style.bookTitle}>{title}</p>

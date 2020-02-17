@@ -39,8 +39,11 @@ export const bookDelete = (token, id) => dispatch => {
     });
 };
 
-export const bookUpdate = (token, id, data) => dispatch => {
+export const bookUpdate = (token, book) => dispatch => {
   // console.log('token', token, '\nid', id, '\ndata', data);
+  const id = book._id;
+  const data = book;
+
   axios
     .patch(`${process.env.REACT_APP_BASE_API_URL}/books/${id}`, data, {
       headers: {
@@ -49,7 +52,7 @@ export const bookUpdate = (token, id, data) => dispatch => {
     })
     .then(res => {
       // console.log(res);
-      dispatch(BookUpdate(res.data.books, id));
+      dispatch(BookUpdate(res.data.books));
     })
     .catch(err => {
       dispatch(BooksError(err));

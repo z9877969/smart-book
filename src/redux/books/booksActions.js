@@ -26,12 +26,9 @@ export const BookDelete = id => ({
   payload: id,
 });
 
-export const BookUpdate = (data, id) => ({
+export const BookUpdate = data => ({
   type: ActionBooks.BOOK_UPDATE,
-  payload: {
-    data,
-    id,
-  },
+  payload: data,
 });
 
 export const AddBook = book => ({

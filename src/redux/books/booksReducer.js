@@ -8,14 +8,18 @@ const booksReducer = (state = [], { type, payload }) => {
     case ActionBooks.BOOK_DELETE:
       return state.filter(book => book.id !== payload);
     case ActionBooks.BOOK_UPDATE:
-      return payload.data;
-    // state.map(book => {
-    //   if (book.id === payload.id) {
-    //     // Object.assign(book, payload.data)
-    //     console.log('object');
-    //   } else {
-    //   }
-    // });
+      return state.books;
+    // {
+    //   state.forEach(book => {
+    //     if (book._id === payload.data._id) {
+    //       return { ...book, ...payload.data };
+    //       // console.log('object');
+    //     }
+    //     if (book._id !== payload.data._id) {
+    //       return book;
+    //     }
+    //   });
+    // }
 
     case ActionBooks.ADD_BOOK:
       return [...state, payload];
