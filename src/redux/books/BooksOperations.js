@@ -6,6 +6,7 @@ import {
   BookDelete,
   BookUpdate,
   AddBook,
+  BookUpdateStart,
 } from './booksActions';
 
 export const booksOperation = token => dispatch => {
@@ -39,20 +40,17 @@ export const bookDelete = (token, id) => dispatch => {
     });
 };
 
-export const bookUpdate = (token, id, data) => dispatch => {
+export const bookUpdate = (token, book) => dispatch => {
+  dispatch(BookUpdateStart());
+  const id = book._id;
+  const data = book;
   axios
     .patch(`${process.env.REACT_APP_BASE_API_URL}/books/${id}`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then(
-      dispatch(
-        BookUpdate({
-          rating: data,
-        }),
-      ),
-    )
+    .then(dispatch(BookUpdate(book)))
     .catch(err => {
       dispatch(BooksError(err));
     });
