@@ -45,11 +45,14 @@ export const logOutSuccess = () => ({
   type: ActionType.LOGOUT,
 });
 
-export const logOutError = () => ({
+export const logOutError = error => ({
   type: ActionType.LOGOUT_ERROR,
+  payload: error,
 });
 
 export const setGoogleToken = googleToken => ({
   type: ActionType.SET_GOOGLE_TOKEN,
-  payload: { googleToken },
+  payload: {
+    googleToken,
+  },
 });

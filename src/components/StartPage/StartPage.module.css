@@ -1,0 +1,140 @@
+.wrapperQuote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 35px 15% 25px;
+  width: 100%;
+  text-decoration: none;
+  list-style: none;
+  color: var(--dark);
+}
+
+.quoteTitle {
+  align-self: flex-start;
+  margin: 0;
+  font-family: 'AbrilFatface';
+  font-weight: bold;
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+ul {
+  margin-bottom: 15px;
+}
+
+.helpList,
+.canList {
+  align-self: flex-start;
+  list-style: none;
+}
+
+.quoteSubtitle {
+  align-self: flex-start;
+  font-family: 'Montserrat';
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.39px;
+  margin-bottom: 18px;
+  color: var(--dark);
+}
+
+.helpListItem,
+.canListItem {
+  position: relative;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--blue-grey);
+  line-height: 1.21;
+  margin-bottom: 12px;
+}
+
+.helpListItem::before,
+.canListItem::before {
+  content: '>';
+  color: var(--orange);
+  display: block;
+  position: absolute;
+  left: -4%;
+  padding-right: 20px;
+}
+
+.wrapperButton {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.singInLink {
+  color: 'rgba(254, 120, 30, 1)';
+}
+
+a {
+  text-decoration: none;
+}
+
+.logInLink,
+.logInLink:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.signInLink,
+.signInLink:hover {
+  color: white;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .wrapperQuote {
+    padding: 35px 17% 25px;
+  }
+
+  .quoteTitle {
+    align-self: center;
+    margin-bottom: 30px;
+  }
+
+  .quoteSubtitle {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .helpListItem,
+  .canListItem {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrapperQuote {
+    padding: 35px 8% 25px;
+    padding-top: 144px;
+    height: 830px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: inset 0px 5px 6px -1px var(--light-blue-grey-40);
+  }
+
+  .quoteTitle {
+    margin-bottom: 50px;
+  }
+
+  .quoteSubtitle {
+    margin-bottom: 25px;
+  }
+
+  .helpListItem::before,
+  .canListItem::before {
+    left: -4%;
+  }
+
+  .helpListItem,
+  .canListItem {
+    margin-bottom: 16px;
+  }
+}

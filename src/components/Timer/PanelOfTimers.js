@@ -1,25 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import Timer from './Timer';
 import { endOfYearIso } from './timerHelpers';
 import css from './PanelOfTimers.module.css';
 
-const PanelOfTimers = ({ endOfTrainingIso }) => (
-  <div className={css.panel}>
-    <Timer title="До закінчення року залишилось" finishDate={endOfYearIso} />
-    <Timer
-      title="До досягнення мети залишилось"
-      finishDate={endOfTrainingIso}
-    />
-  </div>
-);
+const PanelOfTimers = () => {
+  const timeEndState = useSelector(state => state.training.timeEnd);
 
-PanelOfTimers.propTypes = {
-  endOfTrainingIso: PropTypes.string,
-};
-
-PanelOfTimers.defaultProps = {
-  endOfTrainingIso: '2019-12-18T01:24:40',
+  return (
+    <div className={css.panel}>
+      <Timer title="До закінчення року залишилось" finishDate={endOfYearIso} />
+      {timeEndState && (
+        <Timer
+          title="До досягнення мети залишилось"
+          finishDate={timeEndState}
+        />
+      )}
+    </div>
+  );
 };
 
 export default PanelOfTimers;

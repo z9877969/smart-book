@@ -13,16 +13,17 @@ export const postResultsOnServer = (
   token,
   trainingId,
   resultsArr,
-) => dispatch => {
-  axios
+) => async dispatch => {
+  await axios
     .post(`/training/time/${trainingId}`, resultsArr, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
     .then(res => {
-      // console.log(res.data.pagesReadResult),
       dispatch(addResult(res.data.pagesReadResult));
     })
-    .catch(console.log);
+    .catch(err => {
+      console.log(err);
+    });
 };

@@ -10,7 +10,9 @@ const LibraryPage = () => {
   const token = useSelector(state => state.session.token);
   const dispatch = useDispatch();
   const book = useSelector(state => state.books);
-  const isSummaryModalOpen = useSelector(state => state.isSummaryModalOpen);
+  const isSummaryModalOpen = useSelector(
+    state => state.isModalsOpen.summaryModalReducer,
+  );
 
   useEffect(() => {
     dispatch(booksOperation(token));

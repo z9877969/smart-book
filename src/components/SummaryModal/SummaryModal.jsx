@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './SummaryModal.module.css';
-import { closeModalSummary } from '../../redux/summaryModal/summaryModalActions';
+import { closeModalSummary } from '../../redux/modals/modalsActions';
 
 const SummaryModal = () => {
   const dispatch = useDispatch();
