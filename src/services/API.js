@@ -21,6 +21,7 @@ import {
 import {
   getTraining,
   trainingRequest,
+  // trainingUpdate,
   trainingError,
 } from '../redux/training/trainingActions';
 
@@ -115,6 +116,35 @@ export const getTrainingFromServer = token => dispatch => {
     });
 };
 
+export const updateTraining = (trainingData, token) => dispatch => {
+  // const data = Object.keys(trainingData)
+  //   .filter(key => key !== 'trainingId')
+  //   .reduce((acc, key) => {
+  //     return (acc[key] = trainingData[key]), {};
+  //   });
+  const data = {}; // <-- string delete
+  dispatch(trainingRequest());
+
+  axios
+    .patch(
+      `${process.env.REACT_APP_BASE_API_URL}/training/${trainingData.trainingId}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+    .then(() => {
+      // console.log(res.data);
+      dispatch(getTrainingFromServer(token));
+    })
+    .catch(err => {
+      return err;
+      // console.log(err);
+    });
+};
+
 export const postTraining = (training, token) => dispatch => {
   axios
     .post(`${process.env.REACT_APP_BASE_API_URL}/training`, training, {
@@ -129,6 +159,7 @@ export const postTraining = (training, token) => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
+      return err;
+      // console.log(err);
     });
 };

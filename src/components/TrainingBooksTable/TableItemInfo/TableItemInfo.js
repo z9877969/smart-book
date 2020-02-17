@@ -6,14 +6,17 @@ import CheckBoxSharp from '@material-ui/icons/CheckBoxSharp';
 import PropTypes from 'prop-types';
 import { getUserToken } from '../../../redux/selectors/sessionSelectors';
 import { bookUpdate } from '../../../redux/books/BooksOperations';
+import { updateTraining } from '../../../services/API';
 import { openCongratsModal } from '../../../redux/modals/modalsActions';
 import style from './TableItemInfo.module.css';
 
 const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
   const dispatch = useDispatch();
 
+  // basic selectors
   const token = useSelector(state => getUserToken(state));
   const books = useSelector(state => state.books);
+  const training = useSelector(state => state.training);
 
   const book = books.find(bookObj => bookObj._id === id);
   const status = book ? book.status : '';
@@ -22,7 +25,7 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
   const [toggleInput, setToggleInput] = useState(status === 'readed');
   const [bookId, setBookId] = useState('');
 
-  // selectors
+  // selectors advanced
   const pagesReadResultArr = useSelector(
     state => state.training.pagesReadResult,
   );
@@ -31,6 +34,7 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
       state.training.books.find(bookObj => bookObj.book.bookId === id).book
         .pagesCount,
   );
+  // console.log(training);
   // const isCongratsOpen = useSelector(
   //   state => state.isModalsOpen.congratsModalReducer,
   // );
@@ -92,10 +96,15 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
       book.status = 'readed';
       dispatch(bookUpdate(token, book));
       setToggleInput(true);
+      const trainingData = {
+        trainingId: training.trainingId,
+        unreadCount: training.unreadCount - 1,
+      };
+      dispatch(updateTraining(trainingData, token));
     } else if (book.status === 'readed') {
-      book.status = 'reading';
-      dispatch(bookUpdate(token, book));
-      setToggleInput(false);
+      // book.status = 'reading';
+      // dispatch(bookUpdate(token, book));
+      // setToggleInput(false);
     }
 
     if (booksFilterByStatus('readed').length === trainingBooksArr.length) {
