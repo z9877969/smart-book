@@ -4,6 +4,8 @@
   min-width: 320px;
   display: flex;
   flex-direction: column;
+
+  background-color: var(--pale-grey);
 }
 
 .wrapper {
