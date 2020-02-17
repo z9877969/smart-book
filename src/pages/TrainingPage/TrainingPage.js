@@ -19,7 +19,7 @@ const TrainingPage = ({ modalCongratsOpen, training }) => {
     countBooks: 0,
   });
   const token = useSelector(state => state.session.token);
-  const haveTraining = useSelector(state => state.user.haveTraining);
+  const haveTraining = useSelector(state => state.training.trainingId);
 
   const dispatch = useDispatch();
 

@@ -13,8 +13,8 @@ export const postResultsOnServer = (
   token,
   trainingId,
   resultsArr,
-) => dispatch => {
-  axios
+) => async dispatch => {
+  await axios
     .post(`/training/time/${trainingId}`, resultsArr, {
       headers: {
         Authorization: `Bearer ${token}`,
