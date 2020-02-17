@@ -1,25 +1,12 @@
 .container {
-  /* position: absolute;
-  top: 540px;
-  left: 50%;
-  transform: translateX(-50%); */
   margin-bottom: 34px;
   order: 3;
-}
-
-@media (min-width: 768px) {
-  .container {
-    /* top: 310px; */
-  }
 }
 
 @media (min-width: 1280px) {
   .container {
     width: 880px;
     margin-top: -166px;
-    /* top: 140px;
-    left: 4%;
-    transform: none; */
   }
 }
 
@@ -27,8 +14,5 @@
   .container {
     width: 1000px;
     margin-left: 5em;
-    /* top: 140px;
-    left: 4%;
-    transform: none; */
   }
 }
