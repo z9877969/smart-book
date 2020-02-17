@@ -1,12 +1,48 @@
 /* your css code */
 
 .ChartWrapper {
+  /* position: absolute; */
   height: 344px;
   width: 324px;
   order: 4;
   background-color: var(--white);
   margin: 0 auto;
 }
+
+.title {
+  display: inline-block;
+  padding: 20px 0 0 30px;
+  font-family: 'Open Sans';
+  font-size: 10px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: 0.6px;
+  text-align: left;
+  color: var(--dark-indigo);
+}
+.titleText {
+  composes: title;
+  padding: 5px;
+  margin-left: 5px;
+  background-color: var(--pale-grey);
+}
+
+/* after fix positioning styles on training page */
+/* .planFactWrapper {
+  position: relative;
+  display: block;
+}
+.planFact {
+  position: absolute;
+  right: 20px;
+  bottom: -15px;
+  composes: title;
+  padding: 5px;
+  margin-left: 5px;
+  background-color: var(--pale-grey);
+} */
 
 @media (min-width: 768px) {
   .ChartWrapper {
