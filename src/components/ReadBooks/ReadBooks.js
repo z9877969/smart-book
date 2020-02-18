@@ -4,6 +4,7 @@ import Rating from '@material-ui/lab/Rating';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './ReadBooks.module.css';
 import { openModalSummary } from '../../redux/summaryModal/summaryModalActions';
+import { ActionSetUpdatedBook } from '../../redux/updatedBook/updatedBookActions';
 import { bookUpdate } from '../../redux/books/BooksOperations';
 import { getUserToken } from '../../redux/selectors/sessionSelectors';
 import img from './images/library.png';
@@ -12,13 +13,14 @@ const ReadBooks = ({ books }) => {
   const token = useSelector(state => getUserToken(state));
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = book => {
     dispatch(openModalSummary());
+    dispatch(ActionSetUpdatedBook(book));
   };
   const handleBookUpdate = (book, event, value) => {
-    const updatedBooks = book;
-    updatedBooks.rating = value;
-    dispatch(bookUpdate(token, updatedBooks));
+    const updatedBook = book;
+    updatedBook.rating = value;
+    dispatch(bookUpdate(token, updatedBook));
   };
   return (
     <>
@@ -65,7 +67,7 @@ const ReadBooks = ({ books }) => {
                       book.comment ? styles.button__orange : styles.button__grey
                     }
                     type="button"
-                    onClick={handleClick}
+                    onClick={() => handleClick(book._id)}
                   >
                     Резюме
                   </button>
@@ -119,7 +121,7 @@ const ReadBooks = ({ books }) => {
                           : styles.button__tablet_grey
                       }
                       type="button"
-                      onClick={handleClick}
+                      onClick={() => handleClick(book._id)}
                     >
                       Резюме
                     </button>

@@ -107,6 +107,10 @@
   background-color: #ff6b08;
   color: #ffffff;
 }
+.quantity {
+  /* background-color: grey; */
+  text-align: center;
+}
 
 @media screen and (min-width: 768px) {
   .summaryModal {
