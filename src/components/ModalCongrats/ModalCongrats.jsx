@@ -14,7 +14,6 @@ const ModalCongrats = () => {
   const token = useSelector(state => state.session.token);
   const trainingId = useSelector(state => state.training.trainingId);
   const timeEndTraining = useSelector(state => state.training.timeEnd);
-  // const end = getLocalTime(timeEndTraining);
   const end = moment(timeEndTraining).format("MMM Do YY");
   const currentTime = moment().format("MMM Do YY");
 
@@ -25,8 +24,6 @@ const ModalCongrats = () => {
     readPagesCount: 0,
     avgReadPages: 0
   }
-
-
 
   const handleClick = () => {
     finishTraining(trainingId, token, credentials);
