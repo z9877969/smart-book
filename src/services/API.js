@@ -129,7 +129,7 @@ export const postTraining = (training, token) => dispatch => {
       });
     })
     .catch(err => {
-      throw err;
+      return err;
       // console.log(err);
     });
 };
@@ -147,10 +147,8 @@ export const finishTraining = (trainingId, token, updateObj) => {
     )
     .then(res => {
       return res;
-      // console.log(res);
     })
     .catch(err => {
       throw err;
-      // console.log(err);
     });
 };

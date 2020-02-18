@@ -1,19 +1,22 @@
 import React from 'react';
-import { now } from 'moment';
+import moment from 'moment';
 import {
-  useSelector
+  useSelector, useDispatch
 } from 'react-redux';
 import styles from './ModalCongrats.module.css';
-import { getLocalTime } from '../Timer/timerHelpers';
-import { finishTraining } from '../../services/API'
+import { finishTraining } from '../../services/API';
+import { closeModalCongrats } from '../../redux/componentController/componentControllerActions'
 
 const ModalCongrats = () => {
+
+  const dispatch = useDispatch();
 
   const token = useSelector(state => state.session.token);
   const trainingId = useSelector(state => state.training.trainingId);
   const timeEndTraining = useSelector(state => state.training.timeEnd);
-  const end = getLocalTime(timeEndTraining);
-  console.log(end);
+  // const end = getLocalTime(timeEndTraining);
+  const end = moment(timeEndTraining).format("MMM Do YY");
+  const currentTime = moment().format("MMM Do YY");
 
   const credentials = {
     isDone: true,
@@ -23,12 +26,14 @@ const ModalCongrats = () => {
     avgReadPages: 0
   }
 
+
+
   const handleClick = () => {
-    // finishTraining(trainingId, token, credentials);
-    console.log(end);
+    finishTraining(trainingId, token, credentials);
+    dispatch(closeModalCongrats());
   };
 
-  const currentTime = Date.now();
+
 
   return (
     <div className={styles.wrapperModal}>
@@ -58,11 +63,14 @@ const ModalCongrats = () => {
           </svg>
         </div>
 
-        <p className={styles.text}>
-          Ти молодчина,
-          <br /> але потрібно швидше!
-          <br /> Наступного разу тобі все вдасться)
-        </p>
+        {currentTime > end ?
+          (<p className={styles.text}>Ти молодчина,
+              <br /> але потрібно швидше!
+              <br /> Наступного разу тобі все вдасться</p>)
+          :
+          (<p className={styles.text}>Ти молодчина,
+                <br /> просто супер!</p>)}
+
         <div className={styles.buttonContainer}>
           <button type="button" name="close" onClick={handleClick}>
             Ok

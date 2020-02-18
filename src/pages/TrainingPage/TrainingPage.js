@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import style from './TrainingPage.module.css';
 import PanelOfTimers from '../../components/Timer/PanelOfTimers';
 import Results from '../../components/Results/Results';
-import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
+// import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
 import Workout from '../../components/Workout/Workout';
 import Goal from '../../components/Goal/Goal';
 import Chart from '../../components/Chart/Chart';
@@ -38,7 +38,7 @@ const TrainingPage = ({ training }) => {
   return (
     <div className={style.container}>
       {' '}
-      {/* {modalCongratsOpen && <ModalCongrats />} */} <ModalCongrats />{' '}
+      {/* {modalCongratsOpen && <ModalCongrats />} */} {/* <ModalCongrats /> */}{' '}
       {haveTraining ? (
         <div className={style.wrapper}>
           <PanelOfTimers />
