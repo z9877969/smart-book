@@ -6,7 +6,7 @@ import { user, sessionReducer } from './redux/login/loginReducers';
 import booksReducer from './redux/books/booksReducer';
 import componentController from './redux/componentController/componentControllerReducer';
 import trainingReducer from './redux/training/trainingReducer';
-import { summaryModalReducer } from './redux/summaryModal/summaryModalReducer';
+import { modalReducers } from './redux/modals/modalsReducer';
 import loaderReducers from './redux/loader/loaderReducers';
 import { userTrainingReducer } from './redux/userTraining/userTrainingReducer';
 import updatedBookReducer from './redux/updatedBook/updatedBookReducer';
@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
   isModalOpen: backdropReducer,
   componentController,
   training: trainingReducer,
-  isSummaryModalOpen: summaryModalReducer,
+  isModalsOpen: modalReducers,
   loader: loaderReducers,
   userTraining: userTrainingReducer,
   updatedBook: updatedBookReducer,

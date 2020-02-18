@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Rating from '@material-ui/lab/Rating';
 import styles from './SummaryModal.module.css';
-import { closeModalSummary } from '../../redux/summaryModal/summaryModalActions';
+
+import { closeModalSummary } from '../../redux/modals/modalsActions';
 import { ActionRemoveUpdatedBook } from '../../redux/updatedBook/updatedBookActions';
 import { bookUpdate } from '../../redux/books/BooksOperations';
 import { getUserToken } from '../../redux/selectors/sessionSelectors';
