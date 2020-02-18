@@ -9,8 +9,10 @@ import SummaryModal from '../../components/SummaryModal/SummaryModal';
 const LibraryPage = () => {
   const token = useSelector(state => state.session.token);
   const dispatch = useDispatch();
-  const book = useSelector(state => state.books);
-  const isSummaryModalOpen = useSelector(state => state.isSummaryModalOpen);
+  const books = useSelector(state => state.books);
+  const isSummaryModalOpen = useSelector(
+    state => state.isModalsOpen.summaryModalReducer,
+  );
 
   useEffect(() => {
     dispatch(booksOperation(token));
@@ -20,7 +22,7 @@ const LibraryPage = () => {
     <div className={styles.libraryPage__wrapper}>
       {isSummaryModalOpen && <SummaryModal />}
       <AddBook />
-      <BooksList books={book} />
+      <BooksList books={books} />
     </div>
   );
 };
