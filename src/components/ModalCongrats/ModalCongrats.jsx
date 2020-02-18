@@ -1,14 +1,34 @@
 import React from 'react';
+import { now } from 'moment';
+import {
+  useSelector
+} from 'react-redux';
 import styles from './ModalCongrats.module.css';
+import { getLocalTime } from '../Timer/timerHelpers';
+import { finishTraining } from '../../services/API'
 
-const ModalCongrats = ({
-  closeModal = () => {
-    console.log('closeModal');
-  },
-}) => {
+const ModalCongrats = () => {
+
+  const token = useSelector(state => state.session.token);
+  const trainingId = useSelector(state => state.training.trainingId);
+  const timeEndTraining = useSelector(state => state.training.timeEnd);
+  const end = getLocalTime(timeEndTraining);
+  console.log(end);
+
+  const credentials = {
+    isDone: true,
+    booksCount: 0,
+    unreadCount: 0,
+    readPagesCount: 0,
+    avgReadPages: 0
+  }
+
   const handleClick = () => {
-    closeModal();
+    // finishTraining(trainingId, token, credentials);
+    console.log(end);
   };
+
+  const currentTime = Date.now();
 
   return (
     <div className={styles.wrapperModal}>

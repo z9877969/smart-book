@@ -129,6 +129,28 @@ export const postTraining = (training, token) => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
+      throw err;
+      // console.log(err);
+    });
+};
+
+export const finishTraining = (trainingId, token, updateObj) => {
+  axios
+    .patch(
+      `${process.env.REACT_APP_BASE_API_URL}/training/${trainingId}`,
+      updateObj,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+    .then(res => {
+      return res;
+      // console.log(res);
+    })
+    .catch(err => {
+      throw err;
+      // console.log(err);
     });
 };

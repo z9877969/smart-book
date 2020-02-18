@@ -12,7 +12,7 @@ import { getTrainingFromServer } from '../../services/API';
 import WorkoutInfo from '../../components/WorkoutInfo/WorkoutInfo';
 import CreateTraningGoal from '../../components/CreateTraningGoal/CreateTraningGoal';
 
-const TrainingPage = ({ modalCongratsOpen, training }) => {
+const TrainingPage = ({ training }) => {
   const [goal, setGoal] = useState({
     startTime: new Date(),
     finishTime: new Date(),
@@ -20,6 +20,7 @@ const TrainingPage = ({ modalCongratsOpen, training }) => {
   });
   const token = useSelector(state => state.session.token);
   const haveTraining = useSelector(state => state.training.trainingId);
+  // const modalCongratsOpen = useSelector(state => state.training.trainingId);
 
   const dispatch = useDispatch();
 
@@ -28,27 +29,35 @@ const TrainingPage = ({ modalCongratsOpen, training }) => {
   }, []);
 
   const handleChangeToGoal = field => {
-    setGoal({ ...goal, ...field });
+    setGoal({
+      ...goal,
+      ...field,
+    });
   };
 
   return (
     <div className={style.container}>
-      {modalCongratsOpen && <ModalCongrats />}
+      {' '}
+      {/* {modalCongratsOpen && <ModalCongrats />} */} <ModalCongrats />{' '}
       {haveTraining ? (
         <div className={style.wrapper}>
           <PanelOfTimers />
           <Goal />
           <WorkoutInfo />
-          <Results training={training} />
-          <Chart training={training} />
+          <Results training={training} /> <Chart training={training} />{' '}
         </div>
       ) : (
         <div className={style.someContainer}>
-          <Workout handleChangeToGoal={handleChangeToGoal} />
-          <CreateTraningGoal style={{ order: 2 }} {...goal} />
-          {training.trainingId && <Chart training={training} />}
+          <Workout handleChangeToGoal={handleChangeToGoal} />{' '}
+          <CreateTraningGoal
+            style={{
+              order: 2,
+            }}
+            {...goal}
+          />{' '}
+          {training.trainingId && <Chart training={training} />}{' '}
         </div>
-      )}
+      )}{' '}
     </div>
   );
 };
