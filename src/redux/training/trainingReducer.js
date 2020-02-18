@@ -25,6 +25,10 @@ const trainingReducer = (state = initialState, { type, payload }) => {
       return {
         ...payload,
       };
+    case ActionType.UPDATE_TRAINING:
+      return {
+        ...payload,
+      };
     default:
       return state;
   }
