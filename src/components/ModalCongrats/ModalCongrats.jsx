@@ -5,7 +5,7 @@ import {
 } from 'react-redux';
 import styles from './ModalCongrats.module.css';
 import { finishTraining } from '../../services/API';
-import { closeModalCongrats } from '../../redux/componentController/componentControllerActions'
+import { closeCongratsModal } from '../../redux/modals/modalsActions'
 
 const ModalCongrats = () => {
 
@@ -14,6 +14,7 @@ const ModalCongrats = () => {
   const token = useSelector(state => state.session.token);
   const trainingId = useSelector(state => state.training.trainingId);
   const timeEndTraining = useSelector(state => state.training.timeEnd);
+
   const end = moment(timeEndTraining).format("MMM Do YY");
   const currentTime = moment().format("MMM Do YY");
 
@@ -27,10 +28,8 @@ const ModalCongrats = () => {
 
   const handleClick = () => {
     finishTraining(trainingId, token, credentials);
-    dispatch(closeModalCongrats());
+    dispatch(closeCongratsModal());
   };
-
-
 
   return (
     <div className={styles.wrapperModal}>

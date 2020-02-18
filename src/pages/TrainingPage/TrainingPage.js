@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import style from './TrainingPage.module.css';
 import PanelOfTimers from '../../components/Timer/PanelOfTimers';
 import Results from '../../components/Results/Results';
-// import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
+import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
 import Workout from '../../components/Workout/Workout';
 import Goal from '../../components/Goal/Goal';
 import Chart from '../../components/Chart/Chart';
@@ -20,7 +20,9 @@ const TrainingPage = ({ training }) => {
   });
   const token = useSelector(state => state.session.token);
   const haveTraining = useSelector(state => state.training.trainingId);
-  // const modalCongratsOpen = useSelector(state => state.training.trainingId);
+  const modalCongratsOpen = useSelector(
+    state => state.componentController.modalCongratsOpen,
+  );
 
   const dispatch = useDispatch();
 
@@ -38,7 +40,7 @@ const TrainingPage = ({ training }) => {
   return (
     <div className={style.container}>
       {' '}
-      {/* {modalCongratsOpen && <ModalCongrats />} */} {/* <ModalCongrats /> */}{' '}
+      {modalCongratsOpen && <ModalCongrats />}{' '}
       {haveTraining ? (
         <div className={style.wrapper}>
           <PanelOfTimers />
