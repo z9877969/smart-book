@@ -117,12 +117,13 @@ export const getTrainingFromServer = token => dispatch => {
 };
 
 export const updateTraining = (trainingData, token) => dispatch => {
-  // const data = Object.keys(trainingData)
-  //   .filter(key => key !== 'trainingId')
-  //   .reduce((acc, key) => {
-  //     return (acc[key] = trainingData[key]), {};
-  //   });
-  const data = {}; // <-- string delete
+  const data = Object.entries(trainingData)
+    .filter(entryArr => entryArr[0] !== 'trainingId')
+    .reduce((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {});
+
   dispatch(trainingRequest());
 
   axios
@@ -135,14 +136,11 @@ export const updateTraining = (trainingData, token) => dispatch => {
         },
       },
     )
-    .then(() => {
-      // console.log(res.data);
-      dispatch(getTrainingFromServer(token));
-    })
     .catch(err => {
       return err;
       // console.log(err);
     });
+  dispatch(getTrainingFromServer(token));
 };
 
 export const postTraining = (training, token) => dispatch => {
