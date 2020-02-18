@@ -1,36 +1,18 @@
 import React from 'react';
-import moment from 'moment';
+import PropTypes from 'prop-types';
 import {
-  useSelector, useDispatch
+  useSelector
 } from 'react-redux';
+import NotFinishedText from './TextNotFinished';
+import TextCongrats from './TextCongrats';
+
 import styles from './ModalCongrats.module.css';
-import { finishTraining } from '../../services/API';
-import { closeCongratsModal } from '../../redux/modals/modalsActions'
 
-const ModalCongrats = () => {
-
-  const dispatch = useDispatch();
-
-  const token = useSelector(state => state.session.token);
-  const trainingId = useSelector(state => state.training.trainingId);
-  const timeEndTraining = useSelector(state => state.training.timeEnd);
-
-  const end = moment(timeEndTraining).format("MMM Do YY");
-  const currentTime = moment().format("MMM Do YY");
-
-  const credentials = {
-    isDone: true,
-    booksCount: 0,
-    unreadCount: 0,
-    readPagesCount: 0,
-    avgReadPages: 0
-  }
-
-  const handleClick = () => {
-    finishTraining(trainingId, token, credentials);
-    dispatch(closeCongratsModal());
-  };
-
+const ModalCongrats = ({handleClick}) => {
+  
+  const isOpenModalNotFinished = useSelector(state => state.isModalsOpen.notFinishedModalReducer);
+  const isOpenModalCongrats = useSelector(state => state.isModalsOpen.congratsModalReducer);
+  
   return (
     <div className={styles.wrapperModal}>
       <div className={styles.modal}>
@@ -58,15 +40,8 @@ const ModalCongrats = () => {
             </g>
           </svg>
         </div>
-
-        {currentTime > end ?
-          (<p className={styles.text}>Ти молодчина,
-              <br /> але потрібно швидше!
-              <br /> Наступного разу тобі все вдасться</p>)
-          :
-          (<p className={styles.text}>Ти молодчина,
-                <br /> просто супер!</p>)}
-
+          {isOpenModalNotFinished && <NotFinishedText />}
+          {isOpenModalCongrats && <TextCongrats />}
         <div className={styles.buttonContainer}>
           <button type="button" name="close" onClick={handleClick}>
             Ok
@@ -76,5 +51,9 @@ const ModalCongrats = () => {
     </div>
   );
 };
+
+ModalCongrats.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+}
 
 export default ModalCongrats;

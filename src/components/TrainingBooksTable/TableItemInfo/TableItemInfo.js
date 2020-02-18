@@ -42,7 +42,6 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
   );
   const trainingBooksArr = useSelector(state => [...state.training.books]);
 
-  // console.log(training);
   // const isCongratsOpen = useSelector(
   //   state => state.isModalsOpen.congratsModalReducer,
   // );
@@ -79,7 +78,6 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
     ) {
       return true;
     }
-
     return false;
   };
 
@@ -111,15 +109,17 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
       dispatch(bookUpdate(token, book)); // <-- to comment for uncheck input
       setToggleInput(false); // <-- to comment for uncheck input
     } // <-- to comment for uncheck input
-
-    if (!training.unreadCount) {
-      dispatch(openCongratsModal());
-    }
   };
 
   useEffect(() => {
     dispatch(getTrainingFromServer(token));
   }, [trainingBooksReading.length]);
+
+  useEffect(() => {
+    if (training && !training.unreadCount) {
+      dispatch(openCongratsModal());
+    }
+  }, [training.unreadCount]);
 
   return (
     <li key={id} className={style.bookListItem}>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, connect, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+// import PropTypes from 'prop-types';
 import style from './TrainingPage.module.css';
 import PanelOfTimers from '../../components/Timer/PanelOfTimers';
 import Results from '../../components/Results/Results';
@@ -8,28 +8,44 @@ import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
 import Workout from '../../components/Workout/Workout';
 import Goal from '../../components/Goal/Goal';
 import Chart from '../../components/Chart/Chart';
-import { getTrainingFromServer } from '../../services/API';
 import WorkoutInfo from '../../components/WorkoutInfo/WorkoutInfo';
 import CreateTraningGoal from '../../components/CreateTraningGoal/CreateTraningGoal';
+import {
+  // getTrainingFromServer,
+  finishTraining,
+} from '../../services/API';
+import { booksOperation } from '../../redux/books/BooksOperations';
 
-const TrainingPage = ({ training }) => {
+import { closeCongratsModal } from '../../redux/modals/modalsActions';
+
+const TrainingPage = () => {
+  const dispatch = useDispatch();
+
+  // state
   const [goal, setGoal] = useState({
     startTime: new Date(),
     finishTime: new Date(),
     countBooks: 0,
   });
+
+  // selectors
   const token = useSelector(state => state.session.token);
+  const training = useSelector(state => state.training);
   const haveTraining = useSelector(state => state.training.trainingId);
+  const trainingId = useSelector(state => state.training.trainingId);
   const modalCongratsOpen = useSelector(
-    state => state.componentController.modalCongratsOpen,
+    state => state.isModalsOpen.congratsModalReducer,
   );
+  // const modalCongratsClose = useSelector(
+  //   state => state.isModalsOpen.congratsModalReducer,
+  // );
 
-  const dispatch = useDispatch();
+  // helpers
+  const credentials = {
+    isDone: true,
+  };
 
-  useEffect(() => {
-    dispatch(getTrainingFromServer(token));
-  }, []);
-
+  // handlers
   const handleChangeToGoal = field => {
     setGoal({
       ...goal,
@@ -37,10 +53,30 @@ const TrainingPage = ({ training }) => {
     });
   };
 
+  const handleOpenCongrats = () => {
+    finishTraining(trainingId, token, credentials);
+    dispatch(closeCongratsModal());
+  };
+
+  // effects
+  // useEffect(() => {
+  //   dispatch(getTrainingFromServer(token));
+  // }, []);
+
+  useEffect(() => {
+    dispatch(booksOperation(token));
+  }, [training.trainingId]);
+
+  // useEffect(() => {
+  //   dispatch(getTrainingFromServer(token));
+  // }, [!modalCongratsClose]);
+
   return (
     <div className={style.container}>
       {' '}
-      {modalCongratsOpen && <ModalCongrats />}{' '}
+      {modalCongratsOpen && (
+        <ModalCongrats handleClick={handleOpenCongrats} />
+      )}{' '}
       {haveTraining ? (
         <div className={style.wrapper}>
           <PanelOfTimers />
@@ -64,22 +100,22 @@ const TrainingPage = ({ training }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  modalCongratsOpen: state.componentController.modalCongratsOpen,
-  training: state.training,
-});
+// const mapStateToProps = state => ({
+//   // modalCongratsOpen: state.componentController.modalCongratsOpen,
+//   training: state.training,
+// });
 
-TrainingPage.propTypes = {
-  modalCongratsOpen: PropTypes.bool.isRequired,
-  training: PropTypes.shape({
-    trainingId: PropTypes.string.isRequired,
-    isDone: PropTypes.bool.isRequired,
-    timeStart: PropTypes.any,
-    timeEnd: PropTypes.any,
-    avgReadPages: PropTypes.number,
-    booksCount: PropTypes.number,
-    unreadCount: PropTypes.number,
-  }).isRequired,
-};
+// TrainingPage.propTypes = {
+//   modalCongratsOpen: PropTypes.bool.isRequired,
+//   training: PropTypes.shape({
+//     trainingId: PropTypes.string.isRequired,
+//     isDone: PropTypes.bool.isRequired,
+//     timeStart: PropTypes.any,
+//     timeEnd: PropTypes.any,
+//     avgReadPages: PropTypes.number,
+//     booksCount: PropTypes.number,
+//     unreadCount: PropTypes.number,
+//   }).isRequired,
+// };
 
-export default connect(mapStateToProps, null)(TrainingPage);
+export default TrainingPage;
