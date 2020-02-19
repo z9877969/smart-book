@@ -1,12 +1,17 @@
 .conteiner {
   background: #f5f7fa;
+  width: 282px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 275px;
   height: 60px;
   padding-top: 20px;
   padding-bottom: 14px;
-  padding-left: 7%;
   font-family: Montserrat;
   font-size: 19px;
   font-weight: 600;
@@ -19,17 +24,17 @@
   list-style-type: none;
   width: 100%;
   margin: 0 auto;
-  margin-left: 29px;
 }
 .item {
   margin-bottom: 10px;
   background-color: white;
-  width: 100%;
+  width: 280px;
   height: 200px;
   box-shadow: 1px 1.7px 1px 0 grey;
 }
 .display {
   display: flex;
+  height: 35px;
 }
 .wrapper_mob {
   display: flex;
@@ -40,9 +45,11 @@
   height: 43px;
 }
 .cardTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 205px;
   height: 30px;
-  font-family: OpenSans;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -53,19 +60,23 @@
   margin-top: 13px;
   margin-bottom: 8px;
 }
+
+.cardTitle:hover {
+  white-space: normal;
+}
+
 .table {
   display: flex;
   flex-wrap: wrap;
   padding-left: 14px;
   margin-top: 3px;
-  margin-left: 27px;
+  margin-left: 34px;
 }
 .label {
   margin-top: 10px;
   padding-bottom: 3px;
   width: 63px;
   height: 11px;
-  font-family: 'OpenSans';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -76,11 +87,12 @@
   color: #b4b7be;
 }
 .quantity {
+  white-space: nowrap;
+  text-overflow: ellipsis;
   margin-top: 10px;
-  width: 109px;
+  width: 130px;
   display: block;
   height: 11px;
-  font-family: 'OpenSans';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -94,7 +106,6 @@
   width: 82px;
   display: block;
   height: 11px;
-  font-family: 'OpenSans';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -132,7 +143,7 @@
   display: none;
   background: #f5f7fa;
   margin: 0 auto;
-  width: 768px;
+  width: 731px;
 }
 .wrapper {
   margin-left: 44px;
@@ -287,7 +298,6 @@
   padding-left: 55px;
   width: 186px;
   height: 31px;
-  font-family: 'OpenSans';
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -302,7 +312,6 @@
 
   width: 148px;
   height: 31px;
-  font-family: 'OpenSans';
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -313,10 +322,12 @@
   color: #242a37;
 }
 .year {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-top: 8px;
   width: 47px;
   height: 31px;
-  font-family: 'OpenSans';
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -326,12 +337,14 @@
   text-align: left;
   color: #242a37;
 }
+
 .page {
   margin-top: 8px;
   height: 31px;
   width: 61px;
-
-  font-family: 'OpenSans';
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -340,6 +353,10 @@
   letter-spacing: 0.39px;
   text-align: left;
   color: #242a37;
+}
+
+.page:hover {
+  white-space: normal;
 }
 
 .button__tablet_grey {
@@ -377,8 +394,16 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 .p_avtor {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 125px;
+}
+
+.p_avtor:hover {
+  white-space: normal;
 }
 
 @media (min-width: 768px) {
@@ -389,8 +414,16 @@
     display: block;
   }
   .p_name_book {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 123px;
   }
+
+  .p_name_book:hover {
+    white-space: normal;
+  }
+
   .text__rating_book {
     display: none;
   }
@@ -398,7 +431,7 @@
 @media (min-width: 1280px) {
   .tablet {
     margin: 0 auto;
-    width: 1280px;
+    width: 1200px;
   }
   .wrapper {
     margin: 0 auto;
@@ -417,10 +450,10 @@
     padding-left: 234px;
   }
   .text__year {
-    padding-left: 230px;
+    padding-left: 222px;
   }
   .text__page {
-    padding-left: 113px;
+    padding-left: 120px;
   }
   .text__rating {
     display: none;
