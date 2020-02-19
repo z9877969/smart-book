@@ -1,14 +1,14 @@
 .conteiner {
   margin-top: 37px;
   background: #f5f7fa;
-  margin: 0 auto;
-  width: 100%;
+  width: 282px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .wrapper_mob {
   display: flex;
 }
 .tittle {
-  margin-left: 7%;
   margin-top: 62px;
   width: 69px;
   height: 15px;
@@ -26,7 +26,6 @@
   margin-left: 55px;
   width: 160px;
   height: 31px;
-  font-family: 'OpenSans';
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -56,7 +55,6 @@
   margin-left: 55px;
   width: 42px;
   height: 14px;
-  font-family: 'OpenSans';
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -70,7 +68,6 @@
   padding-left: 50px;
   width: 136px;
   height: 14px;
-  font-family: 'OpenSans';
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -83,10 +80,9 @@
 .item {
   list-style: none;
   margin-top: 20px;
-  margin-left: 24px;
   margin-bottom: 10px;
   background-color: white;
-  width: 100%;
+  width: 280px;
   height: 135px;
   box-shadow: 1px 1.7px 1px 0 grey;
 }
@@ -94,6 +90,7 @@
   position: relative;
   padding-top: 3px;
   display: flex;
+  height: 40px;
 }
 .icon {
   top: 19px;
@@ -101,11 +98,13 @@
   position: absolute;
 }
 .cardTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-top: 14px;
   padding-left: 55px;
   width: 205px;
   height: 30px;
-  font-family: 'OpenSans';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -114,6 +113,11 @@
   letter-spacing: 0.39px;
   text-align: left;
 }
+
+.cardTitle:hover {
+  white-space: normal;
+}
+
 .flex {
   display: flex;
 }
@@ -121,14 +125,12 @@
   display: flex;
   flex-wrap: wrap;
   padding-left: 29px;
-  margin-top: 3px;
   margin-left: 27px;
 }
 .label {
   margin-top: 10px;
   width: 63px;
   height: 11px;
-  font-family: 'OpenSans';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -139,10 +141,11 @@
   color: grey;
 }
 .quantity {
+  white-space: nowrap;
+  text-overflow: ellipsis;
   width: 109px;
   margin-top: 10px;
   height: 11px;
-  font-family: 'OpenSans';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -155,7 +158,6 @@
   width: 82px;
   margin-top: 10px;
   height: 11px;
-  font-family: 'OpenSans';
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -170,7 +172,7 @@
   display: none;
   background: #f5f7fa;
   margin: 0 auto;
-  width: 768px;
+  width: 731px;
 }
 .wrapper {
   margin-left: 44px;
@@ -286,7 +288,6 @@
   padding-left: 55px;
   width: 363px;
   height: 31px;
-  font-family: 'OpenSans';
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -301,7 +302,6 @@
   width: 232px;
   padding-top: 8px;
   height: 31px;
-  font-family: 'OpenSans';
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -312,10 +312,12 @@
   color: #242a37;
 }
 .year {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding-top: 23px;
   width: 47px;
-  height: 31px;
-  font-family: 'OpenSans';
+  height: 43px;
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -325,10 +327,17 @@
   text-align: left;
   color: #242a37;
 }
+
+.year:hover {
+  white-space: normal;
+}
+
 .page {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding-top: 23px;
-  height: 31px;
-  font-family: 'OpenSans';
+  height: 43px;
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -338,14 +347,35 @@
   text-align: left;
   color: #242a37;
 }
+
+.page:hover {
+  white-space: normal;
+}
+
 .p_name_book {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding-top: 14px;
   width: 200px;
 }
+
+.p_name_book:hover {
+  white-space: normal;
+}
+
 .p_avtor {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding-top: 14px;
   width: 125px;
 }
+
+.p_avtor:hover {
+  white-space: normal;
+}
+
 @media (min-width: 768px) {
   .conteiner {
     display: none;
@@ -356,11 +386,11 @@
 }
 @media (min-width: 1280px) {
   .author {
-    width: 380px;
+    width: 370px;
   }
   .tablet {
     margin: 0 auto;
-    width: 1280px;
+    width: 1200px;
   }
   .wrapper {
     margin: 0 auto;
@@ -368,6 +398,7 @@
   .list_tablet {
     margin: 0 auto;
     width: 1200px;
+    margin-bottom: 10px;
   }
   .wrapper_text {
     width: 1200px;
@@ -377,7 +408,7 @@
     padding-left: 540px;
   }
   .text__year {
-    padding-left: 381px;
+    padding-left: 370px;
   }
   .text__page {
     padding-left: 109px;
