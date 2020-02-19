@@ -11,7 +11,7 @@ const Goal = () => {
   const finish = moment(training.timeEnd).dayOfYear();
   const leftDays = finish - start;
   let isThisStatPage = !!(training && training.unreadCount > 0);
-  console.log(training);
+  
   return (
     <>
       <div
