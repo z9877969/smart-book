@@ -21,9 +21,12 @@ import {
 import {
   getTraining,
   trainingRequest,
-  // trainingUpdate,
+  trainingPostRequest,
+  trainingFinished,
   trainingError,
 } from '../redux/training/trainingActions';
+
+import { booksOperation } from '../redux/books/BooksOperations';
 
 import { getUserToken } from '../redux/selectors/sessionSelectors';
 
@@ -137,13 +140,14 @@ export const updateTraining = (trainingData, token) => dispatch => {
       },
     )
     .catch(err => {
-      return err;
+      throw err;
       // console.log(err);
     });
   dispatch(getTrainingFromServer(token));
 };
 
 export const postTraining = (training, token) => dispatch => {
+  dispatch(trainingPostRequest());
   axios
     .post(`${process.env.REACT_APP_BASE_API_URL}/training`, training, {
       headers: {
@@ -156,13 +160,22 @@ export const postTraining = (training, token) => dispatch => {
         type: 'USER_HAVE_TRAINING',
       });
     })
+    .then(() => dispatch(booksOperation(token)))
     .catch(err => {
-      return err;
+      throw err;
       // console.log(err);
     });
 };
 
-export const finishTraining = (trainingId, token, updateObj) => {
+export const finishTraining = (trainingId, token, updateObj) => dispatch => {
+  // const getData = data =>
+  //   Object.entries(data)
+  //     .filter(entryArr => entryArr[0] !== 'status')
+  //     .reduce((acc, [key, value]) => {
+  //       acc[key] = value;
+  //       return acc;
+  //     }, {});
+
   axios
     .patch(
       `${process.env.REACT_APP_BASE_API_URL}/training/${trainingId}`,
@@ -174,8 +187,9 @@ export const finishTraining = (trainingId, token, updateObj) => {
       },
     )
     .then(res => {
-      return res;
+      dispatch(trainingFinished(res.data.training));
     })
+    .then(() => dispatch(booksOperation(token)))
     .catch(err => {
       throw err;
     });

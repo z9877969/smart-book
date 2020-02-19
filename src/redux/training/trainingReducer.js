@@ -29,6 +29,8 @@ const trainingReducer = (state = initialState, { type, payload }) => {
       return {
         ...payload,
       };
+    case ActionType.FINISHED_TRAINING:
+      return null;
     default:
       return state;
   }

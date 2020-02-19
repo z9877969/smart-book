@@ -10,11 +10,8 @@ import Goal from '../../components/Goal/Goal';
 import Chart from '../../components/Chart/Chart';
 import WorkoutInfo from '../../components/WorkoutInfo/WorkoutInfo';
 import CreateTraningGoal from '../../components/CreateTraningGoal/CreateTraningGoal';
-import {
-  // getTrainingFromServer,
-  finishTraining,
-} from '../../services/API';
-import { booksOperation } from '../../redux/books/BooksOperations';
+import { getTrainingFromServer, finishTraining } from '../../services/API';
+// import { booksOperation } from '../../redux/books/BooksOperations';
 
 import { closeCongratsModal } from '../../redux/modals/modalsActions';
 
@@ -53,29 +50,21 @@ const TrainingPage = () => {
     });
   };
 
-  const handleOpenCongrats = () => {
-    finishTraining(trainingId, token, credentials);
+  const handleCloseCongrats = () => {
+    dispatch(finishTraining(trainingId, token, credentials));
     dispatch(closeCongratsModal());
   };
 
   // effects
-  // useEffect(() => {
-  //   dispatch(getTrainingFromServer(token));
-  // }, []);
-
   useEffect(() => {
-    dispatch(booksOperation(token));
-  }, [training.trainingId]);
-
-  // useEffect(() => {
-  //   dispatch(getTrainingFromServer(token));
-  // }, [!modalCongratsClose]);
+    dispatch(getTrainingFromServer(token));
+  }, []);
 
   return (
     <div className={style.container}>
       {' '}
       {modalCongratsOpen && (
-        <ModalCongrats handleClick={handleOpenCongrats} />
+        <ModalCongrats handleClick={handleCloseCongrats} />
       )}{' '}
       {haveTraining ? (
         <div className={style.wrapper}>

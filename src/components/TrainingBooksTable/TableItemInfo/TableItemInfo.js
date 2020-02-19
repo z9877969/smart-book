@@ -42,11 +42,6 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
   );
   const trainingBooksArr = useSelector(state => [...state.training.books]);
 
-  // const isCongratsOpen = useSelector(
-  //   state => state.isModalsOpen.congratsModalReducer,
-  // );
-  // console.log('isCongratsOpen', isCongratsOpen);
-
   // helpers
   const pagesReadResult = getPagesResult(pagesReadResultArr);
 
@@ -111,9 +106,13 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
     } // <-- to comment for uncheck input
   };
 
+  // effects
+  // listner for updating training.unreadCount
   useEffect(() => {
-    dispatch(getTrainingFromServer(token));
-  }, [trainingBooksReading.length]);
+    if (trainingBooksReading && !trainingBooksReading.length) {
+      dispatch(getTrainingFromServer(token));
+    }
+  }, [toggleInput]);
 
   useEffect(() => {
     if (training && !training.unreadCount) {

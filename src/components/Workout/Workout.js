@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Select from '@material-ui/core/Select';
 import style from './Workout.module.css';
 import TrainingBookTable from '../TrainingBooksTable/TrainingBooksTable';
-import { addUserTraining } from '../../redux/userTraining/userTrainingActions';
+// import { addUserTraining } from '../../redux/userTraining/userTrainingActions';
 import { postTraining } from '../../services/API';
 import TableItemCreate from '../TrainingBooksTable/TableItemCreate/TableItemCreate';
 
@@ -103,7 +103,7 @@ const Workout = ({ handleChangeToGoal }) => {
         timeEnd,
         avgReadPages,
       };
-      dispatch(addUserTraining(training));
+      // dispatch(addUserTraining(training));
       dispatch(postTraining(training, token));
     }
   };

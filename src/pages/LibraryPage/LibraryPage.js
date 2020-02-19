@@ -11,13 +11,16 @@ import {
 } from '../../redux/modals/modalsActions';
 import { getLocalTime } from '../../components/Timer/timerHelpers';
 import styles from './LibraryPage.module.css';
+import { getTrainingFromServer } from '../../services/API';
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
 
   // selectors
   const token = useSelector(state => state.session.token);
+  // const auth = useSelector(state => state.session.authenticated);
   const books = useSelector(state => state.books);
+  // const training = useSelector(state => state.training);
   const isSummaryModalOpen = useSelector(
     state => state.isModalsOpen.summaryModalReducer,
   );
@@ -39,6 +42,10 @@ const LibraryPage = () => {
   // effects
   useEffect(() => {
     dispatch(booksOperation(token));
+    dispatch(getTrainingFromServer(token));
+  }, []);
+
+  useEffect(() => {
     if (Date.parse(timeEndLocal) && Date.now() > Date.parse(timeEndLocal)) {
       dispatch(openModalNotFinished());
     }
