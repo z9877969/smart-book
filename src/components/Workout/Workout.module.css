@@ -1,5 +1,5 @@
 .container {
-  padding: 28x 10px;
+  padding: 28px 10px;
   margin: 0 auto;
   width: 320px;
 }
@@ -22,6 +22,10 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.pickerTitle {
+  text-align: center;
 }
 
 .picker {
@@ -118,9 +122,8 @@
 
 @media (min-width: 768px) {
   .container {
-    padding: 30px 44px 48px 44px;
     margin: 0 auto;
-    width: 768px;
+    width: 680px;
   }
 
   .pickers {
@@ -147,12 +150,13 @@
 
   .button {
     margin: 0;
+    margin-right: 2px;
   }
 }
 
 @media (min-width: 1280px) {
   .container {
     padding: 34px 40px 48px 40px;
-    width: 862px;
+    min-width: 862px;
   }
 }

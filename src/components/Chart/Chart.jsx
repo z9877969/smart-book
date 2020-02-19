@@ -50,97 +50,82 @@ const Chart = ({ training }) => {
 
   return (
     <div className={styles.ChartWrapper}>
-      <h3 className={styles.title}>КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ</h3>
-      <span className={styles.titleText}>{`${averageCountPage}`}</span>
-      {/* <div className={styles.planFactWrapper}>
-        <p className={styles.planFact}>План</p>
-        <p className={styles.planFact}>Факт</p>
-      </div> */}
-      <Line
-        data={data}
-        options={{
-          responsive: true,
-          maintainAspectRatio: false,
-          layout: {
-            padding: {
-              top: 15,
+      <article className={styles.canvasContainer}>
+        <Line
+          data={data}
+          options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            title: {
+              display: true,
+              position: 'top',
+              fontColor: '#091e3f',
+              fontStyle: 'normal',
+              padding: 20,
               left: 0,
-              right: 20,
-              bottom: 40,
+              horizontalAlign: 'right',
+              text: `КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ ${averageCountPage}`,
+              fontSize: 12,
             },
-          },
-          // title: {
-          //   display: true,
-          //   position: 'top',
-          //   fontColor: '#091e3f',
-          //   fontStyle: 'normal',
-          //   padding: 10,
-          //   left: 0,
-          //   // horizontalAlign: 'right',
-          //   text: `КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ ${averageCountPage}`,
-          //   fontSize: 12,
-          // },
-          legend: {
-            display: false,
-            // position: 'right',
-            // padding: 20,
-            // labels: {
-            //   fontSize: 10,
-            //   fontFamily: 'Montserrat',
-            //   fontColor: '#242a37',
-            //   boxWidth: 5,
-            //   padding: 10,
-            //   fullWidth: false,
-            //   usePointStyle: true,
-            // },
-          },
-          scales: {
-            yAxes: [
-              {
-                scaleLabel: {
-                  display: true,
-                  position: 'left',
-                },
-                ticks: {
-                  display: true,
-                  beginAtZero: true,
-                  stepSize: 20,
-                  fontSize: 10,
-                  fontFamily: 'Open Sans',
-                },
-                gridLines: {
-                  // display: false, /* removes grid lines if activate */
-                  // drawBorder: false, /* removes grid lines if activate */
-                  color: 'rgba(193, 196, 206, 0.4)',
-                },
-                display: true,
+            legend: {
+              position: 'right',
+              labels: {
+                fontSize: 12,
+                fontFamily: 'Montserrat',
+                fontColor: '#242a37',
+                boxWidth: 8,
+                padding: 10,
+                fullWidth: false,
+                usePointStyle: true,
               },
-            ],
-            xAxes: [
-              {
-                scaleLabel: {
-                  display: false,
-                  // labelString: 'ЧАС',
-                  // fontSize: 10,
-                  // fontFamily: 'Open Sans',
-                  // fontColor: '#242a37',
-                  // fontStyle: 'bold',
-                },
-                ticks: {
-                  display: true,
-                  maxRotation: 45,
-                  minRotation: 0,
-                  fontSize: 10,
-                  fontFamily: 'Open Sans',
-                },
-                gridLines: {
-                  color: 'rgba(193, 196, 206, 0.4)',
-                },
+            },
+            layout: {
+              padding: {
+                left: 30,
+                right: 30,
+                top: 30,
+                bottom: 0,
               },
-            ],
-          },
-        }}
-      />
+            },
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    position: 'left',
+                  },
+                  ticks: {
+                    display: true,
+                  },
+                  gridLines: {
+                    color: 'rgba(193, 196, 206, 0.4)',
+                  },
+                  display: true,
+                },
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'ЧАС',
+                    fontSize: 12,
+                    fontFamily: 'Montserrat',
+                    fontColor: '#242a37',
+                    fontStyle: 'bold',
+                  },
+                  ticks: {
+                    display: true,
+                    minRotation: 30,
+                  },
+                  gridLines: {
+                    color: 'rgba(193, 196, 206, 0.4)',
+                  },
+                },
+              ],
+            },
+          }}
+        />
+      </article>
     </div>
   );
 };

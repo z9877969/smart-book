@@ -119,28 +119,34 @@ const Workout = ({ handleChangeToGoal }) => {
         <p className={style.title}>Моє тренування</p>
       </div>
       <div className={style.pickers}>
-        <MuiPickersUtilsProvider
-          className={style.pickerOverlay}
-          utils={DateFnsUtils}
-        >
-          <DatePicker
-            value={timeStart}
-            onChange={handleTimeStart}
-            disablePast
-            disableFuture
-            format="dd/MM/yyyy"
-            InputProps={{ className: style.picker }}
-          />
-        </MuiPickersUtilsProvider>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <DatePicker
-            value={timeEnd}
-            onChange={handleTimeEnd}
-            disablePast
-            format="dd/MM/yyyy"
-            InputProps={{ className: style.picker }}
-          />
-        </MuiPickersUtilsProvider>
+        <div className={style.pickerWrapper}>
+          <div className={style.pickerTitle}>Початок тренування</div>
+          <MuiPickersUtilsProvider
+            className={style.pickerOverlay}
+            utils={DateFnsUtils}
+          >
+            <DatePicker
+              value={timeStart}
+              onChange={handleTimeStart}
+              disablePast
+              disableFuture
+              format="dd/MM/yyyy"
+              InputProps={{ className: style.picker }}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
+        <div>
+          <div className={style.pickerTitle}>Кінець тренування</div>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker
+              value={timeEnd}
+              onChange={handleTimeEnd}
+              disablePast
+              format="dd/MM/yyyy"
+              InputProps={{ className: style.picker }}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
       </div>
       <div className={style.selectContainer}>
         <Select
