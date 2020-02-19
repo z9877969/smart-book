@@ -16,7 +16,6 @@ import {
   registrationSuccess,
   registrationError,
 } from '../redux/registration/registrationActions';
-// import { addUserTraining } from '../redux/userTraining/userTrainingActions';
 
 import {
   getTraining,
@@ -85,11 +84,6 @@ export const refreshUser = () => (dispatch, getState) => {
 export const logOut = token => dispatch => {
   setAuthToken(token);
   axios
-    // .post(`${process.env.REACT_APP_BASE_API_URL}/auth/logout`, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // })
     .post(`${process.env.REACT_APP_BASE_API_URL}/auth/logout`)
     .then(() => {
       dispatch(logOutSuccess());
@@ -141,7 +135,6 @@ export const updateTraining = (trainingData, token) => dispatch => {
     )
     .catch(err => {
       throw err;
-      // console.log(err);
     });
   dispatch(getTrainingFromServer(token));
 };
@@ -163,19 +156,10 @@ export const postTraining = (training, token) => dispatch => {
     .then(() => dispatch(booksOperation(token)))
     .catch(err => {
       throw err;
-      // console.log(err);
     });
 };
 
 export const finishTraining = (trainingId, token, updateObj) => dispatch => {
-  // const getData = data =>
-  //   Object.entries(data)
-  //     .filter(entryArr => entryArr[0] !== 'status')
-  //     .reduce((acc, [key, value]) => {
-  //       acc[key] = value;
-  //       return acc;
-  //     }, {});
-
   axios
     .patch(
       `${process.env.REACT_APP_BASE_API_URL}/training/${trainingId}`,
@@ -189,7 +173,10 @@ export const finishTraining = (trainingId, token, updateObj) => dispatch => {
     .then(res => {
       dispatch(trainingFinished(res.data.training));
     })
-    .then(() => dispatch(booksOperation(token)))
+    .then(() => {
+      dispatch(getTrainingFromServer(token));
+      dispatch(booksOperation(token));
+    })
     .catch(err => {
       throw err;
     });

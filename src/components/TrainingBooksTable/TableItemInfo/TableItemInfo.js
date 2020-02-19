@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxSharp from '@material-ui/icons/CheckBoxSharp';
-// import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import PropTypes from 'prop-types';
 import { getUserToken } from '../../../redux/selectors/sessionSelectors';
 import { bookUpdate } from '../../../redux/books/BooksOperations';
@@ -44,10 +43,13 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
 
   // helpers
   const pagesReadResult = getPagesResult(pagesReadResultArr);
-
   const trainingBook = getTrainingBook(id, trainingBooksArr);
-
   const trainingBookIdsArr = getTrainingBookIdsArr(trainingBooksArr);
+  const trainingBooksReading = booksFilterByStatus(
+    'reading',
+    trainingBookIdsArr,
+    books,
+  );
 
   const canCheckTrainingBook = () => {
     const readedTrainingBooksFromBooks = booksFilterByStatus(
@@ -76,12 +78,6 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
     return false;
   };
 
-  const trainingBooksReading = booksFilterByStatus(
-    'reading',
-    trainingBookIdsArr,
-    books,
-  );
-
   // handlers
   const handleInputToggle = ({ target }) => {
     const { name } = target;
@@ -98,16 +94,17 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
         unreadCount: training.unreadCount - 1,
       };
       dispatch(updateTraining(trainingData, token));
-    } else if (book.status === 'readed') {
-      // <-- to comment for uncheck input
-      book.status = 'reading'; // <-- to comment for uncheck input
-      dispatch(bookUpdate(token, book)); // <-- to comment for uncheck input
-      setToggleInput(false); // <-- to comment for uncheck input
-    } // <-- to comment for uncheck input
+    }
+    // else if (book.status === 'readed') {
+    //   // <-- to comment for uncheck input
+    //   book.status = 'reading'; // <-- to comment for uncheck input
+    //   dispatch(bookUpdate(token, book)); // <-- to comment for uncheck input
+    //   setToggleInput(false); // <-- to comment for uncheck input
+    // } // <-- to comment for uncheck input
   };
 
   // effects
-  // listner for updating training.unreadCount
+  // listener for updating training.unreadCount
   useEffect(() => {
     if (trainingBooksReading && !trainingBooksReading.length) {
       dispatch(getTrainingFromServer(token));
