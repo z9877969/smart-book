@@ -9,16 +9,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import Select from '@material-ui/core/Select';
 import style from './Workout.module.css';
 import TrainingBookTable from '../TrainingBooksTable/TrainingBooksTable';
-// import { addUserTraining } from '../../redux/userTraining/userTrainingActions';
 import { postTraining } from '../../services/API';
 import TableItemCreate from '../TrainingBooksTable/TableItemCreate/TableItemCreate';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   selectEmpty: {
     marginRight: '21px',
-    margin: theme.spacing(1),
+    // margin: theme.spacing(1),
     backgroundColor: 'transparent',
     background: 'transparent',
+    select: {
+      // background: '#fff',
+      backgroundColor: '#fff',
+    },
     '.MuiSelect-selectMenu': {
       paddingLeft: 10,
     },
@@ -26,9 +29,6 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: '#fff',
     },
     '&:focus': {
-      background: '#fff',
-    },
-    '.MuiSelect-select': {
       background: '#fff',
     },
   },
@@ -149,6 +149,7 @@ const Workout = ({ handleChangeToGoal }) => {
         </div>
       </div>
       <div className={style.selectContainer}>
+        <p className={style.placeholder}>Обрати книги з бібліотеки</p>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -157,7 +158,7 @@ const Workout = ({ handleChangeToGoal }) => {
           onChange={handleSelectBook}
           className={classes.selectEmpty}
           inputProps={{
-            placeholder: 'Виберіть книгу...',
+            placeholder: 'Обрати книги з бібліотеки',
             style: { paddingLeft: '10px' },
           }}
         >
