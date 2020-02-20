@@ -20,17 +20,18 @@
   }
   .tableHeader {
     display: flex;
-    width: 98%;
+    width: 100%;
     margin: 0 auto;
     border-top: 1px solid var(--pale-blue);
   }
 
   .bookList {
     margin: 0 auto;
-    margin-bottom: 5px;
-    width: 98%;
+    margin-bottom: 43px;
+    width: 100%;
     height: 100px;
     overflow-y: scroll;
+    border-top: 1px solid var(--pale-blue);
   }
 
   .bookListItem {

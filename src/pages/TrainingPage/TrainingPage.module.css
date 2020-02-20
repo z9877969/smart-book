@@ -19,7 +19,8 @@
 
 @media (min-width: 768px) {
   .container {
-    padding: 26px 44px;
+    margin: 0 auto;
+    padding: 26px 44px 0;
     min-width: 768px;
   }
 }
