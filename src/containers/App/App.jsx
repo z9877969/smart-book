@@ -32,7 +32,7 @@ function App() {
         <ProtectedRoute
           component={LibraryPage}
           path="/library"
-          redirectTo="/login"
+          redirectTo="/library"
         />
         <ProtectedRoute
           component={TrainingPage}

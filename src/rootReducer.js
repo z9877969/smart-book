@@ -17,9 +17,16 @@ const sessionPersistConfig = {
   whitelist: ['token'],
 };
 
+// const booksPersistConfig = {
+//   key: 'books',
+//   storage,
+//   whitelist: ['books'],
+// };
+
 const rootReducer = combineReducers({
   user,
   books: booksReducer,
+  // books: persistReducer(booksPersistConfig, booksReducer),
   session: persistReducer(sessionPersistConfig, sessionReducer),
   isModalOpen: backdropReducer,
   componentController,

@@ -149,7 +149,9 @@ const Workout = ({ handleChangeToGoal }) => {
         </div>
       </div>
       <div className={style.selectContainer}>
-        <p className={style.placeholder}>Обрати книги з бібліотеки</p>
+        {selectedBook._id === null && (
+          <p className={style.placeholder}>Обрати книги з бібліотеки</p>
+        )}
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
