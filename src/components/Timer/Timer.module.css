@@ -94,6 +94,10 @@
     margin: 0;
     margin-bottom: 34px;
   }
+
+  .timerPanel {
+    max-width: 323px;
+  }
 }
 
 @media (min-width: 1280px) {

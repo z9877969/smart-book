@@ -1,12 +1,12 @@
 /* your css code */
 
 .ChartWrapper {
-  margin: 0 auto;
-  height: 540px;
+  margin: 0 auto 36px;
+  height: 440px;
   width: 300px;
   order: 4;
   background-color: var(--white);
-  margin: 0 auto;
+  box-shadow: 1px 1.7px 1px 0 var(--light-blue-grey-40);
 }
 .canvasContainer {
   height: 60vh;

@@ -2,12 +2,10 @@
   width: 300px;
   margin: 0 auto;
   height: auto;
-  margin-bottom: 34px;
   padding: 10px;
   background-color: var(--white);
-  box-shadow: 0px 2px 1px 0px rgba(193, 196, 206, 0.4);
+  box-shadow: 1px 1.7px 1px 0 var(--light-blue-grey-40);
   order: 5;
-  margin-top: 55px;
 }
 
 .inner_container {
