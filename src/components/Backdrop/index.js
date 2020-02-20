@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Backdrop from './Backdrop';
-import { closeModal } from './backdropActions';
+import { closeModal } from '../../redux/backdrop/backdropActions';
 
 const mapStateToProps = ({ isModalOpen }) => ({
   isModalOpen,
