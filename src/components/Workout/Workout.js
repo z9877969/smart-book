@@ -83,7 +83,7 @@ const Workout = ({ handleChangeToGoal }) => {
     const updatedBooks = booksForRender.filter(el => el._id !== id);
     setBooksForRender(updatedBooks);
     setBooks(books.filter(el => el.book !== id));
-    handleChangeToGoal({ countBooks: booksForRender.lenght });
+    handleChangeToGoal({ countBooks: booksForRender.length });
   };
 
   useEffect(() => {
@@ -92,7 +92,7 @@ const Workout = ({ handleChangeToGoal }) => {
       0,
     );
     setAvgReadPages(allPages);
-    handleChangeToGoal({ countBooks: booksForRender.lenght });
+    handleChangeToGoal({ countBooks: booksForRender.length });
   }, [booksForRender]);
 
   const addTraining = () => {
