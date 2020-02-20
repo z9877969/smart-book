@@ -1,4 +1,5 @@
 .addBookForm {
+  max-width: 400px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -77,6 +78,11 @@
 }
 
 @media (min-width: 768px) {
+  .addBookForm {
+    max-width: none;
+    width: 678px;
+  }
+
   .tabletWrapper {
     display: flex;
     flex-direction: row;

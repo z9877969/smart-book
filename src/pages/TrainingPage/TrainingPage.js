@@ -69,13 +69,13 @@ const TrainingPage = () => {
         </div>
       ) : (
         <div className={style.someContainer}>
-          <Workout handleChangeToGoal={handleChangeToGoal} />{' '}
           <CreateTraningGoal
             style={{
               order: 2,
             }}
             {...goal}
           />{' '}
+          <Workout handleChangeToGoal={handleChangeToGoal} />{' '}
           {training.trainingId && <Chart training={training} />}{' '}
         </div>
       )}{' '}

@@ -136,15 +136,14 @@
     max-width: 678px;
     width: 100%;
     display: flex;
-    box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
-    background-color: #fff;
     align-items: flex-start;
+    background-color: #ffffff;
+    box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
   }
 
   .goalContainer {
     height: 106px;
     padding: 0;
-    background-color: #fff;
   }
 
   .goalContainerStat {
@@ -174,16 +173,13 @@
   .goalBodyBox {
     height: 106px;
     width: 323px;
-    /* padding: 0; */
   }
 
   .goalBodyBoxStat {
     width: 326px;
     height: 105px;
     padding-top: 0;
-    /* margin-right: 10px; */
-
-    box-shadow: 0px 0px 0px 0 rgba(0, 0, 0, 0);
+    box-shadow: none;
   }
 
   .goalDigitsBox,

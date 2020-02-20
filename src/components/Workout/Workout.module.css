@@ -1,7 +1,7 @@
 .container {
-  padding: 28px 10px;
+  padding: 28px 0;
   margin: 0 auto;
-  width: 320px;
+  width: 300px;
 }
 
 .header {
@@ -26,6 +26,8 @@
 
 .pickerTitle {
   text-align: center;
+  color: var(--blue-grey);
+  margin-bottom: 3px;
 }
 
 .picker {
