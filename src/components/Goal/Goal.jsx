@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from './Goal.module.css';
 import moment from 'moment';
+import styles from './Goal.module.css';
 
 const Goal = () => {
   const training = useSelector(state => state.training);
@@ -10,6 +10,7 @@ const Goal = () => {
   // const finish = moment('2019-12-15T13:56:30+02:00').dayOfYear();
   const finish = moment(training.timeEnd).dayOfYear();
   const leftDays = finish - start;
+  
   let isThisStatPage = !!(training && training.unreadCount > 0);
   
   return (
