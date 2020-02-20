@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Select from '@material-ui/core/Select';
 import style from './Workout.module.css';
 import TrainingBookTable from '../TrainingBooksTable/TrainingBooksTable';
-import { addUserTraining } from '../../redux/userTraining/userTrainingActions';
+// import { addUserTraining } from '../../redux/userTraining/userTrainingActions';
 import { postTraining } from '../../services/API';
 import TableItemCreate from '../TrainingBooksTable/TableItemCreate/TableItemCreate';
 
@@ -83,7 +83,7 @@ const Workout = ({ handleChangeToGoal }) => {
     const updatedBooks = booksForRender.filter(el => el._id !== id);
     setBooksForRender(updatedBooks);
     setBooks(books.filter(el => el.book !== id));
-    handleChangeToGoal({ countBooks: booksForRender.lenght });
+    handleChangeToGoal({ countBooks: booksForRender.length });
   };
 
   useEffect(() => {
@@ -92,7 +92,7 @@ const Workout = ({ handleChangeToGoal }) => {
       0,
     );
     setAvgReadPages(allPages);
-    handleChangeToGoal({ countBooks: booksForRender.lenght });
+    handleChangeToGoal({ countBooks: booksForRender.length });
   }, [booksForRender]);
 
   const addTraining = () => {
@@ -103,7 +103,7 @@ const Workout = ({ handleChangeToGoal }) => {
         timeEnd,
         avgReadPages,
       };
-      dispatch(addUserTraining(training));
+      // dispatch(addUserTraining(training));
       dispatch(postTraining(training, token));
     }
   };
@@ -119,28 +119,34 @@ const Workout = ({ handleChangeToGoal }) => {
         <p className={style.title}>Моє тренування</p>
       </div>
       <div className={style.pickers}>
-        <MuiPickersUtilsProvider
-          className={style.pickerOverlay}
-          utils={DateFnsUtils}
-        >
-          <DatePicker
-            value={timeStart}
-            onChange={handleTimeStart}
-            disablePast
-            disableFuture
-            format="dd/MM/yyyy"
-            InputProps={{ className: style.picker }}
-          />
-        </MuiPickersUtilsProvider>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <DatePicker
-            value={timeEnd}
-            onChange={handleTimeEnd}
-            disablePast
-            format="dd/MM/yyyy"
-            InputProps={{ className: style.picker }}
-          />
-        </MuiPickersUtilsProvider>
+        <div className={style.pickerWrapper}>
+          <div className={style.pickerTitle}>Початок тренування</div>
+          <MuiPickersUtilsProvider
+            className={style.pickerOverlay}
+            utils={DateFnsUtils}
+          >
+            <DatePicker
+              value={timeStart}
+              onChange={handleTimeStart}
+              disablePast
+              disableFuture
+              format="dd/MM/yyyy"
+              InputProps={{ className: style.picker }}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
+        <div>
+          <div className={style.pickerTitle}>Кінець тренування</div>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker
+              value={timeEnd}
+              onChange={handleTimeEnd}
+              disablePast
+              format="dd/MM/yyyy"
+              InputProps={{ className: style.picker }}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
       </div>
       <div className={style.selectContainer}>
         <Select

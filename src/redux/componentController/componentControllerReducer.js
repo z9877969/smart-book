@@ -9,6 +9,8 @@ const modalCongratsOpenReducer = (state = false, action) => {
   switch (action.type) {
     case ActionType.OPEN_MODAL_CONGRATS:
       return action.payload === 0;
+    case ActionType.CLOSE_MODAL_CONGRATS:
+      return false;
     default:
       return state;
   }

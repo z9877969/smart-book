@@ -32,6 +32,7 @@ const Backdrop = ({ component: Component, isModalOpen, closeModal }) => {
 Backdrop.propTypes = {
   component: PropTypes.node.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default Backdrop;

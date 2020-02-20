@@ -141,9 +141,7 @@ const Chart = ({ training }) => {
     </div>
   );
 };
-
 Chart.propTypes = {
   training: PropTypes.shape().isRequired,
 };
-
 export default Chart;

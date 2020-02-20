@@ -15,3 +15,11 @@ export const openCongratsModal = () => ({
 export const closeCongratsModal = () => ({
   type: modalActionTypes.CLOSE_CONGRATS_SUMMARY,
 });
+
+export const openModalNotFinished = () => ({
+  type: modalActionTypes.OPEN_MODAL_NOT_FINISHED,
+});
+
+export const closeModalNotFinished = () => ({
+  type: modalActionTypes.CLOSE_MODAL_NOT_FINISHED,
+});
