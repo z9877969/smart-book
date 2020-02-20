@@ -16,14 +16,16 @@ import {
   registrationSuccess,
   registrationError,
 } from '../redux/registration/registrationActions';
-// import { addUserTraining } from '../redux/userTraining/userTrainingActions';
 
 import {
   getTraining,
   trainingRequest,
-  // trainingUpdate,
+  trainingPostRequest,
+  trainingFinished,
   trainingError,
 } from '../redux/training/trainingActions';
+
+import { booksOperation } from '../redux/books/BooksOperations';
 
 import { getUserToken } from '../redux/selectors/sessionSelectors';
 
@@ -82,11 +84,6 @@ export const refreshUser = () => (dispatch, getState) => {
 export const logOut = token => dispatch => {
   setAuthToken(token);
   axios
-    // .post(`${process.env.REACT_APP_BASE_API_URL}/auth/logout`, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // })
     .post(`${process.env.REACT_APP_BASE_API_URL}/auth/logout`)
     .then(() => {
       dispatch(logOutSuccess());
@@ -137,13 +134,13 @@ export const updateTraining = (trainingData, token) => dispatch => {
       },
     )
     .catch(err => {
-      return err;
-      // console.log(err);
+      throw err;
     });
   dispatch(getTrainingFromServer(token));
 };
 
 export const postTraining = (training, token) => dispatch => {
+  dispatch(trainingPostRequest());
   axios
     .post(`${process.env.REACT_APP_BASE_API_URL}/training`, training, {
       headers: {
@@ -156,8 +153,31 @@ export const postTraining = (training, token) => dispatch => {
         type: 'USER_HAVE_TRAINING',
       });
     })
+    .then(() => dispatch(booksOperation(token)))
     .catch(err => {
-      return err;
-      // console.log(err);
+      throw err;
+    });
+};
+
+export const finishTraining = (trainingId, token, updateObj) => dispatch => {
+  axios
+    .patch(
+      `${process.env.REACT_APP_BASE_API_URL}/training/${trainingId}`,
+      updateObj,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+    .then(res => {
+      dispatch(trainingFinished(res.data.training));
+    })
+    .then(() => {
+      dispatch(getTrainingFromServer(token));
+      dispatch(booksOperation(token));
+    })
+    .catch(err => {
+      throw err;
     });
 };
