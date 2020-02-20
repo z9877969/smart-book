@@ -20,13 +20,10 @@ const Chart = ({ training }) => {
   const arrayOfDate = createArrayOfDate(readPages).sort();
   const difference = findDifference(timeStart, timeEnd, arrayOfDate);
   const arrayOfCount = createArrayOfCount(arrayOfDate, readPages);
-  const lastCountReadPage = arrayOfCount[arrayOfCount.length - 1];
+  // const lastCountReadPage = arrayOfCount[arrayOfCount.length - 1];
   const averageCountPage = (allPagesCount / difference).toFixed(0);
   const { length } = arrayOfCount;
   const aim = makeAverage(averageCountPage, length);
-
-  console.log('lastCountReadPage: ', lastCountReadPage);
-  console.log('averageCountPage: ', averageCountPage);
 
   const data = {
     labels: arrayOfDate,
@@ -52,9 +49,9 @@ const Chart = ({ training }) => {
     <div className={styles.ChartWrapper}>
       <h3 className={styles.title}>КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ</h3>
       <span className={styles.titleText}>{`${averageCountPage}`}</span>
-      {/* <div className={styles.planFactWrapper}>
-        <p className={styles.planFact}>План</p>
-        <p className={styles.planFact}>Факт</p>
+      {/* <div className={styles.legendWrapper}>
+        <p className={styles.legendItem}>План</p>
+        <p className={styles.legendItem}>Факт</p>
       </div> */}
       <Line
         data={data}
