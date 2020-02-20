@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import backdropReducer from './components/Backdrop/backdropReducer';
+import backdropReducer from './redux/backdrop/backdropReducer';
 import { user, sessionReducer } from './redux/login/loginReducers';
 import booksReducer from './redux/books/booksReducer';
 import componentController from './redux/componentController/componentControllerReducer';
