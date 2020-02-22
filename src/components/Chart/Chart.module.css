@@ -2,7 +2,7 @@
 
 .ChartWrapper {
   margin: 0 auto 36px;
-  height: 440px;
+  height: 344px;
   width: 300px;
   order: 4;
   background-color: var(--white);
@@ -33,7 +33,7 @@
 }
 
 /* after fix positioning styles on training page */
-/* .legendWrapper {
+.legendWrapper {
   position: relative;
   display: block;
 }
@@ -45,13 +45,17 @@
   padding: 5px;
   margin-left: 5px;
   background-color: var(--pale-grey);
-} */
+}
 
 @media (min-width: 768px) {
   .ChartWrapper {
-    /* height: 372px; */
+    height: 372px;
     width: 678px;
     margin-bottom: 45px;
+  }
+
+  .legendItem {
+    right: 30px;
   }
 }
 
