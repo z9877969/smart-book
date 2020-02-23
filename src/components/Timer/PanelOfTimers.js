@@ -8,14 +8,19 @@ const PanelOfTimers = () => {
   const timeEndState = useSelector(state => state.training.timeEnd);
 
   return (
-    <div className={css.panel}>
-      <Timer title="До закінчення року залишилось" finishDate={endOfYearIso} />
-      {timeEndState && (
+    <div className={css.container}>
+      <div className={css.panel}>
         <Timer
-          title="До досягнення мети залишилось"
-          finishDate={timeEndState}
+          title="До закінчення року залишилось"
+          finishDate={endOfYearIso}
         />
-      )}
+        {timeEndState && (
+          <Timer
+            title="До досягнення мети залишилось"
+            finishDate={timeEndState}
+          />
+        )}
+      </div>
     </div>
   );
 };

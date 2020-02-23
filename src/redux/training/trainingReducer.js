@@ -2,7 +2,7 @@ import { ActionType } from './trainingActions';
 
 const initialState = {
   trainingId: '',
-  isDone: true,
+  isDone: false,
   timeStart: 0,
   timeEnd: 0,
   avgReadPages: 0,
@@ -29,6 +29,8 @@ const trainingReducer = (state = initialState, { type, payload }) => {
       return {
         ...payload,
       };
+    case ActionType.FINISHED_TRAINING:
+      return { ...payload };
     default:
       return state;
   }

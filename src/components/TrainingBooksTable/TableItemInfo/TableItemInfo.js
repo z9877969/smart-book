@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxSharp from '@material-ui/icons/CheckBoxSharp';
-// import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import PropTypes from 'prop-types';
 import { getUserToken } from '../../../redux/selectors/sessionSelectors';
 import { bookUpdate } from '../../../redux/books/BooksOperations';
@@ -42,19 +41,15 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
   );
   const trainingBooksArr = useSelector(state => [...state.training.books]);
 
-  // console.log(training);
-  // const isCongratsOpen = useSelector(
-  //   state => state.isModalsOpen.congratsModalReducer,
-  // );
-  // console.log('isCongratsOpen', isCongratsOpen);
-
   // helpers
   const pagesReadResult = getPagesResult(pagesReadResultArr);
-
   const trainingBook = getTrainingBook(id, trainingBooksArr);
-
   const trainingBookIdsArr = getTrainingBookIdsArr(trainingBooksArr);
-
+  const trainingBooksReading = booksFilterByStatus(
+    'reading',
+    trainingBookIdsArr,
+    books,
+  );
   const canCheckTrainingBook = () => {
     const readedTrainingBooksFromBooks = booksFilterByStatus(
       'readed',
@@ -79,18 +74,11 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
     ) {
       return true;
     }
-
     return false;
   };
 
-  const trainingBooksReading = booksFilterByStatus(
-    'reading',
-    trainingBookIdsArr,
-    books,
-  );
-
   // handlers
-  const handleInputToggle = ({ target }) => {
+  const handleInputToggle = async ({ target }) => {
     const { name } = target;
     const idBook = name;
 
@@ -105,21 +93,25 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
         unreadCount: training.unreadCount - 1,
       };
       dispatch(updateTraining(trainingData, token));
-    } else if (book.status === 'readed') {
-      // <-- to comment for uncheck input
-      book.status = 'reading'; // <-- to comment for uncheck input
-      dispatch(bookUpdate(token, book)); // <-- to comment for uncheck input
-      setToggleInput(false); // <-- to comment for uncheck input
-    } // <-- to comment for uncheck input
-
-    if (!training.unreadCount) {
-      dispatch(openCongratsModal());
+      setTimeout(() => {
+        dispatch(getTrainingFromServer(token));
+      }, 500);
     }
   };
 
+  // effects
+  // listener for updating training.unreadCount
   useEffect(() => {
-    dispatch(getTrainingFromServer(token));
-  }, [trainingBooksReading.length]);
+    if (trainingBooksReading && !trainingBooksReading.length) {
+      dispatch(getTrainingFromServer(token));
+    }
+  }, [toggleInput]);
+
+  useEffect(() => {
+    if (training && !training.unreadCount) {
+      dispatch(openCongratsModal());
+    }
+  }, [training.unreadCount]);
 
   return (
     <li key={id} className={style.bookListItem}>

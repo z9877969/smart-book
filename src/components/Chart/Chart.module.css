@@ -1,12 +1,15 @@
 /* your css code */
 
 .ChartWrapper {
-  /* position: absolute; */
+  margin: 0 auto 36px;
   height: 344px;
-  width: 324px;
+  width: 300px;
   order: 4;
   background-color: var(--white);
-  margin: 0 auto;
+  box-shadow: 1px 1.7px 1px 0 var(--light-blue-grey-40);
+}
+.canvasContainer {
+  height: 60vh;
 }
 
 .title {
@@ -30,11 +33,11 @@
 }
 
 /* after fix positioning styles on training page */
-/* .planFactWrapper {
+.legendWrapper {
   position: relative;
   display: block;
 }
-.planFact {
+.legendItem {
   position: absolute;
   right: 20px;
   bottom: -15px;
@@ -42,21 +45,31 @@
   padding: 5px;
   margin-left: 5px;
   background-color: var(--pale-grey);
-} */
+}
 
 @media (min-width: 768px) {
   .ChartWrapper {
     height: 372px;
     width: 678px;
+    margin-bottom: 45px;
+  }
+
+  .legendItem {
+    right: 30px;
   }
 }
 
 @media (min-width: 1280px) {
   .ChartWrapper {
-    height: 372px;
-    width: 862px;
-    /* margin-top: 80px; */
-    flex-basis: 70%;
-    /* order: 3; */
+    flex-basis: 73%;
+    margin: 0;
+    margin-top: 30px;
+    order: 3;
+  }
+}
+
+@media (min-width: 1980px) {
+  .ChartWrapper {
+    margin-right: 2em;
   }
 }

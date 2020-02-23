@@ -1,11 +1,11 @@
-.panel {
+.container {
   margin: 0 auto;
   order: 1;
 }
 
 @media (min-width: 768px) {
   .panel {
-    width: 679px;
+    width: 678px;
     display: flex;
     justify-content: space-between;
   }
@@ -14,5 +14,7 @@
 @media (min-width: 1280px) {
   .panel {
     width: 860px;
+    justify-content: space-evenly;
+    margin: 0;
   }
 }
