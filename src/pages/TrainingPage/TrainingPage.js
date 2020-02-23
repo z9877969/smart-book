@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import PanelOfTimers from '../../components/Timer/PanelOfTimers';
 import Results from '../../components/Results/Results';
@@ -8,12 +10,17 @@ import Goal from '../../components/Goal/Goal';
 import Chart from '../../components/Chart/Chart';
 import WorkoutInfo from '../../components/WorkoutInfo/WorkoutInfo';
 import CreateTraningGoal from '../../components/CreateTraningGoal/CreateTraningGoal';
-import { getTrainingFromServer, finishTraining } from '../../services/API';
+import {
+  getTrainingFromServer,
+  finishTraining,
+  refreshUser,
+} from '../../services/API';
 import { closeCongratsModal } from '../../redux/modals/modalsActions';
 import { booksOperation } from '../../redux/books/BooksOperations';
+import { addLocation } from '../../redux/lastLocation/lastLocationAction';
 import style from './TrainingPage.module.css';
 
-const TrainingPage = () => {
+const TrainingPage = props => {
   const dispatch = useDispatch();
 
   // state
@@ -29,6 +36,7 @@ const TrainingPage = () => {
   const modalCongratsOpen = useSelector(
     state => state.isModalsOpen.congratsModalReducer,
   );
+  const books = useSelector(state => state.books);
 
   // helpers
   const credentials = {
@@ -43,16 +51,24 @@ const TrainingPage = () => {
     });
   };
 
-  const handleCloseCongrats = () => {
-    dispatch(finishTraining(training.trainingId, token, credentials));
+  const handleCloseCongrats = async () => {
+    await dispatch(finishTraining(training.trainingId, token, credentials));
+    await dispatch(refreshUser(token));
     dispatch(closeCongratsModal());
   };
 
   // effects
   useEffect(() => {
     dispatch(getTrainingFromServer(token));
-    dispatch(booksOperation(token));
+    if (!books || !books.length) {
+      dispatch(booksOperation(token));
+    }
   }, []);
+
+  const { location } = props;
+  useEffect(() => {
+    dispatch(addLocation(location.pathname));
+  }, [location.pathname]);
 
   return (
     <div className={style.container}>
@@ -83,4 +99,14 @@ const TrainingPage = () => {
   );
 };
 
-export default TrainingPage;
+TrainingPage.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
+};
+
+TrainingPage.defaultProps = {
+  location: '/training',
+};
+
+export default withRouter(TrainingPage);

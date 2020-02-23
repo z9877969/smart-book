@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
-import Pt from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './NowReadBooks.module.css';
 import img from './icon_library.png';
 
@@ -82,7 +82,7 @@ const NowReadBooks = ({ books }) => {
 };
 
 NowReadBooks.propTypes = {
-  books: Pt.shape({}),
+  books: PropTypes.node,
 };
 
 NowReadBooks.defaultProps = {
