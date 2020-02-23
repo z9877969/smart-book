@@ -37,7 +37,7 @@ function App() {
         <ProtectedRoute
           component={TrainingPage}
           path="/training"
-          redirectTo="/training"
+          redirectTo="/login"
         />
         <Route path="/" component={StartPage} />
         <Route path="*">
