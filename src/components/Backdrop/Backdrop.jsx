@@ -1,38 +1,43 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './Backdrop.module.css';
+// import React from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
+// import {withRouter} from 'react-router-dom';
+// import PropTypes from 'prop-types';
+// import styles from './Backdrop.module.css';
 
-const Backdrop = ({ component: Component, isModalOpen, closeModal }) => {
-  const handleClose = ({ target, key }) => {
-    if (target.id === 'backdrop') {
-      closeModal();
-    }
+// const Backdrop = ({ component: Component, closeModal }) => {
 
-    if (key === 'Escape') {
-      closeModal();
-    }
-  };
+//   const isModalOpen = useSelector(state => state.isModalOpen);
 
-  return (
-    <>
-      {isModalOpen && (
-        <div
-          className={styles.backdrop}
-          onClick={handleClose}
-          onKeyDown={handleClose}
-          id="backdrop"
-        >
-          <Component />
-        </div>
-      )}
-    </>
-  );
-};
+//   const handleClose = ({ target, key }) => {
+//     if (target.id === 'backdrop') {
+//       closeModal();
+//     }
 
-Backdrop.propTypes = {
-  component: PropTypes.node.isRequired,
-  isModalOpen: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
-};
+//     if (key === 'Escape') {
+//       closeModal();
+//     }
+//   };
 
-export default Backdrop;
+//   return (
+//     <>
+//       {isModalOpen && (
+//         <div
+//           className={styles.backdrop}
+//           onClick={handleClose}
+//           onKeyDown={handleClose}
+//           id="backdrop"
+//         >
+//           <Component />
+//         </div>
+//       )}
+//     </>
+//   );
+// };
+
+// Backdrop.propTypes = {
+//   component: PropTypes.node.isRequired,
+//   isModalOpen: PropTypes.bool.isRequired,
+//   closeModal: PropTypes.func.isRequired,
+// };
+
+// export default withRouter(Backdrop);

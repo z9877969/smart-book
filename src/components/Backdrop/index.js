@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
-import Backdrop from './Backdrop';
-import { closeModal } from './backdropActions';
+// import { connect } from 'react-redux';
+// import Backdrop from './Backdrop';
+// import { closeModal } from './backdropActions';
 
-const mapStateToProps = ({ isModalOpen }) => ({
-  isModalOpen,
-});
+// const mapStateToProps = ({ isModalOpen }) => ({
+//   isModalOpen,
+// });
 
-const mapDispatchToProps = {
-  closeModal,
-};
+// const mapDispatchToProps = {
+//   closeModal,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Backdrop);
+// export default connect(mapStateToProps, mapDispatchToProps)(Backdrop);

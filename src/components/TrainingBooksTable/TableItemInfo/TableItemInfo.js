@@ -50,7 +50,6 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
     trainingBookIdsArr,
     books,
   );
-
   const canCheckTrainingBook = () => {
     const readedTrainingBooksFromBooks = booksFilterByStatus(
       'readed',
@@ -79,7 +78,7 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
   };
 
   // handlers
-  const handleInputToggle = ({ target }) => {
+  const handleInputToggle = async ({ target }) => {
     const { name } = target;
     const idBook = name;
 
@@ -94,13 +93,10 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
         unreadCount: training.unreadCount - 1,
       };
       dispatch(updateTraining(trainingData, token));
+      setTimeout(() => {
+        dispatch(getTrainingFromServer(token));
+      }, 500);
     }
-    // else if (book.status === 'readed') {
-    //   // <-- to comment for uncheck input
-    //   book.status = 'reading'; // <-- to comment for uncheck input
-    //   dispatch(bookUpdate(token, book)); // <-- to comment for uncheck input
-    //   setToggleInput(false); // <-- to comment for uncheck input
-    // } // <-- to comment for uncheck input
   };
 
   // effects

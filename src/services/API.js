@@ -25,9 +25,9 @@ import {
   trainingError,
 } from '../redux/training/trainingActions';
 
-import { booksOperation } from '../redux/books/BooksOperations';
+// import { booksOperation } from '../redux/books/BooksOperations';
 
-import { getUserToken } from '../redux/selectors/sessionSelectors';
+// import { getUserToken } from '../redux/selectors/sessionSelectors';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_API_URL;
 
@@ -63,15 +63,15 @@ export const registration = userValue => dispatch => {
     .catch(error => dispatch(registrationError(error)));
 };
 
-export const refreshUser = () => (dispatch, getState) => {
-  const token = getUserToken(getState());
+export const refreshUser = token => async dispatch => {
+  // const token = getUserToken(getState());
   if (!token) {
     return;
   }
   setAuthToken(token);
   dispatch(refreshUserRequest());
 
-  axios
+  await axios
     .get('/user/me')
     .then(response => {
       dispatch(refreshUserSuccess(response));
@@ -136,7 +136,6 @@ export const updateTraining = (trainingData, token) => dispatch => {
     .catch(err => {
       throw err;
     });
-  dispatch(getTrainingFromServer(token));
 };
 
 export const postTraining = (training, token) => dispatch => {
@@ -153,14 +152,18 @@ export const postTraining = (training, token) => dispatch => {
         type: 'USER_HAVE_TRAINING',
       });
     })
-    .then(() => dispatch(booksOperation(token)))
+    .then(() => dispatch(refreshUser(token)))
     .catch(err => {
       throw err;
     });
 };
 
-export const finishTraining = (trainingId, token, updateObj) => dispatch => {
-  axios
+export const finishTraining = (
+  trainingId,
+  token,
+  updateObj,
+) => async dispatch => {
+  await axios
     .patch(
       `${process.env.REACT_APP_BASE_API_URL}/training/${trainingId}`,
       updateObj,
@@ -175,7 +178,6 @@ export const finishTraining = (trainingId, token, updateObj) => dispatch => {
     })
     .then(() => {
       dispatch(getTrainingFromServer(token));
-      dispatch(booksOperation(token));
     })
     .catch(err => {
       throw err;

@@ -8,6 +8,7 @@ import {
   AddBook,
   BookUpdateStart,
 } from './booksActions';
+import { getTrainingFromServer } from '../../services/API';
 
 export const booksOperation = token => dispatch => {
   dispatch(BooksRequest());
@@ -19,6 +20,7 @@ export const booksOperation = token => dispatch => {
     })
     .then(res => {
       dispatch(BooksSuccess(res.data.books));
+      dispatch(getTrainingFromServer(token)); // get training to use training.timeEnd to active modalNotFinishedTraining
     })
     .catch(err => {
       dispatch(BooksError(err));

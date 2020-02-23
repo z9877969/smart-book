@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import styles from './ModalLogout.module.css';
 import { closeModal } from '../Backdrop/backdropActions';
 import { logOut } from '../../services/API';
 import { getUserToken } from '../../redux/selectors/sessionSelectors';
 
-const ModalLogout = () => {
+const ModalLogout = props => {
   const dispatch = useDispatch();
   const token = useSelector(state => getUserToken(state));
+
+  const {history} = props;
 
   const handleClick = ({ target }) => {
     if (target.name === 'cancel') {
@@ -50,4 +53,4 @@ const ModalLogout = () => {
   );
 };
 
-export default ModalLogout;
+export default withRouter(ModalLogout);
