@@ -6,13 +6,13 @@ import AddBook from '../../components/AddBook/AddBook';
 import BooksList from '../../components/BooksList/BooksList';
 import SummaryModal from '../../components/SummaryModal/SummaryModal';
 import ModalNotFinished from '../../components/ModalCongrats/ModalCongrats';
+import { getLocalTime } from '../../components/Timer/timerHelpers';
 import { booksOperation } from '../../redux/books/BooksOperations';
 import {
   openModalNotFinished,
   closeModalNotFinished,
 } from '../../redux/modals/modalsActions';
 import { addLocation } from '../../redux/lastLocation/lastLocationAction';
-import { getLocalTime } from '../../components/Timer/timerHelpers';
 import styles from './LibraryPage.module.css';
 
 const LibraryPage = props => {
@@ -54,7 +54,7 @@ const LibraryPage = props => {
   const { location } = props;
   useEffect(() => {
     dispatch(addLocation(location.pathname));
-  });
+  }, [location.pathname]);
 
   return (
     <div className={styles.libraryPage__wrapper}>

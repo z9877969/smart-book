@@ -152,7 +152,7 @@ export const postTraining = (training, token) => dispatch => {
         type: 'USER_HAVE_TRAINING',
       });
     })
-    // .then(() => dispatch(booksOperation(token)))
+    .then(() => dispatch(refreshUser(token)))
     .catch(err => {
       throw err;
     });
@@ -179,9 +179,6 @@ export const finishTraining = (
     .then(() => {
       dispatch(getTrainingFromServer(token));
     })
-    // .then(() => {
-    //   dispatch(booksOperation(token));
-    // })
     .catch(err => {
       throw err;
     });

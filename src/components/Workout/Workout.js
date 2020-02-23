@@ -35,7 +35,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Workout = ({ handleChangeToGoal }) => {
+  const dispatch = useDispatch();
+
   const classes = useStyles();
+
+  // state
   const [selectedBookId, setSelectedBookId] = useState('');
   const [books, setBooks] = useState([]);
   const [booksForRender, setBooksForRender] = useState([]);
@@ -47,13 +51,21 @@ const Workout = ({ handleChangeToGoal }) => {
     title: '',
   });
 
-  const dispatch = useDispatch();
+  // selectors
   const token = useSelector(state => state.session.token);
-
   const plannedBooks = useSelector(state =>
     state.books.filter(book => book.status === 'planned'),
   );
 
+  // helpers
+  const deleteBook = id => {
+    const updatedBooks = booksForRender.filter(el => el._id !== id);
+    setBooksForRender(updatedBooks);
+    setBooks(books.filter(el => el.book !== id));
+    handleChangeToGoal({ countBooks: booksForRender.length });
+  };
+
+  // handlers
   const handleTimeStart = date => {
     setTimeStart(date.toISOString());
     handleChangeToGoal({ startTime: date.toISOString() });
@@ -64,7 +76,7 @@ const Workout = ({ handleChangeToGoal }) => {
     handleChangeToGoal({ finishTime: date.toISOString() });
   };
 
-  const handleSubmit = evt => {
+  const handleSubmitTrainingBook = evt => {
     evt.preventDefault();
     setSelectedBook({
       _id: null,
@@ -79,13 +91,24 @@ const Workout = ({ handleChangeToGoal }) => {
     setBooks([...books, { book: selectedBookId }]);
   };
 
-  const deleteBook = id => {
-    const updatedBooks = booksForRender.filter(el => el._id !== id);
-    setBooksForRender(updatedBooks);
-    setBooks(books.filter(el => el.book !== id));
-    handleChangeToGoal({ countBooks: booksForRender.length });
+  const handleAddTraining = async () => {
+    if (booksForRender.length !== 0 && timeEnd) {
+      const training = {
+        books,
+        timeStart,
+        timeEnd,
+        avgReadPages,
+      };
+      await dispatch(postTraining(training, token));
+    }
   };
 
+  const handleSelectBook = event => {
+    setSelectedBookId(event.target.value);
+    setSelectedBook(event.target.value);
+  };
+
+  // effects
   useEffect(() => {
     const allPages = booksForRender.reduce(
       (acc, el) => (el.pagesCount !== null ? acc + el.pagesCount : acc),
@@ -94,24 +117,6 @@ const Workout = ({ handleChangeToGoal }) => {
     setAvgReadPages(allPages);
     handleChangeToGoal({ countBooks: booksForRender.length });
   }, [booksForRender]);
-
-  const addTraining = () => {
-    if (booksForRender.length !== 0 && timeEnd) {
-      const training = {
-        books,
-        timeStart,
-        timeEnd,
-        avgReadPages,
-      };
-      // dispatch(addUserTraining(training));
-      dispatch(postTraining(training, token));
-    }
-  };
-
-  const handleSelectBook = event => {
-    setSelectedBookId(event.target.value);
-    setSelectedBook(event.target.value);
-  };
 
   return (
     <div className={style.container}>
@@ -172,7 +177,11 @@ const Workout = ({ handleChangeToGoal }) => {
               </MenuItem>
             ))}
         </Select>
-        <button type="button" className={style.button} onClick={handleSubmit}>
+        <button
+          type="button"
+          className={style.button}
+          onClick={handleSubmitTrainingBook}
+        >
           Додати
         </button>
       </div>
@@ -191,7 +200,11 @@ const Workout = ({ handleChangeToGoal }) => {
           ))}
       </TrainingBookTable>
       <div className={style.submitOverlay}>
-        <button type="submit" className={style.submit} onClick={addTraining}>
+        <button
+          type="submit"
+          className={style.submit}
+          onClick={handleAddTraining}
+        >
           Почати тренування
         </button>
       </div>

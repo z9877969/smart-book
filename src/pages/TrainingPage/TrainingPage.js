@@ -66,10 +66,9 @@ const TrainingPage = props => {
   }, []);
 
   const { location } = props;
-
   useEffect(() => {
     dispatch(addLocation(location.pathname));
-  });
+  }, [location.pathname]);
 
   return (
     <div className={style.container}>
