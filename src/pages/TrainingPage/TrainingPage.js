@@ -53,15 +53,16 @@ const TrainingPage = props => {
 
   const handleCloseCongrats = async () => {
     await dispatch(finishTraining(training.trainingId, token, credentials));
-    await dispatch(refreshUser(token));
     dispatch(closeCongratsModal());
+    await dispatch(refreshUser(token));
   };
 
   // effects
   useEffect(() => {
-    dispatch(getTrainingFromServer(token));
     if (!books || !books.length) {
-      dispatch(booksOperation(token));
+      dispatch(booksOperation(token)); // update books&training
+    } else if (!training.trainingId) {
+      dispatch(getTrainingFromServer(token)); // update only training as books are available
     }
   }, []);
 
