@@ -37,8 +37,10 @@ const Header = () => {
   };
 
   const firstLetter = name => {
-    return name.split('')[0];
+    return name.split('')[0].toUpperCase();
   };
+
+  
 
   return (
     <div className={styles.container}>

@@ -10,6 +10,7 @@ import { modalReducers } from './redux/modals/modalsReducer';
 import loaderReducers from './redux/loader/loaderReducers';
 import { userTrainingReducer } from './redux/userTraining/userTrainingReducer';
 import updatedBookReducer from './redux/updatedBook/updatedBookReducer';
+import locationReducer from './redux/lastLocation/lastLocationReducer';
 
 const sessionPersistConfig = {
   key: 'session',
@@ -17,16 +18,14 @@ const sessionPersistConfig = {
   whitelist: ['token'],
 };
 
-// const booksPersistConfig = {
-//   key: 'books',
-//   storage,
-//   whitelist: ['books'],
-// };
+const locationPersistConfig = {
+  key: 'location',
+  storage,
+};
 
 const rootReducer = combineReducers({
   user,
   books: booksReducer,
-  // books: persistReducer(booksPersistConfig, booksReducer),
   session: persistReducer(sessionPersistConfig, sessionReducer),
   isModalOpen: backdropReducer,
   componentController,
@@ -35,6 +34,7 @@ const rootReducer = combineReducers({
   loader: loaderReducers,
   userTraining: userTrainingReducer,
   updatedBook: updatedBookReducer,
+  lastLocation: persistReducer(locationPersistConfig, locationReducer),
 });
 
 export default rootReducer;

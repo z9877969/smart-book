@@ -11,15 +11,15 @@ const BooksList = () => {
   const [planedBooks, setPlanedBooks] = useState([]);
   const [readBooks, setReadBooks] = useState([]);
   const [nowReadBooks, setNowReadBooks] = useState([]);
-  const userHaveTraining = useSelector(state => state.user.haveTraining);
+  const userHasTraining = useSelector(state => state.user.haveTraining);
 
   const books = useSelector(state => state.books);
 
   useEffect(() => {
     if (books) {
-      setPlanedBooks(books.filter(book => book.status === 'planned'));
-      setReadBooks(books.filter(book => book.status === 'readed'));
-      setNowReadBooks(books.filter(book => book.status === 'reading'));
+      setPlanedBooks([...books].filter(book => book.status === 'planned'));
+      setReadBooks([...books].filter(book => book.status === 'readed'));
+      setNowReadBooks([...books].filter(book => book.status === 'reading'));
     }
   }, [books]);
 
@@ -27,10 +27,10 @@ const BooksList = () => {
     <>
       {books.length > 0 ? (
         <>
-          {!userHaveTraining && <NextStepButton />}
-          {!!readBooks.length && <ReadBooks books={readBooks} />}
-          {!!nowReadBooks.length && <NowReadBooks books={nowReadBooks} />}
+          {!userHasTraining && <NextStepButton />}
           {!!planedBooks.length && <PlanReadBooks books={planedBooks} />}
+          {!!nowReadBooks.length && <NowReadBooks books={nowReadBooks} />}
+          {!!readBooks.length && <ReadBooks books={readBooks} />}
         </>
       ) : (
         <>

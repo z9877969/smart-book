@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Auth from '../../pages/Auth/Auth';
@@ -15,16 +15,17 @@ import { refreshUser } from '../../services/API';
 
 function App() {
   const dispatch = useDispatch();
+  const token = useSelector(state => state.session.token);
 
   useEffect(() => {
-    dispatch(refreshUser(), []);
-  });
-
+    dispatch(refreshUser(token));
+  }, []);
+  
   return (
     <>
+      <Loader />
       <CssBaseline />
       <Header />
-      <Loader />
 
       <Switch>
         <Route path="/registration" exact component={Auth} />
@@ -32,12 +33,12 @@ function App() {
         <ProtectedRoute
           component={LibraryPage}
           path="/library"
-          redirectTo="/library"
+          redirectTo="/login"
         />
         <ProtectedRoute
           component={TrainingPage}
           path="/training"
-          redirectTo="/training"
+          redirectTo="/login"
         />
         <Route path="/" component={StartPage} />
         <Route path="*">

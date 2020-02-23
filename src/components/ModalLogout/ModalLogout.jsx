@@ -18,7 +18,6 @@ const ModalLogout = props => {
     } else if (target.name === 'logout') {
       dispatch(logOut(token));
       dispatch(closeModal());
-      history.replace('/login');
       // onLogout(); // .then(() => closeModal()) - onLogout - операция разлогинивания которая возвращает промис
     }
   };
