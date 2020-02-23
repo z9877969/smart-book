@@ -1,22 +1,30 @@
-// import React from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import {withRouter} from 'react-router-dom';
-// import PropTypes from 'prop-types';
-// import styles from './Backdrop.module.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import styles from './Backdrop.module.css';
+import { closeModal } from '../../redux/backdrop/backdropActions';
 
-// const Backdrop = ({ component: Component, closeModal }) => {
+const Backdrop = ({ component: Component }) => {
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector(state => state.isModalOpen);
+  const handleClose = ({ target, key }) => {
+    if (target.id === 'backdrop') {
+      dispatch(closeModal());
+    }
 
-//   const isModalOpen = useSelector(state => state.isModalOpen);
+    if (key === 'Escape') {
+      dispatch(closeModal());
+    }
+  };
 
 //   const handleClose = ({ target, key }) => {
 //     if (target.id === 'backdrop') {
 //       closeModal();
 //     }
 
-//     if (key === 'Escape') {
-//       closeModal();
-//     }
-//   };
+Backdrop.propTypes = {
+  component: PropTypes.node.isRequired,
+};
 
 //   return (
 //     <>
