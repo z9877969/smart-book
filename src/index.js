@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import App from './containers/App/App';
@@ -68,9 +68,9 @@ const render = Component => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
-          <BrowserRouter>
+          <HashRouter to="/">
             <Component />
-          </BrowserRouter>{' '}
+          </HashRouter>{' '}
         </ThemeProvider>{' '}
       </PersistGate>{' '}
     </Provider>,
