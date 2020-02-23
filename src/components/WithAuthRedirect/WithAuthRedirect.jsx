@@ -12,14 +12,18 @@ const withAuthRedirect = BaseComponent => {
     componentDidMount() {
       this.transformLocation(this.props.loc);
       if (this.props.authenticated) {
-        this.props.history.replace(`${this.transformLocation(this.props.loc)}`);
+        this.props.history.replace(
+          `${this.transformLocation(this.props.loc)}` || '/library',
+        );
       }
     }
 
     componentDidUpdate() {
       this.transformLocation(this.props.loc);
       if (this.props.authenticated) {
-        this.props.history.replace(`${this.transformLocation(this.props.loc)}`);
+        this.props.history.replace(
+          `${this.transformLocation(this.props.loc)}` || '/library',
+        );
       }
     }
 
