@@ -59,9 +59,10 @@ const TrainingPage = props => {
 
   // effects
   useEffect(() => {
-    dispatch(getTrainingFromServer(token));
     if (!books || !books.length) {
-      dispatch(booksOperation(token));
+      dispatch(booksOperation(token)); // update books&training
+    } else if (!training.trainingId) {
+      dispatch(getTrainingFromServer(token)); // update only training as books are available
     }
   }, []);
 
