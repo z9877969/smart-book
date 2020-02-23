@@ -53,8 +53,8 @@ const TrainingPage = props => {
 
   const handleCloseCongrats = async () => {
     await dispatch(finishTraining(training.trainingId, token, credentials));
-    await dispatch(refreshUser(token));
     dispatch(closeCongratsModal());
+    await dispatch(refreshUser(token));
   };
 
   // effects

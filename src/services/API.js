@@ -25,8 +25,6 @@ import {
   trainingError,
 } from '../redux/training/trainingActions';
 
-// import { booksOperation } from '../redux/books/BooksOperations';
-
 // import { getUserToken } from '../redux/selectors/sessionSelectors';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_API_URL;
@@ -152,7 +150,9 @@ export const postTraining = (training, token) => dispatch => {
         type: 'USER_HAVE_TRAINING',
       });
     })
-    .then(() => dispatch(refreshUser(token)))
+    .then(() => {
+      dispatch(refreshUser(token));
+    })
     .catch(err => {
       throw err;
     });

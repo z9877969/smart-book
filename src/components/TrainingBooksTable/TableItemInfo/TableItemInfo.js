@@ -84,7 +84,10 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
 
     setBookId(idBook);
 
-    if (book.status === 'reading' && canCheckTrainingBook()) {
+    if (
+      (book.status === 'reading' && canCheckTrainingBook()) ||
+      (book.status === 'planned' && canCheckTrainingBook())
+    ) {
       book.status = 'readed';
       dispatch(bookUpdate(token, book));
       setToggleInput(true);
