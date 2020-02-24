@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from '@material-ui/core/Select';
+import moment from 'moment';
 import style from './Workout.module.css';
 import TrainingBookTable from '../TrainingBooksTable/TrainingBooksTable';
 import { postTraining } from '../../services/API';
@@ -36,7 +37,6 @@ const useStyles = makeStyles(() => ({
 
 const Workout = ({ handleChangeToGoal }) => {
   const dispatch = useDispatch();
-
   const classes = useStyles();
 
   // state
@@ -44,7 +44,9 @@ const Workout = ({ handleChangeToGoal }) => {
   const [books, setBooks] = useState([]);
   const [booksForRender, setBooksForRender] = useState([]);
   const [timeStart, setTimeStart] = useState(new Date().toISOString());
-  const [timeEnd, setTimeEnd] = useState();
+  const [timeEnd, setTimeEnd] = useState(moment().add(1, 'days'));
+  const [minTimeEnd, setMinTimeEnd] = useState(moment().add(1, 'days'));
+  const [maxTimeEnd, setMaxTimeEnd] = useState(moment().add(31, 'days'));
   const [avgReadPages, setAvgReadPages] = useState(0);
   const [selectedBook, setSelectedBook] = useState({
     _id: null,
@@ -68,6 +70,9 @@ const Workout = ({ handleChangeToGoal }) => {
   // handlers
   const handleTimeStart = date => {
     setTimeStart(date.toISOString());
+    setTimeEnd(moment(date).add(1, 'days'));
+    setMinTimeEnd(moment(date).add(1, 'days'));
+    setMaxTimeEnd(moment(date).add(31, 'days'));
     handleChangeToGoal({ startTime: date.toISOString() });
   };
 
@@ -93,12 +98,18 @@ const Workout = ({ handleChangeToGoal }) => {
 
   const handleAddTraining = async () => {
     if (booksForRender.length !== 0 && timeEnd) {
+      const submitMoment = moment();
+      const timeStartMoment = moment(timeStart);
+      const addDuration = submitMoment.diff(timeStartMoment);
+
       const training = {
         books,
-        timeStart,
-        timeEnd,
+        timeStart: timeStartMoment.add(addDuration),
+        timeEnd: timeEnd.add(addDuration),
         avgReadPages,
       };
+      // console.log(addDuration);
+      // console.log(training);
       await dispatch(postTraining(training, token));
     }
   };
@@ -135,6 +146,7 @@ const Workout = ({ handleChangeToGoal }) => {
               onChange={handleTimeStart}
               disablePast
               disableFuture
+              autoOk
               format="dd/MM/yyyy"
               InputProps={{ className: style.picker }}
             />
@@ -147,6 +159,9 @@ const Workout = ({ handleChangeToGoal }) => {
               value={timeEnd}
               onChange={handleTimeEnd}
               disablePast
+              autoOk
+              minDate={minTimeEnd}
+              maxDate={maxTimeEnd}
               format="dd/MM/yyyy"
               InputProps={{ className: style.picker }}
             />
