@@ -1,5 +1,4 @@
 import axios from 'axios';
-import * as apiEndpoint from '../api/apiEndpoint';
 import {
   loginRequest,
   loginSuccess,
@@ -11,11 +10,11 @@ import {
   logOutError,
 } from '../redux/login/loginActions';
 
-import {
-  registrationRequest,
-  registrationSuccess,
-  registrationError,
-} from '../redux/registration/registrationActions';
+// import {
+//   registrationRequest,
+//   registrationSuccess,
+//   registrationError,
+// } from '../redux/registration/registrationActions';
 
 import {
   getTraining,
@@ -52,16 +51,16 @@ export const login = credentials => dispatch => {
     });
 };
 
-export const registration = userValue => dispatch => {
-  dispatch(registrationRequest());
+// export const registration = userValue => dispatch => {
+//   dispatch(registrationRequest());
 
-  axios
-    .post(apiEndpoint.registration, userValue)
-    .then(response => {
-      return dispatch(registrationSuccess(response));
-    })
-    .catch(error => dispatch(registrationError(error)));
-};
+//   axios
+//     .post(apiEndpoint.registration, userValue)
+//     .then(response => {
+//       return dispatch(registrationSuccess(response));
+//     })
+//     .catch(error => dispatch(registrationError(error)));
+// };
 
 export const refreshUser = () => (dispatch, getState) => {
   const token = getUserToken(getState());

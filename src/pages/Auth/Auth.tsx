@@ -8,7 +8,7 @@ import styles from './Auth.module.css';
 import Quote from '../../components/Quote/Quote';
 import QuoteRegistration from '../../components/QuoteRegistration/QuoteRegistration';
 
-const Auth = props => {
+const Auth: React.FC = () => {
   const { pathname } = useLocation();
 
   return (
@@ -32,7 +32,7 @@ const Auth = props => {
           </Switch>
         </div>
       </div>
-      {props.location.pathname === '/login' ? <Quote /> : <QuoteRegistration />}
+      {pathname === '/login' ? <Quote /> : <QuoteRegistration />}
     </div>
   );
 };

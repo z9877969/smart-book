@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ActionType } from './loginActions';
+import { ActionType } from '../loginTS/types.ts';
 
 export const user = (state = null, { type, payload }) => {
   switch (type) {

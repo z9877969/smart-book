@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Auth from '../../pages/Auth/Auth';
+import Auth from '../../pages/Auth/Auth.tsx';
 import LibraryPage from '../../pages/LibraryPage/LibraryPage';
 import TrainingPage from '../../pages/TrainingPage/TrainingPage';
 import Header from '../../components/Header/Header';
@@ -11,7 +11,7 @@ import StartPage from '../../components/StartPage/StartPage';
 
 import Loader from '../../components/Loader/LoaderContainer';
 
-import { refreshUser } from '../../services/API';
+import { refreshUser } from '../../services/sessionAPI.ts';
 
 function App() {
   const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import RegistrationForm from './RegistrationForm';
-import { registration } from '../../services/API';
+import { registration } from '../../services/sessionAPI.ts';
 import validate from '../../utils/validateForFormik';
 import withAuthRedirect from '../WithAuthRedirect/WithAuthRedirect';
 import withConnectByGoogle from '../../hoc/WithConnectByGoogle';

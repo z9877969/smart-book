@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ModalLogout.module.css';
 import { closeModal } from '../Backdrop/backdropActions';
-import { logOut } from '../../services/API';
+import { logOut } from '../../services/sessionAPI.ts';
 import { getUserToken } from '../../redux/selectors/sessionSelectors';
 
 const ModalLogout = () => {

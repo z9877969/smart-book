@@ -7,10 +7,17 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import withAuthRedirect from '../WithAuthRedirect/WithAuthRedirect';
-import { login } from '../../services/API';
+import { login } from '../../services/sessionAPI';
 import styles from './LoginForm.module.css';
 import CustomButton from '../../shared-ui/CustomButton/CustomButton';
 import withConnectByGoogle from '../../hoc/WithConnectByGoogle';
+
+
+// interfaces
+interface Credentials {
+  email: string,
+  password: string,
+}
 
 const useStyles = makeStyles(() => ({
   emailInput: {
@@ -42,9 +49,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
+
   const classes = useStyles();
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -58,7 +67,7 @@ const LoginPage = () => {
     }),
     onSubmit: values => {
       JSON.stringify(values, null, 2);
-      const credential = {
+      const credential: Credentials = {
         email: values.email,
         password: values.password,
       };
