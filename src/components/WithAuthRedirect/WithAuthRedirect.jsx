@@ -13,7 +13,8 @@ const withAuthRedirect = BaseComponent => {
       this.transformLocation(this.props.loc);
       if (this.props.authenticated) {
         this.props.history.replace(
-          `${this.transformLocation(this.props.loc)}` || '/library',
+          // `${this.transformLocation(this.props.loc)}` ||
+           '/library',
         );
       }
     }
@@ -22,7 +23,8 @@ const withAuthRedirect = BaseComponent => {
       this.transformLocation(this.props.loc);
       if (this.props.authenticated) {
         this.props.history.replace(
-          `${this.transformLocation(this.props.loc)}` || '/library',
+          // `${this.transformLocation(this.props.loc)}` || 
+          '/library',
         );
       }
     }
