@@ -308,6 +308,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-wrap: break-word;
 }
 .p_name_book:hover {
   white-space: normal;
@@ -318,6 +319,7 @@
   text-overflow: ellipsis;
   padding-top: 7px;
   width: 125px;
+  word-wrap: break-word;
 }
 .p_avtor:hover {
   white-space: normal;

@@ -18,11 +18,12 @@ const AddBook = () => {
     initialValues: {
       bookName: '',
       bookAuthor: '',
-      bookDate: Date.now(),
+      bookDate: new Date(),
       pagesAmount: '',
     },
     onSubmit: (values, { resetForm }) => {
       // alert(JSON.stringify(values, null, 2));
+      if (values.pagesAmount <= 0) return;
       const book = {
         title: values.bookName,
         year: new Date(values.bookDate).getFullYear(),
@@ -50,6 +51,9 @@ const AddBook = () => {
 
   // const handleDateInput = date => {
   //   setbookDate(date);
+  // };
+  // const handleDateInput = date => {
+  //   formik.values.bookDate = date;
   // };
 
   // const createBook = event => {
@@ -103,7 +107,7 @@ const AddBook = () => {
           <MuiPickersUtilsProvider utils={DateFnsUtils} id="bookDate">
             <DatePicker
               value={formik.values.bookDate}
-              onChange={formik.handleChange}
+              onChange={date => formik.setFieldValue('bookDate', date)}
               className={styles.inputData}
               InputProps={{ className: styles.inputData }}
               views={['year']}
