@@ -20,14 +20,20 @@ const ContainerRegistrationForm = () => {
       passwordRepeat: '',
     },
     validationSchema: Yup.object({
-      userName: Yup.string().required("Email обов'язкове поле"),
-      email: Yup.string().required("Email обов'язкове поле"),
+      userName: Yup.string()
+        .min(3, "ПОЛЕ МІСТИТЬ ПОМИЛКУ")
+        .max(100, "ПОЛЕ МІСТИТЬ ПОМИЛКУ")
+        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
+      email: Yup.string()
+        .email('ПОЛЕ МІСТИТЬ ПОМИЛКУ')
+        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
       password: Yup.string()
         .min(6, 'Пароль має бути не менше 6 символів')
-        .required("Password обов'язкове поле"),
-      passwordRepeat: Yup.string().required("Password обов'язкове поле"),
+        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
+      passwordRepeat: Yup.string()
+        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
     }),
-    validate,
+    // validate,
     onSubmit: values => {
       JSON.stringify(values, null, 4);
 
