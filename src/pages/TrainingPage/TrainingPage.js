@@ -63,7 +63,7 @@ const TrainingPage = props => {
     if (!books || !books.length) {
       dispatch(booksOperation(token)); // update books&training
     } else if (!training.trainingId) {
-      dispatch(getTrainingFromServer(token)); // update only training as books are available
+      dispatch(getTrainingFromServer(token)); // update only training when books are available
     }
   }, []);
 

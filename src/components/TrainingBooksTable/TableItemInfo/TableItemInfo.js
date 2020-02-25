@@ -45,11 +45,11 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
   const pagesReadResult = getPagesResult(pagesReadResultArr);
   const trainingBook = getTrainingBook(id, trainingBooksArr);
   const trainingBookIdsArr = getTrainingBookIdsArr(trainingBooksArr);
-  const trainingBooksReading = booksFilterByStatus(
-    'reading',
-    trainingBookIdsArr,
-    books,
-  );
+  // const trainingBooksReading = booksFilterByStatus(
+  //   'reading',
+  //   trainingBookIdsArr,
+  //   books,
+  // );
   const canCheckTrainingBook = () => {
     const readedTrainingBooksFromBooks = booksFilterByStatus(
       'readed',
@@ -104,11 +104,11 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
 
   // effects
   // listener for updating training.unreadCount
-  useEffect(() => {
-    if (trainingBooksReading && !trainingBooksReading.length) {
-      dispatch(getTrainingFromServer(token));
-    }
-  }, [toggleInput]);
+  // useEffect(() => {
+  //   if (trainingBooksReading && !trainingBooksReading.length) {
+  //     dispatch(getTrainingFromServer(token));
+  //   }
+  // }, [toggleInput]);
 
   useEffect(() => {
     if (training && !training.unreadCount) {
