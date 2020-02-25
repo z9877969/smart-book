@@ -22,6 +22,8 @@ const Results = ({ training }) => {
   const [pagesReadResult, setPagesReadResult] = useState([]);
 
   const token = useSelector(state => state.session.token);
+  const pagesReadArr = useSelector(state => state.training.pagesReadResult);
+  const pagesTraining = useSelector(state => state.training.allPagesCount);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,6 +44,12 @@ const Results = ({ training }) => {
       }
     }
   }, [training]);
+
+  const checkReadPagesResult = value => {
+    const readPages = pagesReadArr.reduce((acc, resultObj) => acc + resultObj.count, 0);
+    if(value <= pagesTraining - readPages) return value;
+    return pagesTraining - readPages;
+  }
 
   const handleDateInput = date => {
     setSelectedDate(date);
@@ -105,7 +113,7 @@ const Results = ({ training }) => {
               type="number"
               name="pages"
               className={styles.input}
-              value={selectedPages}
+              value={checkReadPagesResult(selectedPages)}
               onChange={handlePagesInput}
             />
           </label>
