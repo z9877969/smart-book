@@ -44,7 +44,9 @@ const Workout = ({ handleChangeToGoal }) => {
   const [books, setBooks] = useState([]);
   const [booksForRender, setBooksForRender] = useState([]);
   const [timeStart, setTimeStart] = useState(new Date().toISOString());
-  const [timeEnd, setTimeEnd] = useState(moment().add(1, 'days'));
+  const [timeEnd, setTimeEnd] = useState(
+    new Date().setDate(new Date().getDate() + 1),
+  );
   const [minTimeEnd, setMinTimeEnd] = useState(moment().add(1, 'days'));
   const [maxTimeEnd, setMaxTimeEnd] = useState(moment().add(31, 'days'));
   const [avgReadPages, setAvgReadPages] = useState(0);
@@ -98,18 +100,24 @@ const Workout = ({ handleChangeToGoal }) => {
 
   const handleAddTraining = async () => {
     if (booksForRender.length !== 0 && timeEnd) {
-      const submitMoment = moment();
-      const timeStartMoment = moment(timeStart);
-      const addDuration = submitMoment.diff(timeStartMoment);
+      const submitMoment = new Date();
+      const timeStartMoment = new Date(timeStart);
+      const timeEndMoment = new Date(timeEnd);
+      const diffTime = Math.abs(timeEndMoment - timeStartMoment);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const addDuration = submitMoment - timeStartMoment;
 
       const training = {
         books,
-        timeStart: timeStartMoment.add(addDuration),
-        timeEnd: timeEnd.add(addDuration),
+        timeStart: new Date(timeStartMoment.getTime() + addDuration),
+        timeEnd: new Date(
+          timeStartMoment.getTime() +
+            addDuration +
+            diffDays * (1000 * 60 * 60 * 24),
+        ),
         avgReadPages,
       };
-      // console.log(addDuration);
-      // console.log(training);
+
       await dispatch(postTraining(training, token));
     }
   };
