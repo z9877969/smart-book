@@ -60,6 +60,9 @@
   height: 16px;
   margin-left: 10px;
 }
+.picker::after {
+  display: none;
+}
 
 .submitOverlay {
   margin: 0 auto;
