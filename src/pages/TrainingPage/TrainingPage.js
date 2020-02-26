@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import moment from 'moment';
 import PanelOfTimers from '../../components/Timer/PanelOfTimers';
 import Results from '../../components/Results/Results';
 import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
@@ -25,8 +26,8 @@ const TrainingPage = props => {
 
   // state
   const [goal, setGoal] = useState({
-    startTime: new Date(),
-    finishTime: new Date(),
+    startTime: moment(),
+    finishTime: moment().add(1, 'days'),
     countBooks: 0,
   });
 
@@ -62,7 +63,7 @@ const TrainingPage = props => {
     if (!books || !books.length) {
       dispatch(booksOperation(token)); // update books&training
     } else if (!training.trainingId) {
-      dispatch(getTrainingFromServer(token)); // update only training as books are available
+      dispatch(getTrainingFromServer(token)); // update only training when books are available
     }
   }, []);
 
@@ -73,16 +74,14 @@ const TrainingPage = props => {
 
   return (
     <div className={style.container}>
-      {' '}
-      {modalCongratsOpen && (
-        <ModalCongrats handleClick={handleCloseCongrats} />
-      )}{' '}
+      {modalCongratsOpen && <ModalCongrats handleClick={handleCloseCongrats} />}
       {training && training.trainingId ? (
         <div className={style.wrapper}>
           <PanelOfTimers />
           <Goal />
           <WorkoutInfo />
-          <Results training={training} /> <Chart training={training} />{' '}
+          <Results training={training} />
+          <Chart training={training} />
         </div>
       ) : (
         <div className={style.someContainer}>
@@ -91,11 +90,11 @@ const TrainingPage = props => {
               order: 2,
             }}
             {...goal}
-          />{' '}
-          <Workout handleChangeToGoal={handleChangeToGoal} />{' '}
-          {training.trainingId && <Chart training={training} />}{' '}
+          />
+          <Workout handleChangeToGoal={handleChangeToGoal} />
+          {training.trainingId && <Chart training={training} />}
         </div>
-      )}{' '}
+      )}
     </div>
   );
 };
