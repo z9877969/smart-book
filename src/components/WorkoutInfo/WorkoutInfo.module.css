@@ -1,21 +1,19 @@
 .container {
-  position: absolute;
-  top: 540px;
-  left: 50%;
-  transform: translateX(-50%);
+  order: 3;
+  width: 300px;
 }
 
 @media (min-width: 768px) {
   .container {
-    top: 310px;
+    width: 678px;
   }
 }
 
 @media (min-width: 1280px) {
   .container {
-    width: 880px;
-    top: 140px;
-    left: 4%;
-    transform: none;
+    width: 860px;
+    margin-top: -148px;
+    margin-left: 0px;
+    height: 200px;
   }
 }

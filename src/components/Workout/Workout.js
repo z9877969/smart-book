@@ -7,18 +7,22 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { MuiPickersUtilsProvider, DatePicker } from '@material-ui/pickers';
 import { useSelector, useDispatch } from 'react-redux';
 import Select from '@material-ui/core/Select';
+import moment from 'moment';
 import style from './Workout.module.css';
 import TrainingBookTable from '../TrainingBooksTable/TrainingBooksTable';
-import { addUserTraining } from '../../redux/userTraining/userTrainingActions';
 import { postTraining } from '../../services/API';
 import TableItemCreate from '../TrainingBooksTable/TableItemCreate/TableItemCreate';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   selectEmpty: {
     marginRight: '21px',
-    margin: theme.spacing(1),
+    // margin: theme.spacing(1),
     backgroundColor: 'transparent',
     background: 'transparent',
+    select: {
+      // background: '#fff',
+      backgroundColor: '#fff',
+    },
     '.MuiSelect-selectMenu': {
       paddingLeft: 10,
     },
@@ -28,34 +32,49 @@ const useStyles = makeStyles(theme => ({
     '&:focus': {
       background: '#fff',
     },
-    '.MuiSelect-select': {
-      background: '#fff',
-    },
   },
 }));
 
 const Workout = ({ handleChangeToGoal }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
+
+  // state
   const [selectedBookId, setSelectedBookId] = useState('');
   const [books, setBooks] = useState([]);
   const [booksForRender, setBooksForRender] = useState([]);
   const [timeStart, setTimeStart] = useState(new Date().toISOString());
-  const [timeEnd, setTimeEnd] = useState();
+  const [timeEnd, setTimeEnd] = useState(
+    new Date().setDate(new Date().getDate() + 1),
+  );
+  const [minTimeEnd, setMinTimeEnd] = useState(moment().add(1, 'days'));
+  const [maxTimeEnd, setMaxTimeEnd] = useState(moment().add(31, 'days'));
   const [avgReadPages, setAvgReadPages] = useState(0);
   const [selectedBook, setSelectedBook] = useState({
     _id: null,
     title: '',
   });
 
-  const dispatch = useDispatch();
+  // selectors
   const token = useSelector(state => state.session.token);
-
   const plannedBooks = useSelector(state =>
     state.books.filter(book => book.status === 'planned'),
   );
 
+  // helpers
+  const deleteBook = id => {
+    const updatedBooks = booksForRender.filter(el => el._id !== id);
+    setBooksForRender(updatedBooks);
+    setBooks(books.filter(el => el.book !== id));
+    handleChangeToGoal({ countBooks: booksForRender.length });
+  };
+
+  // handlers
   const handleTimeStart = date => {
     setTimeStart(date.toISOString());
+    setTimeEnd(moment(date).add(1, 'days'));
+    setMinTimeEnd(moment(date).add(1, 'days'));
+    setMaxTimeEnd(moment(date).add(31, 'days'));
     handleChangeToGoal({ startTime: date.toISOString() });
   };
 
@@ -64,7 +83,7 @@ const Workout = ({ handleChangeToGoal }) => {
     handleChangeToGoal({ finishTime: date.toISOString() });
   };
 
-  const handleSubmit = evt => {
+  const handleSubmitTrainingBook = evt => {
     evt.preventDefault();
     setSelectedBook({
       _id: null,
@@ -79,32 +98,27 @@ const Workout = ({ handleChangeToGoal }) => {
     setBooks([...books, { book: selectedBookId }]);
   };
 
-  const deleteBook = id => {
-    const updatedBooks = booksForRender.filter(el => el._id !== id);
-    setBooksForRender(updatedBooks);
-    setBooks(books.filter(el => el.book !== id));
-    handleChangeToGoal({ countBooks: booksForRender.lenght });
-  };
-
-  useEffect(() => {
-    const allPages = booksForRender.reduce(
-      (acc, el) => (el.pagesCount !== null ? acc + el.pagesCount : acc),
-      0,
-    );
-    setAvgReadPages(allPages);
-    handleChangeToGoal({ countBooks: booksForRender.lenght });
-  }, [booksForRender]);
-
-  const addTraining = () => {
+  const handleAddTraining = async () => {
     if (booksForRender.length !== 0 && timeEnd) {
+      const submitMoment = new Date();
+      const timeStartMoment = new Date(timeStart);
+      const timeEndMoment = new Date(timeEnd);
+      const diffTime = Math.abs(timeEndMoment - timeStartMoment);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const addDuration = submitMoment - timeStartMoment;
+
       const training = {
         books,
-        timeStart,
-        timeEnd,
+        timeStart: new Date(timeStartMoment.getTime() + addDuration),
+        timeEnd: new Date(
+          timeStartMoment.getTime() +
+            addDuration +
+            diffDays * (1000 * 60 * 60 * 24),
+        ),
         avgReadPages,
       };
-      dispatch(addUserTraining(training));
-      dispatch(postTraining(training, token));
+
+      await dispatch(postTraining(training, token));
     }
   };
 
@@ -113,36 +127,59 @@ const Workout = ({ handleChangeToGoal }) => {
     setSelectedBook(event.target.value);
   };
 
+  // effects
+  useEffect(() => {
+    const allPages = booksForRender.reduce(
+      (acc, el) => (el.pagesCount !== null ? acc + el.pagesCount : acc),
+      0,
+    );
+    setAvgReadPages(allPages);
+    handleChangeToGoal({ countBooks: booksForRender.length });
+  }, [booksForRender]);
+
   return (
     <div className={style.container}>
       <div className={style.titleContainer}>
         <p className={style.title}>Моє тренування</p>
       </div>
       <div className={style.pickers}>
-        <MuiPickersUtilsProvider
-          className={style.pickerOverlay}
-          utils={DateFnsUtils}
-        >
-          <DatePicker
-            value={timeStart}
-            onChange={handleTimeStart}
-            disablePast
-            disableFuture
-            format="dd/MM/yyyy"
-            InputProps={{ className: style.picker }}
-          />
-        </MuiPickersUtilsProvider>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <DatePicker
-            value={timeEnd}
-            onChange={handleTimeEnd}
-            disablePast
-            format="dd/MM/yyyy"
-            InputProps={{ className: style.picker }}
-          />
-        </MuiPickersUtilsProvider>
+        <div className={style.pickerWrapper}>
+          <div className={style.pickerTitle}>Початок тренування</div>
+          <MuiPickersUtilsProvider
+            className={style.pickerOverlay}
+            utils={DateFnsUtils}
+          >
+            <DatePicker
+              value={timeStart}
+              onChange={handleTimeStart}
+              disablePast
+              disableFuture
+              autoOk
+              format="dd/MM/yyyy"
+              InputProps={{ className: style.picker }}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
+        <div>
+          <div className={style.pickerTitle}>Кінець тренування</div>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <DatePicker
+              value={timeEnd}
+              onChange={handleTimeEnd}
+              disablePast
+              autoOk
+              minDate={minTimeEnd}
+              maxDate={maxTimeEnd}
+              format="dd/MM/yyyy"
+              InputProps={{ className: style.picker }}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
       </div>
       <div className={style.selectContainer}>
+        {selectedBook._id === null && (
+          <p className={style.placeholder}>Обрати книги з бібліотеки</p>
+        )}
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -151,7 +188,7 @@ const Workout = ({ handleChangeToGoal }) => {
           onChange={handleSelectBook}
           className={classes.selectEmpty}
           inputProps={{
-            placeholder: 'Виберіть книгу...',
+            placeholder: 'Обрати книги з бібліотеки',
             style: { paddingLeft: '10px' },
           }}
         >
@@ -163,7 +200,11 @@ const Workout = ({ handleChangeToGoal }) => {
               </MenuItem>
             ))}
         </Select>
-        <button type="button" className={style.button} onClick={handleSubmit}>
+        <button
+          type="button"
+          className={style.button}
+          onClick={handleSubmitTrainingBook}
+        >
           Додати
         </button>
       </div>
@@ -182,7 +223,11 @@ const Workout = ({ handleChangeToGoal }) => {
           ))}
       </TrainingBookTable>
       <div className={style.submitOverlay}>
-        <button type="submit" className={style.submit} onClick={addTraining}>
+        <button
+          type="submit"
+          className={style.submit}
+          onClick={handleAddTraining}
+        >
           Почати тренування
         </button>
       </div>

@@ -8,7 +8,7 @@ import makeStyle from '@material-ui/styles/makeStyles';
 import Logo from '../Logo/Logo';
 import ModalLogout from '../ModalLogout/ModalLogout';
 import styles from './Header.module.css';
-import { openModal } from '../Backdrop/backdropActions';
+import { openModal } from '../../redux/backdrop/backdropActions';
 import {
   getIsModalOpen,
   getAuthenticated,
@@ -37,8 +37,10 @@ const Header = () => {
   };
 
   const firstLetter = name => {
-    return name.split('')[0];
+    return name.split('')[0].toUpperCase();
   };
+
+  
 
   return (
     <div className={styles.container}>

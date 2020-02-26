@@ -16,15 +16,16 @@ import {
   registrationSuccess,
   registrationError,
 } from '../redux/registration/registrationActions';
-// import { addUserTraining } from '../redux/userTraining/userTrainingActions';
 
 import {
   getTraining,
   trainingRequest,
+  trainingPostRequest,
+  trainingFinished,
   trainingError,
 } from '../redux/training/trainingActions';
 
-import { getUserToken } from '../redux/selectors/sessionSelectors';
+// import { getUserToken } from '../redux/selectors/sessionSelectors';
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_API_URL;
 
@@ -60,15 +61,15 @@ export const registration = userValue => dispatch => {
     .catch(error => dispatch(registrationError(error)));
 };
 
-export const refreshUser = () => (dispatch, getState) => {
-  const token = getUserToken(getState());
+export const refreshUser = token => async dispatch => {
+  // const token = getUserToken(getState());
   if (!token) {
     return;
   }
   setAuthToken(token);
   dispatch(refreshUserRequest());
 
-  axios
+  await axios
     .get('/user/me')
     .then(response => {
       dispatch(refreshUserSuccess(response));
@@ -81,11 +82,6 @@ export const refreshUser = () => (dispatch, getState) => {
 export const logOut = token => dispatch => {
   setAuthToken(token);
   axios
-    // .post(`${process.env.REACT_APP_BASE_API_URL}/auth/logout`, {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // })
     .post(`${process.env.REACT_APP_BASE_API_URL}/auth/logout`)
     .then(() => {
       dispatch(logOutSuccess());
@@ -115,7 +111,33 @@ export const getTrainingFromServer = token => dispatch => {
     });
 };
 
+export const updateTraining = (trainingData, token) => dispatch => {
+  const data = Object.entries(trainingData)
+    .filter(entryArr => entryArr[0] !== 'trainingId')
+    .reduce((acc, [key, value]) => {
+      acc[key] = value;
+      return acc;
+    }, {});
+
+  dispatch(trainingRequest());
+
+  axios
+    .patch(
+      `${process.env.REACT_APP_BASE_API_URL}/training/${trainingData.trainingId}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+    .catch(err => {
+      throw err;
+    });
+};
+
 export const postTraining = (training, token) => dispatch => {
+  dispatch(trainingPostRequest());
   axios
     .post(`${process.env.REACT_APP_BASE_API_URL}/training`, training, {
       headers: {
@@ -128,7 +150,36 @@ export const postTraining = (training, token) => dispatch => {
         type: 'USER_HAVE_TRAINING',
       });
     })
+    .then(() => {
+      dispatch(refreshUser(token));
+    })
     .catch(err => {
-      console.log(err);
+      throw err;
+    });
+};
+
+export const finishTraining = (
+  trainingId,
+  token,
+  updateObj,
+) => async dispatch => {
+  await axios
+    .patch(
+      `${process.env.REACT_APP_BASE_API_URL}/training/${trainingId}`,
+      updateObj,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+    .then(res => {
+      dispatch(trainingFinished(res.data.training));
+    })
+    .then(() => {
+      dispatch(getTrainingFromServer(token));
+    })
+    .catch(err => {
+      throw err;
     });
 };

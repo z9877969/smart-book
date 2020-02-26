@@ -1,7 +1,11 @@
 .goalContainer,
 .goalContainerStat {
-  margin: 34px auto;
-  max-width: 325px;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 39px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   order: 2;
 }
 
@@ -10,23 +14,22 @@
 }
 
 .goalContainerStat {
-  height: 240px;
+  /* height: 240px; */
 }
 
 .goalTitleBox,
 .goalTitleBoxStat {
-  width: 325px;
+  width: 300px;
   height: 60px;
+  padding: 20px 40px;
   box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
   background-color: #b1b5c2;
 }
 
 .goalTitle {
-  padding: 20px 50px;
   margin: 0;
-  height: 18px;
   font-family: 'Montserrat';
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
@@ -37,11 +40,13 @@
 
 .goalBodyBox,
 .goalBodyBoxStat {
-  width: 325px;
+  width: 300px;
+  padding: 0 22px;
+  padding-top: 27px;
+  display: flex;
+  justify-content: space-between;
   box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
   background-color: #ffffff;
-  display: flex;
-  justify-content: center;
 }
 
 .goalBodyBox {
@@ -59,15 +64,15 @@
 }
 
 .goalDigitsBox {
-  width: 118px;
-  height: 98px;
-  margin: 43px 7px;
+  width: 80px;
+  height: 80px;
+  /* margin: 30px 4px; */
 }
 
 .goalDigitsBoxStat {
   width: 80px;
   height: 80px;
-  margin: 30px 4px;
+  /* margin: 30px 4px; */
 }
 
 .goalDigits,
@@ -77,18 +82,20 @@
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
-  line-height: 80px;
+  line-height: 78px;
   text-align: center;
   color: #091e3f;
 }
 
 .goalDigits {
-  font-size: 46px;
-  line-height: 98px;
+  font-size: 36px;
 }
 
-.goalDigitsStat,
 .goalDigitsStatLast {
+  font-size: 36px;
+}
+
+.goalDigitsStat {
   font-size: 36px;
 }
 
@@ -119,15 +126,18 @@
 .goalTextStat {
   width: 70px;
   font-size: 10px;
-  padding-top: 8px;
+  padding-top: 14px;
   overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .goalContainer,
   .goalContainerStat {
-    width: 680px;
+    max-width: 678px;
+    width: 100%;
     display: flex;
+    align-items: flex-start;
+    background-color: #ffffff;
     box-shadow: 1px 1.7px 1px 0 rgba(193, 196, 206, 0.4);
   }
 
@@ -137,47 +147,39 @@
   }
 
   .goalContainerStat {
-    margin-top: 20px;
-    height: 123px;
-    /* padding: 0 0 20px 0; */
-  }
-
-  .goalTitleBox,
-  .goalTitleBoxStat {
-    margin-left: 22px;
-    width: 312px;
-    margin-right: 22px;
+    justify-content: space-between;
+    width: 720px;
+    height: 128px;
+    padding: 20px 20px 0;
   }
 
   .goalTitleBoxStat {
     display: flex;
     justify-content: center;
-    margin-top: auto;
-    margin-bottom: auto;
   }
 
   .goalTitleBox {
-    margin-top: 22px;
+    width: 300px;
   }
 
   .goalBodyBox,
   .goalBodyBoxStat {
-    justify-content: center;
-    align-items: center;
+    padding: 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: none;
   }
 
   .goalBodyBox {
     height: 106px;
     width: 323px;
-    /* margin: 0 auto; */
-    /* display: flex;
-    justify-content: center; */
   }
 
   .goalBodyBoxStat {
-    width: 374px;
-    height: 123px;
-    margin-left: 8px;
+    width: 326px;
+    height: 105px;
+    padding-top: 0;
+    box-shadow: none;
   }
 
   .goalDigitsBox,
@@ -192,22 +194,21 @@
 
   .goalDigitsBoxStat {
     width: 100px;
-    margin: 0px 8px;
+    margin: 0;
   }
 
   .goalTitle {
     padding: 0;
-    line-height: 60px;
   }
 
   .goalDigits,
   .goalDigitsStat,
   .goalDigitsStatLast {
+    height: 60px;
     font-size: 40px;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
-    /* margin-top: 28px; */
     text-align: center;
     color: #091e3f;
     line-height: 60px;
@@ -220,7 +221,6 @@
   .goalText,
   .goalTextStat {
     width: 110px;
-    /* height: 10px; */
     font-size: 11px;
     line-height: 1;
     letter-spacing: normal;
@@ -235,9 +235,13 @@
 @media (min-width: 1280px) {
   .goalContainer,
   .goalContainerStat {
-    margin: 0 auto 34px auto;
     width: 300px;
-    display: block;
+    margin: 0;
+    padding: 0;
+    /* display: block; */
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: start;
   }
 
   .goalContainer {
@@ -246,6 +250,8 @@
 
   .goalContainerStat {
     height: 238px;
+    margin-top: 23px;
+    /* margin-left: 20px; */
   }
 
   .goalTitleBox,
@@ -262,7 +268,7 @@
   .goalBodyBox,
   .goalBodyBoxStat {
     width: 300px;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .goalBodyBox {
@@ -270,8 +276,12 @@
   }
 
   .goalBodyBoxStat {
-    height: 178px;
-    margin-left: 0;
+    height: 134px;
+    padding: 0 22px;
+    padding-top: 27px;
+    /* margin-left: 0; */
+    margin: 0;
+    /* padding-top: 50px; */
   }
 
   .goalDigitsBox {
@@ -281,9 +291,17 @@
   }
 
   .goalDigitsBoxStat {
-    width: 74px;
+    width: 80px;
     height: 80px;
-    margin: 28px 7px;
+    /* margin: 0; */
+    /* margin: 28px 7px; */
+  }
+
+  .goalDigits,
+  .goalDigitsStat,
+  .goalDigitsStatLast {
+    height: 80px;
+    margin: 0;
   }
 
   .goalDigits,
@@ -297,14 +315,14 @@
     line-height: 98px;
   }
 
-  .goalDigitsStat,
-  .goalDigitsStatLast {
+  .goalDigitsStat {
     font-size: 36px;
   }
 
   .goalDigitsStatLast {
     line-height: 80px;
     color: #ff6b07;
+    font-size: 36px;
   }
 
   .goalText,
@@ -325,6 +343,6 @@
   .goalTextStat {
     width: 75px;
     font-size: 11px;
-    padding-top: 8px;
+    padding-top: 20px;
   }
 }

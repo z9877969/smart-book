@@ -1,7 +1,7 @@
 .container {
-  padding: 28x 10px;
+  padding: 28px 0;
   margin: 0 auto;
-  width: 320px;
+  width: 300px;
 }
 
 .header {
@@ -22,6 +22,12 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.pickerTitle {
+  text-align: center;
+  color: var(--blue-grey);
+  margin-bottom: 3px;
 }
 
 .picker {
@@ -46,17 +52,43 @@
 
 .picker::before {
   position: absolute;
-  left: 20px;
+  /* left: 20px; */
   top: 10px;
   background: url(./calendar.png);
   background-repeat: no-repeat;
   width: 14px;
   height: 16px;
+  margin-left: 10px;
+}
+.picker::after {
+  display: none;
 }
 
 .submitOverlay {
   margin: 0 auto;
   width: 180px;
+}
+
+.selectContainer {
+  position: relative;
+}
+
+.placeholder {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.23;
+  letter-spacing: 0.39px;
+  text-align: left;
+  color: var(--blue-grey);
 }
 
 .submit {
@@ -118,9 +150,8 @@
 
 @media (min-width: 768px) {
   .container {
-    padding: 30px 44px 48px 44px;
     margin: 0 auto;
-    width: 768px;
+    width: 680px;
   }
 
   .pickers {
@@ -147,12 +178,13 @@
 
   .button {
     margin: 0;
+    margin-right: 2px;
   }
 }
 
 @media (min-width: 1280px) {
   .container {
     padding: 34px 40px 48px 40px;
-    width: 862px;
+    min-width: 862px;
   }
 }

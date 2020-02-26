@@ -10,6 +10,7 @@ const loaderReducers = (state = false, { type }) => {
     case ActionType.REGISTRATION_REQUEST:
     case ActionType.SET_GOOGLE_TOKEN:
     case trainingActions.ActionType.TRAINING_REQUEST:
+    case trainingActions.ActionType.TRAINING_POST_REQUEST:
     case ActionBooks.BOOK_UPDATE_START:
       return true;
     case ActionBooks.BOOKS_SUCCESS:

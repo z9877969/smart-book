@@ -24,6 +24,7 @@ export const postResultsOnServer = (
       dispatch(addResult(res.data.pagesReadResult));
     })
     .catch(err => {
-      console.log(err);
+      return err;
+      // console.log(err);
     });
 };

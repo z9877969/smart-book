@@ -6,10 +6,14 @@ import {
   createArrayOfCount,
   makeAverage,
   findDifference,
+  // planPosition,
+  // factPosition,
 } from './helpersFn';
 import styles from './Chart.module.css';
 
 const Chart = ({ training }) => {
+  // const width = document.documentElement.clientWidth;
+
   const {
     pagesReadResult: readPages,
     timeStart,
@@ -18,15 +22,27 @@ const Chart = ({ training }) => {
   } = training;
 
   const arrayOfDate = createArrayOfDate(readPages).sort();
-  const difference = findDifference(timeStart, timeEnd, arrayOfDate);
+  const difference = findDifference(timeStart, timeEnd);
   const arrayOfCount = createArrayOfCount(arrayOfDate, readPages);
-  const lastCountReadPage = arrayOfCount[arrayOfCount.length - 1];
-  const averageCountPage = (allPagesCount / difference).toFixed(0);
+  // const lastCountReadPage = arrayOfCount[arrayOfCount.length - 1];
+  const averageCountPage = Math.round(allPagesCount / difference);
   const { length } = arrayOfCount;
   const aim = makeAverage(averageCountPage, length);
 
-  console.log('lastCountReadPage: ', lastCountReadPage);
-  console.log('averageCountPage: ', averageCountPage);
+  // const legendPosition = {
+  //   plan: planPosition(
+  //     lastCountReadPage,
+  //     averageCountPage,
+  //     arrayOfCount,
+  //     width,
+  //   ),
+  //   fact: factPosition(
+  //     lastCountReadPage,
+  //     averageCountPage,
+  //     arrayOfCount,
+  //     width,
+  //   ),
+  // };
 
   const data = {
     labels: arrayOfDate,
@@ -52,10 +68,6 @@ const Chart = ({ training }) => {
     <div className={styles.ChartWrapper}>
       <h3 className={styles.title}>КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ</h3>
       <span className={styles.titleText}>{`${averageCountPage}`}</span>
-      {/* <div className={styles.planFactWrapper}>
-        <p className={styles.planFact}>План</p>
-        <p className={styles.planFact}>Факт</p>
-      </div> */}
       <Line
         data={data}
         options={{
@@ -81,18 +93,18 @@ const Chart = ({ training }) => {
           //   fontSize: 12,
           // },
           legend: {
-            display: false,
-            // position: 'right',
-            // padding: 20,
-            // labels: {
-            //   fontSize: 10,
-            //   fontFamily: 'Montserrat',
-            //   fontColor: '#242a37',
-            //   boxWidth: 5,
-            //   padding: 10,
-            //   fullWidth: false,
-            //   usePointStyle: true,
-            // },
+            display: true,
+            position: 'bottom',
+            padding: 20,
+            labels: {
+              fontSize: 12,
+              fontFamily: 'Open Sans',
+              fontColor: '#242a37',
+              boxWidth: 5,
+              padding: 10,
+              fullWidth: false,
+              usePointStyle: true,
+            },
           },
           scales: {
             yAxes: [
@@ -131,6 +143,7 @@ const Chart = ({ training }) => {
                   maxRotation: 45,
                   minRotation: 0,
                   fontSize: 10,
+                  paddingRight: 15,
                   fontFamily: 'Open Sans',
                 },
                 gridLines: {
@@ -141,12 +154,26 @@ const Chart = ({ training }) => {
           },
         }}
       />
+      {/* {length > 1 && (
+        <div className={styles.legendWrapper}>
+          <p
+            className={styles.legendItem}
+            style={{ bottom: `${legendPosition.plan}px` }}
+          >
+            План
+          </p>
+          <p
+            className={styles.legendItem}
+            style={{ bottom: `${legendPosition.fact}px` }}
+          >
+            Факт
+          </p>
+        </div>
+      )} */}
     </div>
   );
 };
-
 Chart.propTypes = {
   training: PropTypes.shape().isRequired,
 };
-
 export default Chart;
