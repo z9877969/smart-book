@@ -1,10 +1,13 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import DateFnsUtils from '@date-io/date-fns';
+import { Notyf } from 'notyf';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { useSelector, useDispatch } from 'react-redux';
 import { postBook } from '../../redux/books/BooksOperations';
 import { getUserToken } from '../../redux/selectors/sessionSelectors';
 import styles from './AddBook.module.css';
+import 'notyf/notyf.min.css';
 
 const AddBook = () => {
   const token = useSelector(state => getUserToken(state));
@@ -14,15 +17,31 @@ const AddBook = () => {
   const [bookDate, setbookDate] = useState(Date.now());
   const [pagesAmount, setpagesAmount] = useState('');
 
+  // Create an instance of Notyf
+  const notyf = new Notyf();
+
   const getInputValue = ({ target }) => {
     if (target.name === 'bookName') {
       setbookName(target.value);
       return;
     }
+
     if (target.name === 'bookAuthor') {
+      if (target.value.match(/^[\s-+]/)) {
+        notyf.error('Поле не може розпочинатись з пробіла або дефіса');
+      }
+      if (target.value.match(/[ˆ(\d)]/)) {
+        notyf.error('Дане поле не може містити в собі цифри');
+      }
+
+      if (!target.value.length) {
+        notyf.error('Заповніть поле');
+      }
+
       setbookAuthor(target.value);
-      return;
+      // return;
     }
+
     if (target.name === 'pagesAmount') {
       setpagesAmount(Number(target.value));
     }
@@ -34,6 +53,7 @@ const AddBook = () => {
 
   const createBook = event => {
     event.preventDefault();
+
     if (pagesAmount <= 0) return;
     const book = {
       title: bookName,
@@ -41,8 +61,10 @@ const AddBook = () => {
       pagesCount: pagesAmount,
     };
     if (bookAuthor.trim().length) book.author = bookAuthor;
-    dispatch(postBook(book, token));
 
+    // post into backend
+    dispatch(postBook(book, token));
+    // clearing inputs
     setbookName('');
     setbookAuthor('');
     setbookDate(Date.now());
