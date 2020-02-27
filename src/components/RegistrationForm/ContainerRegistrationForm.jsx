@@ -21,22 +21,21 @@ const ContainerRegistrationForm = () => {
     },
     validationSchema: Yup.object({
       userName: Yup.string()
-        .min(3, "ПОЛЕ МІСТИТЬ ПОМИЛКУ")
-        .max(100, "ПОЛЕ МІСТИТЬ ПОМИЛКУ")
-        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
+        .min(3, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ')
+        .max(100, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ')
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
       email: Yup.string()
         .email('ПОЛЕ МІСТИТЬ ПОМИЛКУ')
-        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
       password: Yup.string()
         .min(6, 'Пароль має бути не менше 6 символів')
-        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
-      passwordRepeat: Yup.string()
-        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
+        .max(30, 'Пароль має бути не більше 30 символів')
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
+      passwordRepeat: Yup.string().required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
     }),
     // validate,
     onSubmit: values => {
       JSON.stringify(values, null, 4);
-
       const userRequest = {
         name: {
           fullName: formik.values.userName,
