@@ -60,12 +60,12 @@ const ToAfterTimer = ({ timerTimeFinish, timerStop, title }) => {
 
 ToAfterTimer.propTypes = {
   timerStop: PropTypes.bool.isRequired,
-  timerTimeFinish: PropTypes.string.isRequired,
+  timerTimeFinish: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 
 ToAfterTimer.defaultProps = {
-  // timerTimeFinish: '2020-02-26T22:06:00',
+  timerTimeFinish: '2020-02-27T11:37:00',
   // timerStop: false,
   // isTimerTimeEnded: false,
 };

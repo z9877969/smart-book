@@ -21,7 +21,7 @@ const PanelOfTimers = () => {
           <div className={css.container}>
             <ToAfterTimer
               title="До досягнення мети залишилось"
-              timerTimeFinish={timeEndState}
+              // timerTimeFinish={timeEndState}
               timerStop={timerStop}
             />
           </div>
