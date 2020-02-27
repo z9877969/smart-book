@@ -77,6 +77,15 @@
   cursor: pointer;
 }
 
+.bookNameError,
+.bookAuthorError,
+.pagesAmountError {
+  display: inline;
+  color: var(--orangey-red);
+  position: absolute;
+  font-weight: 600;
+}
+
 @media (min-width: 768px) {
   .addBookForm {
     max-width: none;
@@ -114,6 +123,11 @@
   .addBtn {
     margin-bottom: 46px;
   }
+
+  .bookAuthorError {
+    display: block;
+    margin-top: -45px;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -148,6 +162,21 @@
   .addBtn {
     margin-top: 24px;
     margin-bottom: 56px;
+  }
+
+  .pagesAmountError {
+    display: block;
+    margin-top: -45px;
+  }
+
+  .bookNameError {
+    display: block;
+    margin-top: -20px;
+  }
+
+  .bookAuthorError {
+    display: block;
+    margin-top: -45px;
   }
 }
 
