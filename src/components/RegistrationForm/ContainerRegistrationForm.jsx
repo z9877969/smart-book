@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 
 import RegistrationForm from './RegistrationForm';
 import { registration } from '../../services/API';
-import validate from '../../utils/validateForFormik';
 import withAuthRedirect from '../WithAuthRedirect/WithAuthRedirect';
 import withConnectByGoogle from '../../hoc/WithConnectByGoogle';
 
@@ -42,7 +41,6 @@ const ContainerRegistrationForm = () => {
     // validate,
     onSubmit: values => {
       JSON.stringify(values, null, 4);
-
       const userRequest = {
         name: {
           fullName: formik.values.userName,
