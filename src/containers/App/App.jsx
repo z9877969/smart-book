@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     dispatch(refreshUser(token));
   }, []);
-  
+
   return (
     <>
       <Loader />
@@ -38,7 +38,7 @@ function App() {
         <ProtectedRoute
           component={TrainingPage}
           path="/training"
-          redirectTo="/training"
+          redirectTo="/login"
         />
         <Route path="/" component={StartPage} />
         <Route path="*">
