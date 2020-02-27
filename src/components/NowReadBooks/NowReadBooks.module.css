@@ -9,7 +9,7 @@
   display: flex;
 }
 .tittle {
-  margin-top: 62px;
+  margin-top: 138px;
   width: 69px;
   height: 15px;
   font-family: 'Montserrat';
@@ -98,13 +98,13 @@
   position: absolute;
 }
 .cardTitle {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 14px;
+  margin-top: 10px;
   padding-left: 55px;
   width: 205px;
-  height: 30px;
+  height: 32px;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -112,6 +112,7 @@
   line-height: 1.23;
   letter-spacing: 0.39px;
   text-align: left;
+  word-wrap: break-word;
 }
 
 .cardTitle:hover {
@@ -141,11 +142,13 @@
   color: grey;
 }
 .quantity {
-  white-space: nowrap;
+  /* white-space: nowrap; */
+  overflow: hidden;
+
   text-overflow: ellipsis;
   width: 109px;
   margin-top: 10px;
-  height: 11px;
+  height: 14px;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -153,6 +156,7 @@
   line-height: 1.23;
   letter-spacing: 0.39px;
   text-align: left;
+  word-wrap: break-word;
 }
 .quantity_year {
   width: 82px;
@@ -296,6 +300,7 @@
   letter-spacing: 0.39px;
   text-align: left;
   color: #242a37;
+  position: relative;
 }
 .author {
   margin: 0;
@@ -353,28 +358,36 @@
 }
 
 .p_name_book {
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
   padding-top: 14px;
   width: 200px;
+  word-wrap: break-word;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
-.p_name_book:hover {
+/* .p_name_book:hover {
   white-space: normal;
-}
+} */
 
 .p_avtor {
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-top: 14px;
+  /* padding-top: 14px; */
   width: 125px;
+  word-wrap: break-word;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
-.p_avtor:hover {
+/* .p_avtor:hover {
   white-space: normal;
-}
+} */
 
 @media (min-width: 768px) {
   .conteiner {
