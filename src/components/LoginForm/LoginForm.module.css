@@ -98,6 +98,7 @@ input[type='password'] {
   height: 55px;
   background-color: var(--orange);
   cursor: pointer;
+  margin-top: 15px;
   margin-bottom: 25px;
   font-family: 'Montserrat';
   font-weight: 600;
