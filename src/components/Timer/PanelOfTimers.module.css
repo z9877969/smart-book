@@ -4,6 +4,9 @@
 }
 
 @media (min-width: 768px) {
+  .container {
+    margin: 0;
+  }
   .panel {
     width: 678px;
     display: flex;

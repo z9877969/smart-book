@@ -13,30 +13,28 @@ const zeroPad = value => {
   return true;
 };
 
-const ToAfterTimer = ({ timerStop, isTimerTimeEnded, title }) => {
-  // const timeEndState = useSelector(state => state.training.timeEnd);
-  const timeEndState = '2020-02-26T19:30:11';
-  const [date, setDate] = useState(getTimeTrainingAfterEndObj(timeEndState));
+const ToAfterTimer = ({ timerTimeFinish, timerStop, title }) => {
+  const [date, setDate] = useState(getTimeTrainingAfterEndObj(timerTimeFinish));
+  const isTimerTimeEnded = Date.parse(timerTimeFinish) - Date.now() < 0;
 
   useEffect(() => {
+    // console.log('!timerStop_out :', !timerStop);
     if (!timerStop) {
+      // console.log('!timerStop_in :', !timerStop);
       setInterval(() => {
-        setDate(getTimeTrainingAfterEndObj(timeEndState, isTimerTimeEnded));
+        setDate(getTimeTrainingAfterEndObj(timerTimeFinish, isTimerTimeEnded));
       }, 1000);
     }
-  }, []);
+  }, [timerStop]);
 
   return (
-    timeEndState && (
+    timerTimeFinish && (
       <div className={css.container}>
         <h2 className={css.title}>{title}</h2>
         <div className={css.timerPanel}>
           {isTimerTimeEnded && <span>-</span>}
           <p>
-            <span className={css.value}>
-              {' '}
-              {isTimerTimeEnded ? date.day : -date.day}
-            </span>
+            <span className={css.value}>{date.day}</span>
             <span className={css.units}>дн</span>
           </p>
           <span>:</span>
@@ -61,14 +59,15 @@ const ToAfterTimer = ({ timerStop, isTimerTimeEnded, title }) => {
 };
 
 ToAfterTimer.propTypes = {
-  timerStop: PropTypes.bool,
-  isTimerTimeEnded: PropTypes.bool,
+  timerStop: PropTypes.bool.isRequired,
+  timerTimeFinish: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 
 ToAfterTimer.defaultProps = {
-  timerStop: false,
-  isTimerTimeEnded: false,
+  // timerTimeFinish: '2020-02-26T22:06:00',
+  // timerStop: false,
+  // isTimerTimeEnded: false,
 };
 
 export default ToAfterTimer;
