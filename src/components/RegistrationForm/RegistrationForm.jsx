@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -34,6 +34,19 @@ const FormOfRegistration = ({
   passwordRepeat,
 }) => {
   const classes = useStyles();
+
+  // adding a count of entered symbols
+  useEffect(() => {
+    const MAX_LENGTH = '30';
+    const passwordField = document.querySelector('input[name="password"]');
+    if (!passwordField) return;
+    passwordField.setAttribute('maxLength', MAX_LENGTH);
+    const passwordFieldRepeat = document.querySelector(
+      'input[name="passwordRepeat"]',
+    );
+    if (!passwordFieldRepeat) return;
+    passwordFieldRepeat.setAttribute('maxLength', MAX_LENGTH);
+  }, []);
 
   return (
     <form onSubmit={onSubmit} className={css.form}>
