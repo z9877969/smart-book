@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     dispatch(refreshUser(token));
   }, []);
-  
+
   return (
     <>
       <Loader />

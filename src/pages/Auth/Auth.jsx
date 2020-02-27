@@ -27,7 +27,6 @@ const Auth = props => {
               <Redirect to="/login" />
             </Route>
             <Route path="/login" exact component={LoginForm} />
-
             <Route path="/registration" exact component={RegistrationForm} />
           </Switch>
         </div>
