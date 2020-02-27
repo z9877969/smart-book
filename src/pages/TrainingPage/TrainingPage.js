@@ -19,6 +19,7 @@ import {
 import { closeCongratsModal } from '../../redux/modals/modalsActions';
 import { booksOperation } from '../../redux/books/BooksOperations';
 import { addLocation } from '../../redux/lastLocation/lastLocationAction';
+import { actionTimerRun } from '../../redux/timer/timerAction';
 import style from './TrainingPage.module.css';
 
 const TrainingPage = props => {
@@ -56,6 +57,7 @@ const TrainingPage = props => {
     await dispatch(finishTraining(training.trainingId, token, credentials));
     dispatch(closeCongratsModal());
     await dispatch(refreshUser(token));
+    dispatch(actionTimerRun());
   };
 
   // effects
