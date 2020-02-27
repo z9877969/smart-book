@@ -26,12 +26,18 @@
   min-height: 360px;
 }
 
+.formContainer {
+  width: 350px;
+  margin: auto;
+}
+
 @media (min-width: 768px) {
   .regContainer {
     background: linear-gradient(rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)),
       url('../../assets/images/tabletSignupBg.png');
     background-repeat: no-repeat;
     background-size: cover;
+    width: 100%;
     padding: 63px 20% 61px;
   }
 
@@ -47,6 +53,8 @@
   }
 
   .formContainer {
+    width: 460px;
+    margin: auto;
     background-color: var(--white);
     padding: 36px 42px;
   }
