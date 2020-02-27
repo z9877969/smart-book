@@ -21,17 +21,23 @@ const ContainerRegistrationForm = () => {
     },
     validationSchema: Yup.object({
       userName: Yup.string()
-        .min(3, "ПОЛЕ МІСТИТЬ ПОМИЛКУ")
-        .max(100, "ПОЛЕ МІСТИТЬ ПОМИЛКУ")
-        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
+        .matches(
+          /(^[a-zA-Z|a-zA-Z0-9|A-zА-яіїє]{3,100}$)|([^\s]+(\s.*))/,
+          'ПОЛЕ МІСТИТЬ ПОМИЛКУ',
+        )
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
       email: Yup.string()
         .email('ПОЛЕ МІСТИТЬ ПОМИЛКУ')
-        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
       password: Yup.string()
         .min(6, 'Пароль має бути не менше 6 символів')
-        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
+        .max(30, 'Пароль не може містити більше 30 символів')
+        .matches(/^(?![.]|-)/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ') // ? - если, ! - не
+        .matches(/^\S*$/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ')
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
       passwordRepeat: Yup.string()
-        .required("НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ"),
+        .oneOf([Yup.ref('password'), null], 'Паролі не співпадають')
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
     }),
     // validate,
     onSubmit: values => {

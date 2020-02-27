@@ -51,9 +51,14 @@ const LoginPage = () => {
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Email обов'язкове поле"),
+      email: Yup.string()
+        .email('ПОЛЕ МІСТИТЬ ПОМИЛКУ')
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
       password: Yup.string()
         .min(6, 'Пароль має бути не менше 6 символів')
+        .max(30, 'Пароль не може містити більше 30 символів')
+        .matches(/^(?![.]|-)/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ') // ? - если, ! - не
+        .matches(/^\S*$/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ')
         .required("Password обов'язкове поле"),
     }),
     onSubmit: values => {
