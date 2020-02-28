@@ -49,10 +49,14 @@ const Results = ({ training }) => {
   };
 
   const handlePagesInput = ({ target }) => {
-    const inputLength = target.value && target.value.split('').length;
-    
-    if(inputLength > 3) return;
-    return setSelectedPages(target.value);
+    const { value } = target;
+
+    const inputLength = value && value.split('').length;
+
+    if (!value.match(/^[0-9]/g) && inputLength > 0) return;
+    if (inputLength > 3) return;
+
+    setSelectedPages(value);
   };
 
   const handleSubmit = async e => {
@@ -110,6 +114,7 @@ const Results = ({ training }) => {
               className={styles.input}
               value={selectedPages}
               onChange={handlePagesInput}
+              min="0"
             />
           </label>
           <input
