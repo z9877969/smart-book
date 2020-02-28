@@ -41,7 +41,7 @@ const AddBook = () => {
         .required('ЗАПОВНІТЬ ПОЛЕ'),
     }),
     onSubmit: (values, { resetForm }) => {
-      // alert(JSON.stringify(values, null, 2));
+      JSON.stringify(values, null, 3);
       if (values.pagesAmount <= 0) return;
       const book = {
         title: values.bookName,
