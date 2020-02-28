@@ -41,7 +41,7 @@ const AddBook = () => {
         .required('ЗАПОВНІТЬ ПОЛЕ'),
     }),
     onSubmit: (values, { resetForm }) => {
-      // alert(JSON.stringify(values, null, 2));
+      JSON.stringify(values, null, 3);
       if (values.pagesAmount <= 0) return;
       const book = {
         title: values.bookName,
@@ -60,21 +60,21 @@ const AddBook = () => {
     const { name, value } = e.target;
     if (name === 'bookName' && !value.match(/^(?! )(?!-).*$/)) {
       setToastId(name);
-      toast('НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ', {
+      toast('НАЗВА КНИГИ НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ', {
         type: 'error',
         toastId,
       });
     }
     if (name === 'bookAuthor' && !value.match(/^(?! )(?!-)(?!(?:.*\d)).*$/)) {
       setToastId(name);
-      toast('НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ ТА МІСТИТИ ЦИФРИ', {
+      toast('ПОЛЕ АВТОР НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ ТА МІСТИТИ ЦИФРИ', {
         type: 'error',
         toastId,
       });
     }
     if (name === 'pagesAmount' && value.length > 4) {
       setToastId(name);
-      toast('ЗАНАДТО БАГАТО СТОРІНОК', {
+      toast('КІЛЬКІСТЬ СТОРІНОК НЕ БІЛЬШЕ 9999', {
         type: 'error',
         toastId,
       });
@@ -101,7 +101,7 @@ const AddBook = () => {
           />
           {formik.touched.bookName && formik.errors.bookName ? (
             <span className={styles.bookNameError}>
-              {formik.errors.bookName}
+              {/* {formik.errors.bookName} */}
             </span>
           ) : null}
         </label>
@@ -121,7 +121,7 @@ const AddBook = () => {
             />
             {formik.touched.bookAuthor && formik.errors.bookAuthor ? (
               <span className={styles.bookAuthorError}>
-                {formik.errors.bookAuthor}
+                {/* {formik.errors.bookAuthor} */}
               </span>
             ) : null}
           </label>
@@ -157,7 +157,7 @@ const AddBook = () => {
             />
             {formik.touched.pagesAmount && formik.errors.pagesAmount ? (
               <span className={styles.pagesAmountError}>
-                {formik.errors.pagesAmount}
+                {/* {formik.errors.pagesAmount} */}
               </span>
             ) : null}
           </label>
@@ -173,7 +173,7 @@ const AddBook = () => {
       </form>
       <ToastContainer
         position="top-center"
-        autoClose={2000}
+        autoClose={false}
         hideProgressBar
         closeOnClick
         pauseOnHover={false}
