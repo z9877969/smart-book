@@ -1,3 +1,7 @@
+:root {
+  --btn-exit-width: 40px;
+}
+
 .container {
   min-width: 320px;
   height: 60px;
@@ -85,6 +89,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  :root {
+    --btn-exit-margin-left: 14px;
+  }
+
   .container {
     width: 100%;
     padding: 2%;
@@ -112,14 +120,19 @@
     margin-right: 9px;
   }
   .buttonExit::after {
-    left: 88%;
+    left: unset;
+    right: calc(var(--btn-exit-width) + var(--btn-exit-margin-left));
   }
   .buttonExit {
-    margin-left: 14px;
+    margin-left: var(--btn-exit-margin-left);
   }
 }
 
 @media screen and (min-width: 1280px) {
+  :root {
+    --btn-exit-margin-left: 33px;
+  }
+
   .container {
     width: 100%;
     padding: 2.5%;
@@ -128,9 +141,9 @@
   .nav {
     width: 57%;
   }
-  .buttonExit::after {
+  /* .buttonExit::after {
     left: 94%;
-  }
+  } */
 
   .buttonExit {
     margin-left: 33px;

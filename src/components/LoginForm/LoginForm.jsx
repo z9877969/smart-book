@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { useDispatch } from 'react-redux';
@@ -51,9 +51,15 @@ const LoginPage = () => {
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Email обов'язкове поле"),
+      email: Yup.string()
+        .email('ПОЛЕ МІСТИТЬ ПОМИЛКУ')
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
       password: Yup.string()
+        .max(30, 'Пароль має бути не більше 30 символів')
         .min(6, 'Пароль має бути не менше 6 символів')
+        .max(30, 'Пароль не може містити більше 30 символів')
+        .matches(/^(?![.]|-)/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ') // ? - если, ! - не
+        .matches(/^\S*$/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ')
         .required("Password обов'язкове поле"),
     }),
     onSubmit: values => {
@@ -65,6 +71,14 @@ const LoginPage = () => {
       dispatch(login(credential));
     },
   });
+
+  // adding a count of entered symbols
+  useEffect(() => {
+    const MAX_LENGTH = '30';
+    const passwordField = document.querySelector('input[name="password"]');
+    if (!passwordField) return;
+    passwordField.setAttribute('maxLength', MAX_LENGTH);
+  }, []);
 
   return (
     <form onSubmit={formik.handleSubmit} className={styles.form}>

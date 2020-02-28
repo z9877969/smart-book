@@ -26,6 +26,17 @@
   margin: 0 20px 0 0;
   padding: 0 0 16px 0;
   color: var(--dark);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.bookData {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .bookInfo {
@@ -72,6 +83,17 @@
   .bookTitle {
     padding: 0;
     width: 262px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .bookData {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
   }
 
   .bookAuthor {
@@ -103,7 +125,15 @@
     width: 322px;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .bookData {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-word;
   }
 
   .bookAuthor {
