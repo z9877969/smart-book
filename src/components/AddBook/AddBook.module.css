@@ -26,6 +26,12 @@
   padding-left: 14px;
 }
 
+/* disable default styles for picker underliner */
+.inputData::before,
+.inputData::after {
+  display: none;
+}
+
 .labelTitle > .inputData,
 .labelAutor > .inputData,
 .labelYear > .inputData {
