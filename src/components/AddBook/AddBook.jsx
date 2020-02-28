@@ -101,7 +101,7 @@ const AddBook = () => {
           />
           {formik.touched.bookName && formik.errors.bookName ? (
             <span className={styles.bookNameError}>
-              {formik.errors.bookName}
+              {/* {formik.errors.bookName} */}
             </span>
           ) : null}
         </label>
@@ -121,7 +121,7 @@ const AddBook = () => {
             />
             {formik.touched.bookAuthor && formik.errors.bookAuthor ? (
               <span className={styles.bookAuthorError}>
-                {formik.errors.bookAuthor}
+                {/* {formik.errors.bookAuthor} */}
               </span>
             ) : null}
           </label>
@@ -157,7 +157,7 @@ const AddBook = () => {
             />
             {formik.touched.pagesAmount && formik.errors.pagesAmount ? (
               <span className={styles.pagesAmountError}>
-                {formik.errors.pagesAmount}
+                {/* {formik.errors.pagesAmount} */}
               </span>
             ) : null}
           </label>
