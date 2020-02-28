@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 
 import RegistrationForm from './RegistrationForm';
 import { registration } from '../../services/API';
-import validate from '../../utils/validateForFormik';
 import withAuthRedirect from '../WithAuthRedirect/WithAuthRedirect';
 import withConnectByGoogle from '../../hoc/WithConnectByGoogle';
 
@@ -20,17 +19,28 @@ const ContainerRegistrationForm = () => {
       passwordRepeat: '',
     },
     validationSchema: Yup.object({
-      userName: Yup.string().required("Email обов'язкове поле"),
-      email: Yup.string().required("Email обов'язкове поле"),
+      userName: Yup.string()
+        .matches(
+          /(^[a-zA-Z|a-zA-Z0-9|A-zА-яіїє]{3,100}$)|([^\s]+(\s.*))/,
+          'ПОЛЕ МІСТИТЬ ПОМИЛКУ',
+        )
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
+      email: Yup.string()
+        .email('ПОЛЕ МІСТИТЬ ПОМИЛКУ')
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
       password: Yup.string()
         .min(6, 'Пароль має бути не менше 6 символів')
-        .required("Password обов'язкове поле"),
-      passwordRepeat: Yup.string().required("Password обов'язкове поле"),
+        .max(30, 'Пароль не може містити більше 30 символів')
+        .matches(/^(?![.]|-)/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ') // ? - если, ! - не
+        .matches(/^\S*$/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ')
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
+      passwordRepeat: Yup.string()
+        .oneOf([Yup.ref('password'), null], 'Паролі не співпадають')
+        .required('НЕОБХІДНО ЗАПОВНИТИ ПОЛЕ'),
     }),
-    validate,
+    // validate,
     onSubmit: values => {
       JSON.stringify(values, null, 4);
-
       const userRequest = {
         name: {
           fullName: formik.values.userName,

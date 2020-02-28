@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 // import PropTypes from 'prop-types';
 import moment from 'moment';
-import styles from './Goal.module.css';
+import styles from './CreateTraningGoal.module.css';
 
 const CreateTraningGoal = ({ startTime, finishTime, countBooks }) => {
   const training = useSelector(state => state.training);
