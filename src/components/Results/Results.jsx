@@ -52,11 +52,11 @@ const Results = ({ training }) => {
     const { value } = target;
 
     const inputLength = value && value.split('').length;
-
-    if (!value.match(/^[0-9]/g) && inputLength > 0) return;
     if (inputLength > 3) return;
+    
+    const symbolValue = value >= 0 ? value : String(Math.abs(value));
 
-    setSelectedPages(value);
+    setSelectedPages(symbolValue);
   };
 
   const handleSubmit = async e => {
