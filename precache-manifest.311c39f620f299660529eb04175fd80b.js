@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4e3a5201f07c4787abfea7197bdf8a18",
+    "revision": "68a7d2b1da108f93c202c295cf1eb3b0",
     "url": "/smart-book/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/smart-book/static/css/2.5dbdccff.chunk.css"
   },
   {
-    "revision": "1787dbdf548f859f188e",
+    "revision": "c36ac6ceadf8bd70597a",
     "url": "/smart-book/static/css/main.9ca0735f.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/smart-book/static/js/2.94593db4.chunk.js"
   },
   {
-    "revision": "1787dbdf548f859f188e",
-    "url": "/smart-book/static/js/main.53563a09.chunk.js"
+    "revision": "c36ac6ceadf8bd70597a",
+    "url": "/smart-book/static/js/main.4759c727.chunk.js"
   },
   {
     "revision": "62fd0e1aeec16afb8db5",

@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/smart-book/static/css/main.9ca0735f.chunk.css",
-    "main.js": "/smart-book/static/js/main.53563a09.chunk.js",
-    "main.js.map": "/smart-book/static/js/main.53563a09.chunk.js.map",
+    "main.js": "/smart-book/static/js/main.4759c727.chunk.js",
+    "main.js.map": "/smart-book/static/js/main.4759c727.chunk.js.map",
     "runtime-main.js": "/smart-book/static/js/runtime-main.43009783.js",
     "runtime-main.js.map": "/smart-book/static/js/runtime-main.43009783.js.map",
     "static/css/2.5dbdccff.chunk.css": "/smart-book/static/css/2.5dbdccff.chunk.css",
     "static/js/2.94593db4.chunk.js": "/smart-book/static/js/2.94593db4.chunk.js",
     "static/js/2.94593db4.chunk.js.map": "/smart-book/static/js/2.94593db4.chunk.js.map",
     "index.html": "/smart-book/index.html",
-    "precache-manifest.ee2a99b0fe4afb5d723aa1bd04ac6cdd.js": "/smart-book/precache-manifest.ee2a99b0fe4afb5d723aa1bd04ac6cdd.js",
+    "precache-manifest.311c39f620f299660529eb04175fd80b.js": "/smart-book/precache-manifest.311c39f620f299660529eb04175fd80b.js",
     "service-worker.js": "/smart-book/service-worker.js",
     "static/css/2.5dbdccff.chunk.css.map": "/smart-book/static/css/2.5dbdccff.chunk.css.map",
     "static/css/main.9ca0735f.chunk.css.map": "/smart-book/static/css/main.9ca0735f.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.5dbdccff.chunk.css",
     "static/js/2.94593db4.chunk.js",
     "static/css/main.9ca0735f.chunk.css",
-    "static/js/main.53563a09.chunk.js"
+    "static/js/main.4759c727.chunk.js"
   ]
 }
