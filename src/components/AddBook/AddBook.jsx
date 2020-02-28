@@ -60,21 +60,21 @@ const AddBook = () => {
     const { name, value } = e.target;
     if (name === 'bookName' && !value.match(/^(?! )(?!-).*$/)) {
       setToastId(name);
-      toast('НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ', {
+      toast('НАЗВА КНИГИ НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ', {
         type: 'error',
         toastId,
       });
     }
     if (name === 'bookAuthor' && !value.match(/^(?! )(?!-)(?!(?:.*\d)).*$/)) {
       setToastId(name);
-      toast('НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ ТА МІСТИТИ ЦИФРИ', {
+      toast('ПОЛЕ АВТОР НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ ТА МІСТИТИ ЦИФРИ', {
         type: 'error',
         toastId,
       });
     }
     if (name === 'pagesAmount' && value.length > 4) {
       setToastId(name);
-      toast('ЗАНАДТО БАГАТО СТОРІНОК', {
+      toast('КІЛЬКІСТЬ СТОРІНОК НЕ БІЛЬШЕ 9999', {
         type: 'error',
         toastId,
       });
@@ -173,7 +173,7 @@ const AddBook = () => {
       </form>
       <ToastContainer
         position="top-center"
-        autoClose={2000}
+        autoClose={false}
         hideProgressBar
         closeOnClick
         pauseOnHover={false}
