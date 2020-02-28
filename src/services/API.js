@@ -46,6 +46,7 @@ export const login = credentials => dispatch => {
       dispatch(loginSuccess(response));
     })
     .catch(err => {
+      console.log(err.response);
       dispatch(loginError(err));
     });
 };
