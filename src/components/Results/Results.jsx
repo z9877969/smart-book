@@ -22,8 +22,6 @@ const Results = ({ training }) => {
   const [pagesReadResult, setPagesReadResult] = useState([]);
 
   const token = useSelector(state => state.session.token);
-  const pagesReadArr = useSelector(state => state.training.pagesReadResult);
-  const pagesTraining = useSelector(state => state.training.allPagesCount);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,20 +43,16 @@ const Results = ({ training }) => {
     }
   }, [training]);
 
-  // helpers
-  const checkReadPagesResult = value => {
-    const readPages = pagesReadArr.reduce((acc, resultObj) => acc + resultObj.count, 0);
-    if(value <= pagesTraining - readPages) return value;
-    return pagesTraining - readPages;
-  }
-
   // handlers
   const handleDateInput = date => {
     setSelectedDate(date);
   };
 
   const handlePagesInput = ({ target }) => {
-    setSelectedPages(target.value);
+    const inputLength = target.value && target.value.split('').length;
+    
+    if(inputLength > 3) return;
+    return setSelectedPages(target.value);
   };
 
   const handleSubmit = async e => {
@@ -113,9 +107,8 @@ const Results = ({ training }) => {
             <p className={styles.input_title}>Кількість сторінок</p>
             <input
               type="number"
-              name="pages"
               className={styles.input}
-              value={checkReadPagesResult(selectedPages)}
+              value={selectedPages}
               onChange={handlePagesInput}
             />
           </label>
