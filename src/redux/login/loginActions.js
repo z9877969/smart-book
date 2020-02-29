@@ -24,7 +24,7 @@ export const loginSuccess = response => ({
 
 export const loginError = error => ({
   type: ActionType.LOGIN_ERROR,
-  payload: error,
+  payload: error || null,
 });
 
 export const refreshUserRequest = () => ({
