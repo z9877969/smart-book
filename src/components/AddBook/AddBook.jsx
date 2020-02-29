@@ -58,25 +58,52 @@ const AddBook = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    if (name === 'bookName' && !value.match(/^(?! )(?!-).*$/)) {
+    if (
+      name === 'bookName' &&
+      toastId !== 'bookName' &&
+      !value.match(/^(?! )(?!-).*$/)
+    ) {
       setToastId(name);
-      toast('НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ', {
+      toast('НАЗВА КНИГИ НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ', {
         type: 'error',
         toastId,
       });
     }
-    if (name === 'bookAuthor' && !value.match(/^(?! )(?!-)(?!(?:.*\d)).*$/)) {
+    if (
+      name === 'bookAuthor' &&
+      toastId !== 'bookAuthor' &&
+      !value.match(/^(?! )(?!-)(?!(?:.*\d)).*$/)
+    ) {
       setToastId(name);
-      toast('НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ ТА МІСТИТИ ЦИФРИ', {
+      toast('ПОЛЕ АВТОР НЕ МОЖЕ ПОЧИНАТИСЯ З ПРОБІЛУ/ДЕФІСУ ТА МІСТИТИ ЦИФРИ', {
         type: 'error',
         toastId,
       });
     }
-    if (name === 'pagesAmount' && value.length > 4) {
+
+    if (
+      name === 'pagesAmount' &&
+      toastId !== 'pagesAmount' &&
+      !value.match(/^[0-9]/g) &&
+      value.length > 0
+    ) {
       setToastId(name);
-      toast('ЗАНАДТО БАГАТО СТОРІНОК', {
+      toast(`КІЛЬКІСТЬ СТОРІНОК НЕ МОЖЕ БУТИ ВІД'ЄМНОЮ`, {
         type: 'error',
-        toastId,
+        toastId: 'pagesAmountNegative',
+      });
+      return;
+    }
+
+    if (
+      name === 'pagesAmount' &&
+      toastId !== 'pagesAmountOverlimit' &&
+      value.length > 4
+    ) {
+      setToastId(name);
+      toast('КІЛЬКІСТЬ СТОРІНОК НЕ БІЛЬШЕ 9999', {
+        type: 'error',
+        toastId: 'pagesAmountOverlimit',
       });
     }
 
@@ -99,11 +126,6 @@ const AddBook = () => {
             onBlur={formik.handleBlur}
             required
           />
-          {formik.touched.bookName && formik.errors.bookName ? (
-            <span className={styles.bookNameError}>
-              {/* {formik.errors.bookName} */}
-            </span>
-          ) : null}
         </label>
         <div className={styles.tabletWrapper}>
           <label htmlFor="bookAuthor" className={styles.labelAutor}>
@@ -119,11 +141,6 @@ const AddBook = () => {
               onBlur={formik.handleBlur}
               required
             />
-            {formik.touched.bookAuthor && formik.errors.bookAuthor ? (
-              <span className={styles.bookAuthorError}>
-                {/* {formik.errors.bookAuthor} */}
-              </span>
-            ) : null}
           </label>
           <label htmlFor="bookDate" className={styles.labelYear}>
             <div className={styles.inputTitle}>Рік випуску</div>
@@ -155,11 +172,6 @@ const AddBook = () => {
               min="0"
               required
             />
-            {formik.touched.pagesAmount && formik.errors.pagesAmount ? (
-              <span className={styles.pagesAmountError}>
-                {/* {formik.errors.pagesAmount} */}
-              </span>
-            ) : null}
           </label>
         </div>
         <label htmlFor="addBtn">
@@ -173,7 +185,7 @@ const AddBook = () => {
       </form>
       <ToastContainer
         position="top-center"
-        autoClose={2000}
+        autoClose={false}
         hideProgressBar
         closeOnClick
         pauseOnHover={false}
