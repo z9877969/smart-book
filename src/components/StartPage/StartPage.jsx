@@ -87,8 +87,8 @@ const StartPage = () => {
           </div>
         </div>
       ) : (
-          <Redirect to="/login" />
-        )}
+        <Redirect to="/login" />
+      )}
     </>
   );
 };

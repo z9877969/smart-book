@@ -2,7 +2,8 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -59,6 +60,7 @@ const LoginPage = () => {
         .min(6, 'Пароль має бути не менше 6 символів')
         .max(30, 'Пароль не може містити більше 30 символів')
         .matches(/^(?![.]|-)/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ') // ? - если, ! - не
+        .matches(/^[a-zA-Z|a-zA-Z0-9].*$/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ')
         .matches(/^\S*$/, 'ПОЛЕ МІСТИТЬ ПОМИЛКУ')
         .required("Password обов'язкове поле"),
     }),
@@ -80,48 +82,78 @@ const LoginPage = () => {
     passwordField.setAttribute('maxLength', MAX_LENGTH);
   }, []);
 
+  // handle server error
+  const error = useSelector(state => state.session.error);
+  useEffect(() => {
+    if (!error) return;
+    let errorMessage;
+    if (error.status === 400) {
+      errorMessage = error.data.error;
+      if (error.data.error.includes('password')) {
+        const prevEmail = formik.values.email;
+        formik.resetForm({ email: '', password: '' });
+        formik.setFieldValue('email', prevEmail);
+      } else {
+        formik.resetForm({ email: '', password: '' });
+      }
+    }
+    if (error.status === 500) {
+      errorMessage = 'Internal Server Error';
+    }
+    toast(errorMessage);
+  }, [error]);
+
   return (
-    <form onSubmit={formik.handleSubmit} className={styles.form}>
-      <label className={styles.label} htmlFor="email">
-        <p className={styles.emailText}>Електронна адреса</p>
-        <TextField
-          id="custom-css-outlined-input"
-          {...formik.getFieldProps('email')}
-          type="email"
-          variant="filled"
-          className={classes.emailInput}
-          label="your@email.com"
-        />
-      </label>
-      {formik.touched.email && formik.errors.email ? (
-        <span className={styles.emailError}>{formik.errors.email}</span>
-      ) : null}
-      <label className={styles.label} htmlFor="password">
-        <p className={styles.passwordText}>Пароль</p>
-        <TextField
-          id="custom-css-outlined-input"
-          {...formik.getFieldProps('password')}
-          type="password"
-          variant="filled"
-          className={classes.passwordInput}
-          label="Password"
-        />
-      </label>
-      {formik.touched.password && formik.errors.password ? (
-        <span className={styles.passwordError}>{formik.errors.password}</span>
-      ) : null}
-      <CustomButton
-        size="large"
-        type="submit"
-        variant="contained"
-        className={styles.logInButton}
-      >
-        Увійти
-      </CustomButton>
-      <Link to="/registration" className={styles.singInLink}>
-        Реєстрація
-      </Link>
-    </form>
+    <>
+      <form onSubmit={formik.handleSubmit} className={styles.form}>
+        <label className={styles.label} htmlFor="email">
+          <p className={styles.emailText}>Електронна адреса</p>
+          <TextField
+            id="custom-css-outlined-input"
+            {...formik.getFieldProps('email')}
+            type="email"
+            variant="filled"
+            className={classes.emailInput}
+            label="your@email.com"
+          />
+        </label>
+        {formik.touched.email && formik.errors.email ? (
+          <span className={styles.emailError}>{formik.errors.email}</span>
+        ) : null}
+        <label className={styles.label} htmlFor="password">
+          <p className={styles.passwordText}>Пароль</p>
+          <TextField
+            id="custom-css-outlined-input"
+            {...formik.getFieldProps('password')}
+            type="password"
+            variant="filled"
+            className={classes.passwordInput}
+            label="Password"
+          />
+        </label>
+        {formik.touched.password && formik.errors.password ? (
+          <span className={styles.passwordError}>{formik.errors.password}</span>
+        ) : null}
+        <CustomButton
+          size="large"
+          type="submit"
+          variant="contained"
+          className={styles.logInButton}
+        >
+          Увійти
+        </CustomButton>
+        <Link to="/registration" className={styles.singInLink}>
+          Реєстрація
+        </Link>
+      </form>
+      <ToastContainer
+        position="top-center"
+        autoClose={false}
+        hideProgressBar
+        closeOnClick
+        pauseOnHover={false}
+      />
+    </>
   );
 };
 
