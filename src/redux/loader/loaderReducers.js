@@ -15,6 +15,7 @@ const loaderReducers = (state = false, { type }) => {
       return true;
     case ActionBooks.BOOKS_SUCCESS:
     case ActionType.LOGIN_SUCCESS:
+    case ActionType.LOGIN_ERROR:
     case ActionType.REFRESH_USER_SUCCESS:
     case ActionType.REGISTRATION_SUCCESS:
     case trainingActions.ActionType.GET_TRAINING:
