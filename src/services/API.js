@@ -47,8 +47,8 @@ export const login = credentials => dispatch => {
     })
     .catch(err => {
       dispatch(loginError(err.response));
-    })
-    .finally(dispatch(loginError()));
+    });
+  // .finally(dispatch(loginError()));
 };
 
 export const registration = userValue => dispatch => {
@@ -76,7 +76,9 @@ export const refreshUser = token => async dispatch => {
       dispatch(refreshUserSuccess(response));
     })
     .catch(err => {
-      dispatch(refreshUserError(err.response));
+      dispatch(refreshUserError(err));
+      // dispatch(logOutSuccess());
+      // clearAuthToken();
     });
 };
 

@@ -28,3 +28,5 @@ export const getLocalTime = timeUTS => {
   a._tzm = timeZone;
   return a.format().split('+')[0];
 };
+
+export const timeEndState = '2020-02-29T20:55:20.761Z';

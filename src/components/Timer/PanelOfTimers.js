@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import Timer from './Timer';
 import ToAfterTimer from './ToAfterTimer';
 import { endOfYearIso } from './timerHelpers';
+// import { timeEndState } from './timerHelpers';
 import css from './PanelOfTimers.module.css';
 
 const PanelOfTimers = () => {
+  // selectors
+  const isTimerStop = useSelector(state => state.timer.isTimerStop);
   const timeEndState = useSelector(state => state.training.timeEnd);
-  const timerStop = useSelector(state => state.timerStop);
 
   return (
     <div className={css.container}>
@@ -21,7 +23,7 @@ const PanelOfTimers = () => {
             <ToAfterTimer
               title="До досягнення мети залишилось"
               timerTimeFinish={timeEndState}
-              timerStop={timerStop}
+              isTimerStop={isTimerStop}
             />
           </div>
         )}

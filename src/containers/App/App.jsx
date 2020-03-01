@@ -8,14 +8,44 @@ import TrainingPage from '../../pages/TrainingPage/TrainingPage';
 import Header from '../../components/Header/Header';
 import ProtectedRoute from '../../components/ProtectedRoute/ProtectedRoute';
 import StartPage from '../../components/StartPage/StartPage';
-
 import Loader from '../../components/Loader/LoaderContainer';
+import ModalNotFinishedTraining from '../../components/ModalNotFinishedTraining/ModalNotFinishedTraining';
 
 import { refreshUser } from '../../services/API';
+import { openModalNotFinished } from '../../redux/modals/modalsActions';
+// import { actionIsTimerTimeEnded } from '../../redux/timer/timerAction';
+// import { timeEndState } from '../../components/Timer/timerHelpers';
 
 function App() {
   const dispatch = useDispatch();
+  
+  // selectors
   const token = useSelector(state => state.session.token);
+  const user = useSelector(state => state.user);
+  const isTimeEnded = useSelector(state => state.timer.isTimerTimeEnded);
+  // const timeEndState = useSelector(state => state.training.timeEnd);
+  const isOpenModalNotFinished = useSelector(state => state.isModalsOpen.notFinishedModalReducer);
+
+  // effects  
+  useEffect(() => {
+      if(isTimeEnded && !!user && user.haveTraining) {
+          // console.log('isTimeEnded_user', isTimeEnded);
+          dispatch(openModalNotFinished())
+      }
+  }, [user])
+
+  useEffect(() => {
+    if(isTimeEnded && user && user.haveTraining){ 
+      // console.log('isTimeEnded');
+      dispatch(openModalNotFinished()) 
+    }
+  }, [isTimeEnded]);
+
+  // useEffect(() => {
+  //   const isTimerTimeEnded = Date.parse(timeEndState) - Date.now() < 0;
+  //   console.log('isTimerTimeEnded :', isTimerTimeEnded);
+  //   isTimerTimeEnded && dispatch(actionIsTimerTimeEnded(isTimerTimeEnded));
+  // }, [])
 
   useEffect(() => {
     dispatch(refreshUser(token));
@@ -23,7 +53,8 @@ function App() {
 
   return (
     <>
-      <Loader />
+      <Loader />      
+      {isOpenModalNotFinished && <ModalNotFinishedTraining />}
       <CssBaseline />
       <Header />
 
