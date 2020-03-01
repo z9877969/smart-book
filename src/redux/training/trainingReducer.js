@@ -31,6 +31,8 @@ const trainingReducer = (state = initialState, { type, payload }) => {
       };
     case ActionType.FINISHED_TRAINING:
       return { ...payload };
+    case ActionType.LOGOUT_TRAINING:
+      return {};
     default:
       return state;
   }
