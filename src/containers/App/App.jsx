@@ -13,7 +13,7 @@ import ModalNotFinishedTraining from '../../components/ModalNotFinishedTraining/
 
 import { refreshUser } from '../../services/API';
 import { openModalNotFinished } from '../../redux/modals/modalsActions';
-// import { actionIsTimerTimeEnded } from '../../redux/timer/timerAction';
+import { actionIsTimerTimeEnded } from '../../redux/timer/timerAction';
 // import { timeEndState } from '../../components/Timer/timerHelpers';
 
 function App() {
@@ -23,33 +23,30 @@ function App() {
   const token = useSelector(state => state.session.token);
   const user = useSelector(state => state.user);
   const isTimeEnded = useSelector(state => state.timer.isTimerTimeEnded);
-  // const timeEndState = useSelector(state => state.training.timeEnd);
+  const timeEndState = useSelector(state => state.training.timeEnd);
+  const training = useSelector(state => state.training);
   const isOpenModalNotFinished = useSelector(state => state.isModalsOpen.notFinishedModalReducer);
 
   // effects  
   useEffect(() => {
-      if(isTimeEnded && !!user && user.haveTraining) {
-          // console.log('isTimeEnded_user', isTimeEnded);
-          dispatch(openModalNotFinished())
-      }
-  }, [user])
+    dispatch(refreshUser(token));
+  }, []);
 
+  // handle if timer pass from 0 on TrainingPage
   useEffect(() => {
     if(isTimeEnded && user && user.haveTraining){ 
-      // console.log('isTimeEnded');
+      console.log('isTimeEnded', isTimeEnded);
       dispatch(openModalNotFinished()) 
     }
   }, [isTimeEnded]);
 
-  // useEffect(() => {
-  //   const isTimerTimeEnded = Date.parse(timeEndState) - Date.now() < 0;
-  //   console.log('isTimerTimeEnded :', isTimerTimeEnded);
-  //   isTimerTimeEnded && dispatch(actionIsTimerTimeEnded(isTimerTimeEnded));
-  // }, [])
-
+  // handle if user login or refresh app
   useEffect(() => {
-    dispatch(refreshUser(token));
-  }, []);
+    const isTimerTimeEnded = timeEndState ? Date.parse(timeEndState) - Date.now() < 0 : false;
+    console.log('isTimerTimeEnded_training.trainingId:', isTimerTimeEnded);
+    dispatch(actionIsTimerTimeEnded(isTimerTimeEnded));
+  }, [training.trainingId])
+
 
   return (
     <>

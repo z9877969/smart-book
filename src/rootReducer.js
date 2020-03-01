@@ -24,12 +24,6 @@ const locationPersistConfig = {
   storage,
 };
 
-const timeEndedConfig = {
-  key: 'timeEnded',
-  storage,
-  whitelist: ['isTimerTimeEnded'],
-};
-
 const rootReducer = combineReducers({
   user,
   books: booksReducer,
@@ -42,7 +36,7 @@ const rootReducer = combineReducers({
   userTraining: userTrainingReducer,
   updatedBook: updatedBookReducer,
   lastLocation: persistReducer(locationPersistConfig, locationReducer),
-  timer: persistReducer(timeEndedConfig, timerReducer),
+  timer: timerReducer,
 });
 
 export default rootReducer;

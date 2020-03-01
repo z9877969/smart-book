@@ -23,7 +23,6 @@ const ToAfterTimer = ({ timerTimeFinish, isTimerStop, title }) => {
 
   // helpers
   const isTimerTimeEnded = Date.parse(timerTimeFinish) - Date.now() < 0;
-  // console.log('isTimerTimeEnded :', isTimerTimeEnded);
 
   // effects
   // handler start timer
@@ -34,6 +33,7 @@ const ToAfterTimer = ({ timerTimeFinish, isTimerStop, title }) => {
 
     setTimerId(timer);
   }, []);
+
   // handler stop timer
   if (isTimerStop) {
     clearInterval(timerId);

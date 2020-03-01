@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Timer from './Timer';
 import ToAfterTimer from './ToAfterTimer';
 import { endOfYearIso } from './timerHelpers';
-// import { timeEndState } from './timerHelpers';
 import css from './PanelOfTimers.module.css';
 
 const PanelOfTimers = () => {
