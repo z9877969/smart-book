@@ -77,8 +77,6 @@ export const refreshUser = token => async dispatch => {
     })
     .catch(err => {
       dispatch(refreshUserError(err.response));
-      // dispatch(logOutSuccess());
-      // clearAuthToken();
     });
 };
 
