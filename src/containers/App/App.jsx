@@ -14,7 +14,6 @@ import ModalNotFinishedTraining from '../../components/ModalNotFinishedTraining/
 import { refreshUser } from '../../services/API';
 import { openModalNotFinished } from '../../redux/modals/modalsActions';
 import { actionIsTimerTimeEnded } from '../../redux/timer/timerAction';
-// import { timeEndState } from '../../components/Timer/timerHelpers';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,7 +34,6 @@ function App() {
   // handle if timer pass from 0 on TrainingPage
   useEffect(() => {
     if(isTimeEnded && user && user.haveTraining){ 
-      console.log('isTimeEnded', isTimeEnded);
       dispatch(openModalNotFinished()) 
     }
   }, [isTimeEnded]);
@@ -43,7 +41,6 @@ function App() {
   // handle if user login or refresh app
   useEffect(() => {
     const isTimerTimeEnded = timeEndState ? Date.parse(timeEndState) - Date.now() < 0 : false;
-    console.log('isTimerTimeEnded_training.trainingId:', isTimerTimeEnded);
     dispatch(actionIsTimerTimeEnded(isTimerTimeEnded));
   }, [training.trainingId])
 
