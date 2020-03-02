@@ -114,6 +114,12 @@
   letter-spacing: 0.39px;
   text-align: left;
 }
+.cardTitle,
+.quantity,
+.quantity_year {
+  color: var(--dark);
+  font-weight: 500;
+}
 
 /* tablet */
 .tablet {
@@ -342,6 +348,13 @@
 /* .p_avtor:hover {
   white-space: normal;
 } */
+.p_name_book,
+.p_avtor,
+.year,
+.page {
+  color: var(--dark);
+  font-weight: 500;
+}
 
 @media (min-width: 768px) {
   .conteiner {

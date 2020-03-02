@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTimeTrainingAfterEndObj } from './timerHelpers';
+import { actionIsTimerTimeEnded } from '../../redux/timer/timerAction';
 import css from './Timer.module.css';
 
 const zeroPad = value => {
@@ -12,11 +14,18 @@ const zeroPad = value => {
   return true;
 };
 
-const ToAfterTimer = ({ timerTimeFinish, timerStop, title }) => {
+const ToAfterTimer = ({ timerTimeFinish, isTimerStop, title }) => {
+  const dispatch = useDispatch();
+
+  // state
   const [date, setDate] = useState(getTimeTrainingAfterEndObj(timerTimeFinish));
   const [timerId, setTimerId] = useState(null);
+
+  // helpers
   const isTimerTimeEnded = Date.parse(timerTimeFinish) - Date.now() < 0;
 
+  // effects
+  // handler start timer
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(getTimeTrainingAfterEndObj(timerTimeFinish, isTimerTimeEnded));
@@ -25,9 +34,14 @@ const ToAfterTimer = ({ timerTimeFinish, timerStop, title }) => {
     setTimerId(timer);
   }, []);
 
-  if (timerStop) {
+  // handler stop timer
+  if (isTimerStop) {
     clearInterval(timerId);
   }
+
+  useEffect(() => {
+    dispatch(actionIsTimerTimeEnded(isTimerTimeEnded));
+  }, [isTimerTimeEnded]);
 
   return (
     timerTimeFinish && (
@@ -61,7 +75,7 @@ const ToAfterTimer = ({ timerTimeFinish, timerStop, title }) => {
 };
 
 ToAfterTimer.propTypes = {
-  timerStop: PropTypes.bool.isRequired,
+  isTimerStop: PropTypes.bool.isRequired,
   timerTimeFinish: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };

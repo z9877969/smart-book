@@ -3,9 +3,14 @@ import styles from './ModalCongrats.module.css';
 
 const TextCongrats = () => (
   <p className={styles.text}>
-    Ти молодчина,
+    ВІТАЄМО! YOU ARE THE BEST!
     <br />
-    просто супер!
+    ЦІЛЬ ДОСЯГНУТА ВСЕ ПРОЧИТАНО В ВИЗНАЧЕНИЙ СТРОК.
+    {/* <br />  */}
+    МОЖНА РОЗПОЧИНАТИ НОВЕ ТРЕНУВАННЯ.
+    {/* Ти молодчина,
+    <br />
+    просто супер! */}
   </p>
 );
 

@@ -2,6 +2,7 @@ export const ActionType = {
   TRAINING_REQUEST: 'TRAINING_REQUEST',
   TRAINING_POST_REQUEST: 'TRAINING_POST_REQUEST',
   GET_TRAINING: 'GET_TRAINING',
+  LOGOUT_TRAINING: 'LOGOUT_TRAINING',
   UPDATE_TRAINING: 'UPDATE_TRAINING',
   FINISHED_TRAINING: 'FINISHED_TRAINING',
   TRAINING_ERROR: 'TRAINING_ERROR',
@@ -18,6 +19,10 @@ export const trainingPostRequest = () => ({
 export const getTraining = training => ({
   type: ActionType.GET_TRAINING,
   payload: training,
+});
+
+export const logOutTraining = () => ({
+  type: ActionType.LOGOUT_TRAINING,
 });
 
 export const trainingUpdate = trainingData => ({
