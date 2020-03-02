@@ -91,7 +91,6 @@
 .quantity {
   /* white-space: nowrap; */
   overflow: hidden;
-
   text-overflow: ellipsis;
   margin-top: 10px;
   width: 130px;
@@ -118,6 +117,12 @@
   line-height: 1.23;
   letter-spacing: 0.39px;
   text-align: left;
+}
+.cardTitle,
+.quantity,
+.quantity_year {
+  color: var(--dark);
+  font-weight: 500;
 }
 .button__grey {
   width: 130px;
@@ -296,10 +301,11 @@
 }
 .table_book {
   display: flex;
-  padding-top: 6px;
+  /* padding-top: 6px; */
+  align-items: center;
 }
 .name_book {
-  margin-top: 8px;
+  /* margin-top: 8px; */
   padding-left: 55px;
   width: 186px;
   height: 31px;
@@ -314,7 +320,7 @@
   position: relative;
 }
 .avtor {
-  margin-top: 8px;
+  /* margin-top: 8px; */
   position: relative;
 
   width: 148px;
@@ -332,9 +338,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 8px;
+  /* margin-top: 8px; */
   width: 47px;
-  height: 31px;
+  /* height: 31px; */
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -346,8 +352,8 @@
 }
 
 .page {
-  margin-top: 8px;
-  height: 31px;
+  /* margin-top: 8px; */
+  /* height: 31px; */
   width: 61px;
   white-space: nowrap;
   overflow: hidden;
@@ -421,6 +427,13 @@
 /* .p_avtor:hover {
   white-space: normal;
 } */
+.p_name_book,
+.p_avtor,
+.year,
+.page {
+  color: var(--dark);
+  font-weight: 500;
+}
 
 @media (min-width: 768px) {
   .conteiner {
