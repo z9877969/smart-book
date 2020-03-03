@@ -99,10 +99,10 @@
 @media (min-width: 1280px) {
   .wrapperQuote {
     align-self: start;
-    padding-top: 120px;
+    padding-top: 290px;
     padding-left: 120px;
     padding-right: 120px;
-    height: 606px;
+    height: 790px;
     background-color: #fff;
     margin: 0;
     box-shadow: inset 0px 5px 6px -1px var(--light-blue-grey-40);
