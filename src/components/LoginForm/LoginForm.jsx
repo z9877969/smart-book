@@ -109,7 +109,7 @@ const LoginPage = () => {
         <label className={styles.label} htmlFor="email">
           <p className={styles.emailText}>Електронна адреса</p>
           <TextField
-            id="custom-css-outlined-input"
+            id="email"
             {...formik.getFieldProps('email')}
             type="email"
             variant="filled"
@@ -123,7 +123,7 @@ const LoginPage = () => {
         <label className={styles.label} htmlFor="password">
           <p className={styles.passwordText}>Пароль</p>
           <TextField
-            id="custom-css-outlined-input"
+            id="password"
             {...formik.getFieldProps('password')}
             type="password"
             variant="filled"

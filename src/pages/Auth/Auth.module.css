@@ -27,7 +27,7 @@
 }
 
 .formContainer {
-  width: 350px;
+  width: 340px;
   margin: auto;
 }
 
@@ -53,7 +53,7 @@
   }
 
   .formContainer {
-    width: 460px;
+    width: 403px;
     margin: auto;
     background-color: var(--white);
     padding: 36px 42px;
@@ -64,6 +64,7 @@
   .mainWrapper {
     display: flex;
     flex-wrap: nowrap;
+    width: calc(100%-60px);
   }
 
   .regContainer {
@@ -82,6 +83,7 @@
   }
 
   .loginContainer {
-    padding: 50px 91px 40px;
+    padding: 187px 91px 40px;
+    height: 790px;
   }
 }
