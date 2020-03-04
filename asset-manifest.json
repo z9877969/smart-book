@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/smart-book/static/css/main.cec663ae.chunk.css",
+    "main.css": "/smart-book/static/css/main.dc7aa4a4.chunk.css",
     "main.js": "/smart-book/static/js/main.4e7e943f.chunk.js",
     "main.js.map": "/smart-book/static/js/main.4e7e943f.chunk.js.map",
     "runtime-main.js": "/smart-book/static/js/runtime-main.43009783.js",
@@ -9,10 +9,10 @@
     "static/js/2.24ed612d.chunk.js": "/smart-book/static/js/2.24ed612d.chunk.js",
     "static/js/2.24ed612d.chunk.js.map": "/smart-book/static/js/2.24ed612d.chunk.js.map",
     "index.html": "/smart-book/index.html",
-    "precache-manifest.368a0f7196d47e0524478a44b103f1db.js": "/smart-book/precache-manifest.368a0f7196d47e0524478a44b103f1db.js",
+    "precache-manifest.0bbc0167d39fbfcd38fe55c9060e7cf4.js": "/smart-book/precache-manifest.0bbc0167d39fbfcd38fe55c9060e7cf4.js",
     "service-worker.js": "/smart-book/service-worker.js",
     "static/css/2.5dbdccff.chunk.css.map": "/smart-book/static/css/2.5dbdccff.chunk.css.map",
-    "static/css/main.cec663ae.chunk.css.map": "/smart-book/static/css/main.cec663ae.chunk.css.map",
+    "static/css/main.dc7aa4a4.chunk.css.map": "/smart-book/static/css/main.dc7aa4a4.chunk.css.map",
     "static/media/Auth.module.css": "/smart-book/static/media/tabletSignupBg@2x.2be71ccb.png",
     "static/media/fonts.css": "/smart-book/static/media/roboto-v20-cyrillic_latin_cyrillic-ext-regular.fa18727a.woff2"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.43009783.js",
     "static/css/2.5dbdccff.chunk.css",
     "static/js/2.24ed612d.chunk.js",
-    "static/css/main.cec663ae.chunk.css",
+    "static/css/main.dc7aa4a4.chunk.css",
     "static/js/main.4e7e943f.chunk.js"
   ]
 }
