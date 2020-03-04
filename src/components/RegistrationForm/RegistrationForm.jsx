@@ -57,7 +57,7 @@ const FormOfRegistration = ({
 
         <TextField
           type="input"
-          id="custom-css-outlined-input"
+          id="userName"
           name="userName"
           value={userName}
           variant="filled"
@@ -77,7 +77,7 @@ const FormOfRegistration = ({
         </h2>
 
         <TextField
-          id="custom-css-outlined-input"
+          id="email"
           {...formik.getFieldProps('email')}
           name="email"
           value={email}
@@ -121,7 +121,7 @@ const FormOfRegistration = ({
 
         <TextField
           type="password"
-          id="custom-css-outlined-input"
+          id="passwordRepeat"
           {...formik.getFieldProps('password')}
           name="passwordRepeat"
           value={passwordRepeat}
