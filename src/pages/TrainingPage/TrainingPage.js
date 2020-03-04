@@ -98,25 +98,21 @@ const TrainingPage = props => {
   const booksTrainingIdsArr = training.trainingId
     ? getTrainingBookIdsArr(training.books)
     : [];
-  const booksReading = booksFilterByStatus(!'readed', booksTrainingIdsArr, [
+  const booksReading = booksFilterByStatus('reading', booksTrainingIdsArr, [
     ...books,
   ]);
-  const checkForUseEffect =
-    training.trainingId && training.pagesReadResult.length;
 
   useEffect(() => {
     if (pagesReadResult && pagesReadResult >= training.allPagesCount) {
       [...booksReading].forEach(book => {
         /* eslint no-param-reassign: "error" */
-
         book.status = 'readed';
-        // const newBook = { ...book, ...(status = 'readed') };
         dispatch(bookUpdate(token, book));
       });
       dispatch(openCongratsModal());
       dispatch(actionTimerStop());
     }
-  }, [checkForUseEffect]);
+  }, [training.pagesReadResult]);
 
   return (
     <div className={style.container}>
