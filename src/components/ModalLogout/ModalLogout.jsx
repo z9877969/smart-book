@@ -6,6 +6,7 @@ import { closeModal } from '../../redux/backdrop/backdropActions';
 import { logOut } from '../../services/API';
 import { getUserToken } from '../../redux/selectors/sessionSelectors';
 import { logoutLocation } from '../../redux/lastLocation/lastLocationAction';
+import { logOutTraining } from '../../redux/training/trainingActions';
 
 const ModalLogout = props => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const ModalLogout = props => {
     } else if (target.name === 'logout') {
       dispatch(logOut(token));
       dispatch(logoutLocation());
+      dispatch(logOutTraining())
       dispatch(closeModal());
       // onLogout(); // .then(() => closeModal()) - onLogout - операция разлогинивания которая возвращает промис
     }

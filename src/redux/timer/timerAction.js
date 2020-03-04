@@ -9,3 +9,8 @@ export const actionTimerRun = () => ({
   type: ActionType.TIMER_RUN,
   payload: false,
 });
+
+export const actionIsTimerTimeEnded = flag => ({
+  type: ActionType.IS_TIMER_TIME_ENDED,
+  payload: flag,
+});

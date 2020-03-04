@@ -36,7 +36,7 @@ const rootReducer = combineReducers({
   userTraining: userTrainingReducer,
   updatedBook: updatedBookReducer,
   lastLocation: persistReducer(locationPersistConfig, locationReducer),
-  timerStop: timerReducer,
+  timer: timerReducer,
 });
 
 export default rootReducer;

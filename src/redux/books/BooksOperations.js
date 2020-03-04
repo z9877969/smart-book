@@ -52,7 +52,9 @@ export const bookUpdate = (token, book) => dispatch => {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then(dispatch(BookUpdate(book)))
+    .then(res => {
+      dispatch(BookUpdate(res.data.books));
+    })
     .catch(err => {
       dispatch(BooksError(err));
     });

@@ -90,6 +90,8 @@
   position: relative;
   padding-top: 3px;
   display: flex;
+  align-items: center;
+  text-align: center;
   height: 40px;
 }
 .icon {
@@ -104,7 +106,7 @@
   margin-top: 10px;
   padding-left: 55px;
   width: 205px;
-  height: 32px;
+  /* height: 32px; */
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -121,6 +123,7 @@
 
 .flex {
   display: flex;
+  align-items: center;
 }
 .table {
   display: flex;
@@ -170,6 +173,12 @@
   letter-spacing: 0.39px;
   text-align: left;
 }
+.cardTitle,
+.quantity,
+.quantity_year {
+  color: var(--dark);
+  font-weight: 500;
+}
 
 /* tablet */
 .tablet {
@@ -201,7 +210,7 @@
   color: #898f9f;
   display: inline-block;
   width: 98px;
-  height: 10px;
+  /* height: 10px; */
   font-family: 'Montserrat';
   font-size: 13px;
   font-weight: 500;
@@ -320,9 +329,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-top: 23px;
+  /* padding-top: 23px; */
   width: 47px;
-  height: 43px;
+  /* height: 43px; */
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -361,7 +370,7 @@
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-top: 14px;
+  /* padding-top: 14px; */
   width: 200px;
   word-wrap: break-word;
   position: absolute;
@@ -388,6 +397,13 @@
 /* .p_avtor:hover {
   white-space: normal;
 } */
+.p_name_book,
+.p_avtor,
+.year,
+.page {
+  color: var(--dark);
+  font-weight: 500;
+}
 
 @media (min-width: 768px) {
   .conteiner {

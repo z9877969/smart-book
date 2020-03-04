@@ -47,8 +47,8 @@ export const login = credentials => dispatch => {
     })
     .catch(err => {
       dispatch(loginError(err.response));
-    })
-    .finally(dispatch(loginError()));
+    });
+  // .finally(dispatch(loginError()));
 };
 
 export const registration = userValue => dispatch => {

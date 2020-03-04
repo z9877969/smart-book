@@ -4,6 +4,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  padding: 0 20px;
   position: fixed;
   top: 0;
   left: 0;
@@ -38,6 +39,10 @@
 }
 
 .text {
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; */
   font-size: 15px;
   font-weight: 600;
   line-height: 1.43;
@@ -80,11 +85,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .modal {
+  /* .modal {
     width: 406px;
     height: 204px;
     padding: 22px 55px;
-  }
+  } */
 
   .text {
     line-height: 1.33;
@@ -92,11 +97,11 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .modal {
+  /* .modal {
     width: 436px;
     height: 220px;
     padding: 30px 74px;
-  }
+  } */
 
   .text {
     line-height: 1.33;

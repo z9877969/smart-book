@@ -11,6 +11,7 @@ import moment from 'moment';
 import style from './Workout.module.css';
 import TrainingBookTable from '../TrainingBooksTable/TrainingBooksTable';
 import { postTraining } from '../../services/API';
+import { bookUpdate } from '../../redux/books/BooksOperations';
 import TableItemCreate from '../TrainingBooksTable/TableItemCreate/TableItemCreate';
 
 const useStyles = makeStyles(() => ({
@@ -117,8 +118,13 @@ const Workout = ({ handleChangeToGoal }) => {
         ),
         avgReadPages,
       };
-
       await dispatch(postTraining(training, token));
+      [...booksForRender].map(book => {
+        /* eslint no-param-reassign: "error" */
+        book.status = 'reading';
+        dispatch(bookUpdate(token, book));
+        return true;
+      });
     }
   };
 
