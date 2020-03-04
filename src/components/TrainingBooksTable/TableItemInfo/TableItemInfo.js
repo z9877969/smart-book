@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxSharp from '@material-ui/icons/CheckBoxSharp';
@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import { getUserToken } from '../../../redux/selectors/sessionSelectors';
 import { bookUpdate } from '../../../redux/books/BooksOperations';
 import { updateTraining, getTrainingFromServer } from '../../../services/API';
-import { openCongratsModal } from '../../../redux/modals/modalsActions';
-import { actionTimerStop } from '../../../redux/timer/timerAction';
+// import { openCongratsModal } from '../../../redux/modals/modalsActions';
+// import { actionTimerStop } from '../../../redux/timer/timerAction';
 import {
   getPagesResult,
   getTrainingBook,
@@ -99,12 +99,12 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
     }
   };
 
-  useEffect(() => {
-    if (training && !training.unreadCount) {
-      dispatch(openCongratsModal());
-      dispatch(actionTimerStop());
-    }
-  }, [training.unreadCount]);
+  // useEffect(() => {
+  //   if (training && !training.unreadCount) {
+  //     dispatch(openCongratsModal());
+  //     dispatch(actionTimerStop());
+  //   }
+  // }, [training.unreadCount]);
 
   return (
     <li key={id} className={style.bookListItem}>
