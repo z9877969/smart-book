@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "90ff9d62e60806fbf650751cede6508b",
+    "revision": "41a7c9f0fb61c0b14d0cea0a16c3bd95",
     "url": "/smart-book/index.html"
   },
   {
-    "revision": "21dcd5af9e84649041fb",
+    "revision": "5bfb1bfb676bdeb5fe04",
     "url": "/smart-book/static/css/2.5dbdccff.chunk.css"
   },
   {
-    "revision": "69c73755c3561e1a519d",
-    "url": "/smart-book/static/css/main.8747fd1c.chunk.css"
+    "revision": "ea61e904f1795d945c9a",
+    "url": "/smart-book/static/css/main.cec663ae.chunk.css"
   },
   {
-    "revision": "21dcd5af9e84649041fb",
-    "url": "/smart-book/static/js/2.b84e4c9c.chunk.js"
+    "revision": "5bfb1bfb676bdeb5fe04",
+    "url": "/smart-book/static/js/2.24ed612d.chunk.js"
   },
   {
-    "revision": "69c73755c3561e1a519d",
-    "url": "/smart-book/static/js/main.ce1736f8.chunk.js"
+    "revision": "ea61e904f1795d945c9a",
+    "url": "/smart-book/static/js/main.4e7e943f.chunk.js"
   },
   {
     "revision": "62fd0e1aeec16afb8db5",
