@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -35,6 +35,19 @@ const FormOfRegistration = ({
 }) => {
   const classes = useStyles();
 
+  // adding a count of entered symbols
+  useEffect(() => {
+    const MAX_LENGTH = '30';
+    const passwordField = document.querySelector('input[name="password"]');
+    if (!passwordField) return;
+    passwordField.setAttribute('maxLength', MAX_LENGTH);
+    const passwordFieldRepeat = document.querySelector(
+      'input[name="passwordRepeat"]',
+    );
+    if (!passwordFieldRepeat) return;
+    passwordFieldRepeat.setAttribute('maxLength', MAX_LENGTH);
+  }, []);
+
   return (
     <form onSubmit={onSubmit} className={css.form}>
       <label className={css.label} htmlFor="userName">
@@ -65,6 +78,7 @@ const FormOfRegistration = ({
 
         <TextField
           id="email"
+          {...formik.getFieldProps('email')}
           name="email"
           value={email}
           type="email"
@@ -85,7 +99,8 @@ const FormOfRegistration = ({
         </h2>
 
         <TextField
-          type="password"
+          type="custom-css-outlined-input"
+          {...formik.getFieldProps('password')}
           id="password"
           name="password"
           value={password}
@@ -107,6 +122,7 @@ const FormOfRegistration = ({
         <TextField
           type="password"
           id="passwordRepeat"
+          {...formik.getFieldProps('password')}
           name="passwordRepeat"
           value={passwordRepeat}
           variant="filled"

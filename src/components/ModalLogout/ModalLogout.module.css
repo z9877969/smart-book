@@ -2,10 +2,12 @@
   padding: 50px 76px;
   margin: 0;
   position: fixed;
-  top: 50%;
+  top: 25%;
+  left: auto;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  /* -webkit-transform: translate(-50%, -50%); */
+  /* transform: translate(-50%, -50%); */
   background-color: #fff;
   border: 1px solid #dce0e9;
   z-index: 12;

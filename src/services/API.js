@@ -46,8 +46,9 @@ export const login = credentials => dispatch => {
       dispatch(loginSuccess(response));
     })
     .catch(err => {
-      dispatch(loginError(err));
+      dispatch(loginError(err.response));
     });
+  // .finally(dispatch(loginError()));
 };
 
 export const registration = userValue => dispatch => {
@@ -58,7 +59,7 @@ export const registration = userValue => dispatch => {
     .then(response => {
       return dispatch(registrationSuccess(response));
     })
-    .catch(error => dispatch(registrationError(error)));
+    .catch(err => dispatch(registrationError(err.response)));
 };
 
 export const refreshUser = token => async dispatch => {
@@ -75,7 +76,7 @@ export const refreshUser = token => async dispatch => {
       dispatch(refreshUserSuccess(response));
     })
     .catch(err => {
-      dispatch(refreshUserError(err));
+      dispatch(refreshUserError(err.response));
     });
 };
 
@@ -88,7 +89,7 @@ export const logOut = token => dispatch => {
       clearAuthToken();
     })
     .catch(err => {
-      dispatch(logOutError(err));
+      dispatch(logOutError(err.response));
     });
 };
 
@@ -107,7 +108,7 @@ export const getTrainingFromServer = token => dispatch => {
       dispatch(getTraining(training));
     })
     .catch(err => {
-      dispatch(trainingError(err));
+      dispatch(trainingError(err.response));
     });
 };
 

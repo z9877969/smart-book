@@ -11,6 +11,7 @@ import loaderReducers from './redux/loader/loaderReducers';
 import { userTrainingReducer } from './redux/userTraining/userTrainingReducer';
 import updatedBookReducer from './redux/updatedBook/updatedBookReducer';
 import locationReducer from './redux/lastLocation/lastLocationReducer';
+import { timerReducer } from './redux/timer/timerReducer';
 
 const sessionPersistConfig = {
   key: 'session',
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   userTraining: userTrainingReducer,
   updatedBook: updatedBookReducer,
   lastLocation: persistReducer(locationPersistConfig, locationReducer),
+  timer: timerReducer,
 });
 
 export default rootReducer;

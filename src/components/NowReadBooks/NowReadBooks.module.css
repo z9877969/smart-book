@@ -9,7 +9,7 @@
   display: flex;
 }
 .tittle {
-  margin-top: 62px;
+  margin-top: 138px;
   width: 69px;
   height: 15px;
   font-family: 'Montserrat';
@@ -90,6 +90,8 @@
   position: relative;
   padding-top: 3px;
   display: flex;
+  align-items: center;
+  text-align: center;
   height: 40px;
 }
 .icon {
@@ -98,13 +100,13 @@
   position: absolute;
 }
 .cardTitle {
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 14px;
+  margin-top: 10px;
   padding-left: 55px;
   width: 205px;
-  height: 30px;
+  /* height: 32px; */
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -112,6 +114,7 @@
   line-height: 1.23;
   letter-spacing: 0.39px;
   text-align: left;
+  word-wrap: break-word;
 }
 
 .cardTitle:hover {
@@ -120,6 +123,7 @@
 
 .flex {
   display: flex;
+  align-items: center;
 }
 .table {
   display: flex;
@@ -141,11 +145,13 @@
   color: grey;
 }
 .quantity {
-  white-space: nowrap;
+  /* white-space: nowrap; */
+  overflow: hidden;
+
   text-overflow: ellipsis;
   width: 109px;
   margin-top: 10px;
-  height: 11px;
+  height: 14px;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -153,6 +159,7 @@
   line-height: 1.23;
   letter-spacing: 0.39px;
   text-align: left;
+  word-wrap: break-word;
 }
 .quantity_year {
   width: 82px;
@@ -165,6 +172,12 @@
   line-height: 1.23;
   letter-spacing: 0.39px;
   text-align: left;
+}
+.cardTitle,
+.quantity,
+.quantity_year {
+  color: var(--dark);
+  font-weight: 500;
 }
 
 /* tablet */
@@ -197,7 +210,7 @@
   color: #898f9f;
   display: inline-block;
   width: 98px;
-  height: 10px;
+  /* height: 10px; */
   font-family: 'Montserrat';
   font-size: 13px;
   font-weight: 500;
@@ -296,6 +309,7 @@
   letter-spacing: 0.39px;
   text-align: left;
   color: #242a37;
+  position: relative;
 }
 .author {
   margin: 0;
@@ -315,9 +329,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-top: 23px;
+  /* padding-top: 23px; */
   width: 47px;
-  height: 43px;
+  /* height: 43px; */
   font-size: 13px;
   font-weight: normal;
   font-stretch: normal;
@@ -353,27 +367,42 @@
 }
 
 .p_name_book {
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-top: 14px;
+  /* padding-top: 14px; */
   width: 200px;
+  word-wrap: break-word;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
-.p_name_book:hover {
+/* .p_name_book:hover {
   white-space: normal;
-}
+} */
 
 .p_avtor {
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-top: 14px;
+  /* padding-top: 14px; */
   width: 125px;
+  word-wrap: break-word;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
-.p_avtor:hover {
+/* .p_avtor:hover {
   white-space: normal;
+} */
+.p_name_book,
+.p_avtor,
+.year,
+.page {
+  color: var(--dark);
+  font-weight: 500;
 }
 
 @media (min-width: 768px) {

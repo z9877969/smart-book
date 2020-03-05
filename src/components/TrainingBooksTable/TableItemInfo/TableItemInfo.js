@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { getUserToken } from '../../../redux/selectors/sessionSelectors';
 import { bookUpdate } from '../../../redux/books/BooksOperations';
 import { updateTraining, getTrainingFromServer } from '../../../services/API';
-import { openCongratsModal } from '../../../redux/modals/modalsActions';
 import {
   getPagesResult,
   getTrainingBook,
@@ -45,11 +44,7 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
   const pagesReadResult = getPagesResult(pagesReadResultArr);
   const trainingBook = getTrainingBook(id, trainingBooksArr);
   const trainingBookIdsArr = getTrainingBookIdsArr(trainingBooksArr);
-  // const trainingBooksReading = booksFilterByStatus(
-  //   'reading',
-  //   trainingBookIdsArr,
-  //   books,
-  // );
+
   const canCheckTrainingBook = () => {
     const readedTrainingBooksFromBooks = booksFilterByStatus(
       'readed',
@@ -102,19 +97,11 @@ const TableItemInfo = ({ id, title, author, year, pagesCount }) => {
     }
   };
 
-  // effects
-  // listener for updating training.unreadCount
-  // useEffect(() => {
-  //   if (trainingBooksReading && !trainingBooksReading.length) {
-  //     dispatch(getTrainingFromServer(token));
-  //   }
-  // }, [toggleInput]);
-
   useEffect(() => {
-    if (training && !training.unreadCount) {
-      dispatch(openCongratsModal());
+    if (book.status === 'readed') {
+      setToggleInput(true);
     }
-  }, [training.unreadCount]);
+  }, [book.status]);
 
   return (
     <li key={id} className={style.bookListItem}>

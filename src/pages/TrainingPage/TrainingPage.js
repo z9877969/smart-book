@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import moment from 'moment';
+// import { tr } from 'date-fns/locale';
 import PanelOfTimers from '../../components/Timer/PanelOfTimers';
 import Results from '../../components/Results/Results';
 import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
@@ -16,9 +17,24 @@ import {
   finishTraining,
   refreshUser,
 } from '../../services/API';
-import { closeCongratsModal } from '../../redux/modals/modalsActions';
-import { booksOperation } from '../../redux/books/BooksOperations';
+import {
+  closeCongratsModal,
+  openCongratsModal,
+} from '../../redux/modals/modalsActions';
+import { booksOperation, bookUpdate } from '../../redux/books/BooksOperations';
+import {
+  actionTimerStop,
+  actionTimerRun,
+  actionIsTimerTimeEnded,
+} from '../../redux/timer/timerAction';
 import { addLocation } from '../../redux/lastLocation/lastLocationAction';
+
+import {
+  getPagesResult,
+  getTrainingBookIdsArr,
+  booksFilterByStatus,
+} from '../../components/TrainingBooksTable/helpersTrainingBooks';
+
 import style from './TrainingPage.module.css';
 
 const TrainingPage = props => {
@@ -38,11 +54,15 @@ const TrainingPage = props => {
     state => state.isModalsOpen.congratsModalReducer,
   );
   const books = useSelector(state => state.books);
+  const pagesReadResultArr = useSelector(
+    state => state.training.pagesReadResult,
+  );
 
   // helpers
   const credentials = {
     isDone: true,
   };
+  const pagesReadResult = getPagesResult(pagesReadResultArr);
 
   // handlers
   const handleChangeToGoal = field => {
@@ -56,6 +76,8 @@ const TrainingPage = props => {
     await dispatch(finishTraining(training.trainingId, token, credentials));
     dispatch(closeCongratsModal());
     await dispatch(refreshUser(token));
+    dispatch(actionTimerRun());
+    dispatch(actionIsTimerTimeEnded(false));
   };
 
   // effects
@@ -71,6 +93,26 @@ const TrainingPage = props => {
   useEffect(() => {
     dispatch(addLocation(location.pathname));
   }, [location.pathname]);
+
+  // open modalCongrats if all pages was read & toggle reading book to read
+  const booksTrainingIdsArr = training.trainingId
+    ? getTrainingBookIdsArr(training.books)
+    : [];
+  const booksReading = booksFilterByStatus('reading', booksTrainingIdsArr, [
+    ...books,
+  ]);
+
+  useEffect(() => {
+    if (pagesReadResult && pagesReadResult >= training.allPagesCount) {
+      [...booksReading].forEach(book => {
+        /* eslint no-param-reassign: "error" */
+        book.status = 'readed';
+        dispatch(bookUpdate(token, book));
+      });
+      dispatch(openCongratsModal());
+      dispatch(actionTimerStop());
+    }
+  }, [training.pagesReadResult]);
 
   return (
     <div className={style.container}>
