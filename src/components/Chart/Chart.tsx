@@ -11,9 +11,19 @@ import {
 } from './helpersFn';
 import styles from './Chart.module.css';
 
-const Chart = ({ training }) => {
-  // const width = document.documentElement.clientWidth;
+// interfaces
+interface Training {
+  pagesReadResult?: number;
+  timeStart?: number;
+  timeEnd?: number;
+  allPagesCount?: number;
+}
+interface MyProps {
+  training: Training;
+}
 
+const Chart: React.FC<MyProps> = ({ training }) => {
+  // const width = document.documentElement.clientWidth;
   const {
     pagesReadResult: readPages,
     timeStart,
@@ -174,6 +184,6 @@ const Chart = ({ training }) => {
   );
 };
 Chart.propTypes = {
-  training: PropTypes.shape().isRequired,
+  training: PropTypes.object.isRequired,
 };
 export default Chart;
