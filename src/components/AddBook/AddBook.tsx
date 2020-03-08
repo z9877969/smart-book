@@ -11,8 +11,16 @@ import { getUserToken } from '../../redux/selectors/sessionSelectors';
 import styles from './AddBook.module.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-const AddBook = () => {
-  const token = useSelector(state => getUserToken(state));
+// interfaces
+interface Book {
+  title: string;
+  year: number;
+  pagesCount: string;
+  author?: string;
+}
+
+const AddBook: React.FC = () => {
+  const token = useSelector((state: Object): string => getUserToken(state));
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -42,8 +50,8 @@ const AddBook = () => {
     }),
     onSubmit: (values, { resetForm }) => {
       JSON.stringify(values, null, 3);
-      if (values.pagesAmount <= 0) return;
-      const book = {
+      if (+values.pagesAmount <= 0) return;
+      const book: Book = {
         title: values.bookName,
         year: new Date(values.bookDate).getFullYear(),
         pagesCount: values.pagesAmount,
@@ -144,7 +152,10 @@ const AddBook = () => {
           </label>
           <label htmlFor="bookDate" className={styles.labelYear}>
             <div className={styles.inputTitle}>Рік випуску</div>
-            <MuiPickersUtilsProvider utils={DateFnsUtils} id="bookDate">
+            <MuiPickersUtilsProvider
+              utils={DateFnsUtils}
+              id={formik.values.bookDate}
+            >
               <DatePicker
                 value={formik.values.bookDate}
                 onChange={date => formik.setFieldValue('bookDate', date)}
