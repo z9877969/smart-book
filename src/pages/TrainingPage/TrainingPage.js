@@ -9,7 +9,7 @@ import Results from '../../components/Results/Results';
 import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
 import Workout from '../../components/Workout/Workout';
 import Goal from '../../components/Goal/Goal';
-import Chart from '../../components/Chart/Chart';
+import Chart from '../../components/Chart/Chart.tsx';
 import WorkoutInfo from '../../components/WorkoutInfo/WorkoutInfo';
 import CreateTraningGoal from '../../components/CreateTraningGoal/CreateTraningGoal';
 import {
