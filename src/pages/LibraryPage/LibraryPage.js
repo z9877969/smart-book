@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import AddBook from '../../components/AddBook/AddBook';
-import BooksList from '../../components/BooksList/BooksList';
+import BooksList from '../../components/BooksList/BooksList.tsx';
 import SummaryModal from '../../components/SummaryModal/SummaryModal';
 import { booksOperation } from '../../redux/books/BooksOperations';
 import { addLocation } from '../../redux/lastLocation/lastLocationAction';
