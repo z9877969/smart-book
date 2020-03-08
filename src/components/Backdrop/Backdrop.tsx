@@ -4,43 +4,42 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './Backdrop.module.css';
 import { closeModal } from '../../redux/backdrop/backdropActions';
 
-const Backdrop = ({ component: Component }) => {
+const Backdrop: React.FC = ({ component: Component }): any => {
   const dispatch = useDispatch();
   const isModalOpen = useSelector(state => state.isModalOpen);
   const handleClose = ({ target, key }) => {
     if (target.id === 'backdrop') {
       dispatch(closeModal());
     }
-
     if (key === 'Escape') {
       dispatch(closeModal());
     }
   };
+  //   const handleClose = ({ target, key }) => {
+  //     if (target.id === 'backdrop') {
+  //       closeModal();
+  //     }
 
-//   const handleClose = ({ target, key }) => {
-//     if (target.id === 'backdrop') {
-//       closeModal();
-//     }
+  //   return (
+  //     <>
+  //       {isModalOpen && (
+  //         <div
+  //           className={styles.backdrop}
+  //           onClick={handleClose}
+  //           onKeyDown={handleClose}
+  //           id="backdrop"
+  //         >
+  //           <Component />
+  //         </div>
+  //       )}
+  //     </>
+  //   );
+  // };
+};
 
 Backdrop.propTypes = {
   component: PropTypes.node.isRequired,
 };
-
-//   return (
-//     <>
-//       {isModalOpen && (
-//         <div
-//           className={styles.backdrop}
-//           onClick={handleClose}
-//           onKeyDown={handleClose}
-//           id="backdrop"
-//         >
-//           <Component />
-//         </div>
-//       )}
-//     </>
-//   );
-// };
 
 // Backdrop.propTypes = {
 //   component: PropTypes.node.isRequired,
@@ -48,4 +47,4 @@ Backdrop.propTypes = {
 //   closeModal: PropTypes.func.isRequired,
 // };
 
-// export default withRouter(Backdrop);
+export default Backdrop;
