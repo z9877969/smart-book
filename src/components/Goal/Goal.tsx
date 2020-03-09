@@ -4,14 +4,31 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import styles from './Goal.module.css';
 
-const Goal = () => {
-  const training = useSelector(state => state.training);
+//interfaces
+interface State {
+  training?: Training;
+}
+interface Training {
+  timeStart?: number;
+  timeEnd?: number;
+  unreadCount?: number;
+  booksCount?: number;
+}
+
+const Goal: React.FC = () => {
+  const training: Training = useSelector<State>(
+    state => state.training,
+  ) as Training;
   const start = moment(training.timeStart).dayOfYear();
   // const finish = moment('2019-12-15T13:56:30+02:00').dayOfYear();
   const finish = moment(training.timeEnd).dayOfYear();
   const leftDays = finish - start;
 
-  const isThisStatPage = !!(training && training.unreadCount > 0);
+  const isThisStatPage = !!(
+    training &&
+    training.unreadCount &&
+    training.unreadCount > 0
+  );
 
   return (
     <>
@@ -68,7 +85,7 @@ const Goal = () => {
               Кількість днів
             </p>
           </div>
-          {training && training.unreadCount > 0 && (
+          {training && training.unreadCount && training.unreadCount > 0 && (
             <div
               className={
                 isThisStatPage ? styles.goalDigitsBoxStat : styles.goalDigitsBox
