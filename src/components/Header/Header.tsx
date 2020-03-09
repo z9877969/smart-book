@@ -15,7 +15,7 @@ import {
   getUser,
 } from '../../redux/selectors/sessionSelectors';
 
-const useStyles = makeStyle(theme => ({
+const useStyles = makeStyle((theme: any) => ({
   btnIcon: {
     fill: '#a6abb9',
     color: '#a6abb9',
@@ -25,18 +25,24 @@ const useStyles = makeStyle(theme => ({
   },
 }));
 
-const Header = () => {
-  const classes = useStyles();
-  const isModalOpen = useSelector(state => getIsModalOpen(state));
-  const user = useSelector(state => getUser(state));
-  const authenticated = useSelector(state => getAuthenticated(state));
-  const dispatch = useDispatch();
+// interfaces
+interface State {
+  user?: object;
+  authenticated?: boolean;
+  isModalOpen?: boolean;
+}
 
+const Header: React.FC = () => {
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const user = useSelector((state: State) => getUser(state));
+  const authenticated = useSelector((state: State) => getAuthenticated(state));
+  const isModalOpen = useSelector((state: State) => getIsModalOpen(state));
   const handleOpenModalLogout = () => {
     dispatch(openModal());
   };
 
-  const firstLetter = name => {
+  const firstLetter = (name: string): string => {
     return name.split('')[0].toUpperCase();
   };
 
