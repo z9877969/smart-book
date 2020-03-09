@@ -8,7 +8,7 @@ import PanelOfTimers from '../../components/Timer/PanelOfTimers';
 import Results from '../../components/Results/Results';
 import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
 import Workout from '../../components/Workout/Workout';
-import Goal from '../../components/Goal/Goal';
+import Goal from '../../components/Goal/Goal.tsx';
 import Chart from '../../components/Chart/Chart';
 import WorkoutInfo from '../../components/WorkoutInfo/WorkoutInfo';
 import CreateTraningGoal from '../../components/CreateTraningGoal/CreateTraningGoal';
