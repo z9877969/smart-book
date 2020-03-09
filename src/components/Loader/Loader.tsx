@@ -12,9 +12,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CircularIndeterminate() {
+const CircularIndeterminate: React.FC = () => {
   const classes = useStyles();
-
   return (
     <div className={css.container}>
       <div className={classes.root}>
@@ -22,4 +21,5 @@ export default function CircularIndeterminate() {
       </div>
     </div>
   );
-}
+};
+export default CircularIndeterminate;
