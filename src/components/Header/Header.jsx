@@ -40,8 +40,6 @@ const Header = () => {
     return name.split('')[0].toUpperCase();
   };
 
-  
-
   return (
     <div className={styles.container}>
       {isModalOpen && (
