@@ -10,9 +10,9 @@ const Goal = () => {
   // const finish = moment('2019-12-15T13:56:30+02:00').dayOfYear();
   const finish = moment(training.timeEnd).dayOfYear();
   const leftDays = finish - start;
-  
-  let isThisStatPage = !!(training && training.unreadCount > 0);
-  
+
+  const isThisStatPage = !!(training && training.unreadCount > 0);
+
   return (
     <>
       <div
