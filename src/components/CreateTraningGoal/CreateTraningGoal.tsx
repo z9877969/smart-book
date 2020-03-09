@@ -5,12 +5,30 @@ import { useSelector } from 'react-redux';
 import moment from 'moment';
 import styles from './CreateTraningGoal.module.css';
 
-const CreateTraningGoal = ({ startTime, finishTime, countBooks }) => {
-  const training = useSelector(state => state.training);
+// interfaces
+interface MyProps {
+  startTime?: number;
+  finishTime?: number;
+  countBooks?: number;
+}
+interface State {
+  training?: Training;
+}
+interface Training {
+  unreadCount?: number;
+}
+
+const CreateTraningGoal: React.FC<MyProps> = ({
+  startTime,
+  finishTime,
+  countBooks,
+}) => {
+  const training = useSelector((state: State) => state.training);
   const start = moment(startTime).dayOfYear();
   const finish = moment(finishTime).dayOfYear();
   const leftDays = finish - start;
   // let isThisStatPage = !!(training != null && training.unreadCount);
+  //@types/react-redux @types/react
   const isThisStatPage = false;
   return (
     <>
