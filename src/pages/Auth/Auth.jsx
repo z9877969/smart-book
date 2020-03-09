@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import RegistrationForm from '../../components/RegistrationForm/ContainerRegistrationForm';
 import LoginForm from '../../components/LoginForm/LoginForm';
-// import GoogleButton from '../../components/GoogleButton/GoogleButton';
+// import GoogleButton from '../../components/GoogleButton/GoogleButton.tsx';
 import styles from './Auth.module.css';
 import Quote from '../../components/Quote/Quote';
 import QuoteRegistration from '../../components/QuoteRegistration/QuoteRegistration';

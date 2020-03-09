@@ -5,7 +5,7 @@ import googleLogo2x from '../../assets/icons/googleLogo@2x.png';
 import googleLogo3x from '../../assets/icons/googleLogo@3x.png';
 // import { BASE_URL, googleAuth } from '../../api/apiEndpoint';
 
-const GoogleButton = () => {
+const GoogleButton: React.FC = () => {
   return (
     // <a href={BASE_URL + googleAuth} className={styles.googleLink}>
     //   <img
