@@ -11,7 +11,7 @@ import Workout from '../../components/Workout/Workout';
 import Goal from '../../components/Goal/Goal';
 import Chart from '../../components/Chart/Chart';
 import WorkoutInfo from '../../components/WorkoutInfo/WorkoutInfo';
-import CreateTraningGoal from '../../components/CreateTraningGoal/CreateTraningGoal';
+import CreateTraningGoal from '../../components/CreateTraningGoal/CreateTraningGoal.tsx';
 import {
   getTrainingFromServer,
   finishTraining,

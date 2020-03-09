@@ -11,6 +11,7 @@ const CreateTraningGoal = ({ startTime, finishTime, countBooks }) => {
   const finish = moment(finishTime).dayOfYear();
   const leftDays = finish - start;
   // let isThisStatPage = !!(training != null && training.unreadCount);
+  //@types/react-redux @types/react
   const isThisStatPage = false;
   return (
     <>
