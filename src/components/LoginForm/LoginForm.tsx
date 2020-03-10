@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import { useFormik } from 'formik';
+import { useFormik, Formik } from 'formik';
 import * as Yup from 'yup';
 import withAuthRedirect from '../WithAuthRedirect/WithAuthRedirect';
 import { login } from '../../services/API';
@@ -42,8 +42,12 @@ const useStyles = makeStyles(() => ({
     marginBottom: 20,
   },
 }));
+//interfaces
+interface State {
+  session?: { error? };
+}
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -83,7 +87,7 @@ const LoginPage = () => {
   }, []);
 
   // handle server error
-  const error = useSelector(state => state.session.error);
+  const error = useSelector((state: State) => state.session.error);
   useEffect(() => {
     if (!error) return;
     let errorMessage;
