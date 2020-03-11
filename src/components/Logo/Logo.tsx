@@ -4,8 +4,15 @@ import { useSelector } from 'react-redux';
 import styles from './Logo.module.css';
 import { getAuthenticated } from '../../redux/selectors/sessionSelectors';
 
-const Logo = () => {
-  const authenticated = useSelector(state => getAuthenticated(state));
+// interfaces
+interface State {
+  authenticated?: boolean;
+}
+
+const Logo: React.FC = () => {
+  const authenticated: boolean = useSelector((state: State) =>
+    getAuthenticated(state),
+  );
   return (
     <Link
       className={authenticated ? styles.logo_authenticated : styles.logo}
