@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ModalCongrats.module.css';
 
-const TextCongrats = () => (
+const TextCongrats: React.FC = () => (
   <p className={styles.text}>
     ВІТАЄМО! YOU ARE THE BEST!
     <br />
