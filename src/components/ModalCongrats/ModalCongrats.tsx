@@ -8,10 +8,10 @@ import styles from './ModalCongrats.module.css';
 
 // interfaces
 interface MyProps {
-  handleClick?: (event: React.MouseEvent) => void;
+  handleClick: (event: React.MouseEvent) => void;
 }
 interface State {
-  isModalsOpen?: { notFinishedModalReducer?; congratsModalReducer? };
+  isModalsOpen: { notFinishedModalReducer?: any; congratsModalReducer?: any };
 }
 
 const ModalCongrats: React.FC<MyProps> = ({ handleClick }) => {
