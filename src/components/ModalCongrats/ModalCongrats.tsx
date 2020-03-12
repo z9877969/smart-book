@@ -1,18 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  useSelector
-} from 'react-redux';
+import { useSelector } from 'react-redux';
 import NotFinishedText from './TextNotFinished';
 import TextCongrats from './TextCongrats';
 
 import styles from './ModalCongrats.module.css';
 
-const ModalCongrats = ({handleClick}) => {
-  
-  const isOpenModalNotFinished = useSelector(state => state.isModalsOpen.notFinishedModalReducer);
-  const isOpenModalCongrats = useSelector(state => state.isModalsOpen.congratsModalReducer);
-  
+// interfaces
+interface MyProps {
+  handleClick: (event: React.MouseEvent) => void;
+}
+interface State {
+  isModalsOpen: { notFinishedModalReducer?: any; congratsModalReducer?: any };
+}
+
+const ModalCongrats: React.FC<MyProps> = ({ handleClick }) => {
+  const isOpenModalNotFinished = useSelector(
+    (state: State) => state.isModalsOpen.notFinishedModalReducer,
+  );
+  const isOpenModalCongrats = useSelector(
+    (state: State) => state.isModalsOpen.congratsModalReducer,
+  );
+
   return (
     <div className={styles.wrapperModal}>
       <div className={styles.modal}>
@@ -40,10 +49,14 @@ const ModalCongrats = ({handleClick}) => {
             </g>
           </svg>
         </div>
-          {isOpenModalNotFinished && <NotFinishedText />}
-          {isOpenModalCongrats && <TextCongrats />}
+        {isOpenModalNotFinished && <NotFinishedText />}
+        {isOpenModalCongrats && <TextCongrats />}
         <div className={styles.buttonContainer}>
-          <button type="button" name="close" onClick={handleClick}>
+          <button
+            type="button"
+            name="close"
+            onClick={event => handleClick(event)}
+          >
             Ok
           </button>
         </div>
@@ -54,6 +67,6 @@ const ModalCongrats = ({handleClick}) => {
 
 ModalCongrats.propTypes = {
   handleClick: PropTypes.func.isRequired,
-}
+};
 
 export default ModalCongrats;

@@ -6,7 +6,7 @@ import moment from 'moment';
 // import { tr } from 'date-fns/locale';
 import PanelOfTimers from '../../components/Timer/PanelOfTimers';
 import Results from '../../components/Results/Results';
-import ModalCongrats from '../../components/ModalCongrats/ModalCongrats';
+import ModalCongrats from '../../components/ModalCongrats/ModalCongrats.tsx';
 import Workout from '../../components/Workout/Workout';
 import Goal from '../../components/Goal/Goal';
 import Chart from '../../components/Chart/Chart';

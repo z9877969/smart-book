@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import ModalCongrats from '../ModalCongrats/ModalCongrats';
+import ModalCongrats from '../ModalCongrats/ModalCongrats.tsx';
 import { closeModalNotFinished } from '../../redux/modals/modalsActions';
 
 const ModalNotFinishedTraining = () => {
