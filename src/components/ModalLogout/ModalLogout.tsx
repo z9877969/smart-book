@@ -8,35 +8,42 @@ import { getUserToken } from '../../redux/selectors/sessionSelectors';
 import { logoutLocation } from '../../redux/lastLocation/lastLocationAction';
 import { logOutTraining } from '../../redux/training/trainingActions';
 
-const ModalLogout = props => {
+// interfaces
+interface ModalLogoutProps {
+  history: any;
+}
+
+const ModalLogout: React.FC<ModalLogoutProps> = props => {
   const dispatch = useDispatch();
   const token = useSelector(state => getUserToken(state));
 
   const { history } = props;
 
-  const handleClick = ({ target }) => {
-    if (target.name === 'cancel') {
+  const handleClick = (event: React.MouseEvent): void => {
+    const { name } = (event.target as unknown) as HTMLButtonElement;
+    if (name === 'cancel') {
       dispatch(closeModal());
-    } else if (target.name === 'logout') {
+    } else if (name === 'logout') {
       dispatch(logOut(token));
       dispatch(logoutLocation());
-      dispatch(logOutTraining())
+      dispatch(logOutTraining());
       dispatch(closeModal());
       // onLogout(); // .then(() => closeModal()) - onLogout - операция разлогинивания которая возвращает промис
     }
   };
 
-  const handleEsc = e => {
-    if (e.keyCode === 27) dispatch(closeModal());
+  const handleEsc = (e: KeyboardEvent): void => {
+    const { keyCode } = e;
+    if (keyCode === 27) dispatch(closeModal());
   };
 
   useEffect(() => {
-    window.addEventListener('keydown', handleEsc);
+    window.addEventListener('keydown', e => handleEsc(e));
   }, []);
 
   useEffect(() => {
     return () => {
-      window.removeEventListener('keydown', handleEsc);
+      window.removeEventListener('keydown', e => handleEsc(e));
     };
   }, []);
 
@@ -46,10 +53,10 @@ const ModalLogout = props => {
         Якщо Ви вийдете з програми незбережені дані будуть втрачені
       </p>
       <div className={styles.buttonContainer}>
-        <button type="button" name="cancel" onClick={handleClick}>
+        <button type="button" name="cancel" onClick={e => handleClick(e)}>
           Відміна
         </button>
-        <button type="button" name="logout" onClick={handleClick}>
+        <button type="button" name="logout" onClick={e => handleClick(e)}>
           Вийти
         </button>
       </div>

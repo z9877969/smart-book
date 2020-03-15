@@ -6,7 +6,7 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import { useSelector, useDispatch } from 'react-redux';
 import makeStyle from '@material-ui/styles/makeStyles';
 import Logo from '../Logo/Logo';
-import ModalLogout from '../ModalLogout/ModalLogout';
+import ModalLogout from '../ModalLogout/ModalLogout.tsx';
 import styles from './Header.module.css';
 import { openModal } from '../../redux/backdrop/backdropActions';
 import {
@@ -39,8 +39,6 @@ const Header = () => {
   const firstLetter = name => {
     return name.split('')[0].toUpperCase();
   };
-
-  
 
   return (
     <div className={styles.container}>
