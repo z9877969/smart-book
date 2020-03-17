@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import ModalCongrats from '../ModalCongrats/ModalCongrats';
 import { closeModalNotFinished } from '../../redux/modals/modalsActions';
 
-const ModalNotFinishedTraining = () => {
+const ModalNotFinishedTraining: React.FC = () => {
   const dispatch = useDispatch();
 
   // handlers
@@ -11,7 +11,7 @@ const ModalNotFinishedTraining = () => {
     dispatch(closeModalNotFinished());
   };
 
-  const handleEsc = e => {
+  const handleEsc = (e: KeyboardEvent) => {
     if (e.keyCode === 27) {
       dispatch(closeModalNotFinished());
     }
@@ -25,7 +25,7 @@ const ModalNotFinishedTraining = () => {
     };
   }, []);
 
-  return <ModalCongrats handleClick={handleModalNotFinishedClose} />;
+  return <ModalCongrats handleClick={() => handleModalNotFinishedClose()} />;
 };
 
 export default ModalNotFinishedTraining;
