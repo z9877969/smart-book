@@ -9,7 +9,7 @@ import Header from '../../components/Header/Header';
 import ProtectedRoute from '../../components/ProtectedRoute/ProtectedRoute';
 import StartPage from '../../components/StartPage/StartPage';
 import Loader from '../../components/Loader/LoaderContainer';
-import ModalNotFinishedTraining from '../../components/ModalNotFinishedTraining/ModalNotFinishedTraining.tsx';
+import ModalNotFinishedTraining from '../../components/ModalNotFinishedTraining/ModalNotFinishedTraining';
 
 import { refreshUser } from '../../services/API';
 import { openModalNotFinished } from '../../redux/modals/modalsActions';

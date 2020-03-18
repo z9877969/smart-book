@@ -5,7 +5,7 @@ import StartingSteps from '../StartingSteps/StartingSteps';
 import NowReadBooks from '../NowReadBooks/NowReadBooks';
 import PlanReadBooks from '../PlanReadBooks/PlanReadBooks';
 import ReadBooks from '../ReadBooks/ReadBooks';
-import NextStepButton from '../NextStepButton/NextStepButton';
+import NextStepButton from '../NextStepButton/NextStepButton.tsx';
 
 const BooksList = () => {
   const [planedBooks, setPlanedBooks] = useState([]);

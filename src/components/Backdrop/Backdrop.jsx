@@ -16,7 +16,7 @@ const Backdrop = ({ component: Component }) => {
       dispatch(closeModal());
     }
   };
-};
+
 //   const handleClose = ({ target, key }) => {
 //     if (target.id === 'backdrop') {
 //       closeModal();
