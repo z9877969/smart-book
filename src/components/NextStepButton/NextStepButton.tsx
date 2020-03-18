@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-const NextStepButton = () => {
+const NextStepButton: React.FC = () => {
   const classes = useStyles();
   return (
     <div className={styles.nextStepButton__wrapper}>
