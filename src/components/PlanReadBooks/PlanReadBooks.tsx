@@ -4,7 +4,19 @@ import PropTypes from 'prop-types';
 import styles from './PlanReadBooks.module.css';
 import img from './images/library.png';
 
-const planReadBooks = ({ books }) => {
+//interfaces
+interface MyProps {
+  books?: {
+    _id: string;
+    title: string;
+    author: string;
+    year: number;
+    pagesCount: number;
+    page: number;
+  }[];
+}
+
+const planReadBooks: React.FC<MyProps> = ({ books }) => {
   return (
     <>
       {books ? (
@@ -76,11 +88,13 @@ const planReadBooks = ({ books }) => {
   );
 };
 
+/*
 planReadBooks.defaultProps = {
   books: null,
 };
 planReadBooks.propTypes = {
   books: PropTypes.arrayOf(),
 };
+*/
 
 export default planReadBooks;
