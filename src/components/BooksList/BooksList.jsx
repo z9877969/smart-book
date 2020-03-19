@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import StartingSteps from '../StartingSteps/StartingSteps';
 
-import NowReadBooks from '../NowReadBooks/NowReadBooks';
-import PlanReadBooks from '../PlanReadBooks/PlanReadBooks';
+import NowReadBooks from '../NowReadBooks/NowReadBooks.tsx';
+import PlanReadBooks from '../PlanReadBooks/PlanReadBooks.tsx';
 import ReadBooks from '../ReadBooks/ReadBooks';
 import NextStepButton from '../NextStepButton/NextStepButton';
 
