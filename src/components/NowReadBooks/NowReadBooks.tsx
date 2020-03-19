@@ -92,6 +92,7 @@ const NowReadBooks: React.FC<MyProps> = ({ books }) => {
   );
 };
 
+/*
 NowReadBooks.propTypes = {
   books: PropTypes.arrayOf(
     PropTypes.shape({
@@ -108,5 +109,6 @@ NowReadBooks.propTypes = {
 NowReadBooks.defaultProps = {
   books: null,
 };
+*/
 
 export default NowReadBooks;
