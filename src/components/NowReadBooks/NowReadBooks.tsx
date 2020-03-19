@@ -5,7 +5,18 @@ import PropTypes from 'prop-types';
 import styles from './NowReadBooks.module.css';
 import img from './icon_library.png';
 
-const NowReadBooks = ({ books }) => {
+//interfaces
+interface MyProps {
+  books?: {
+    _id: string;
+    title: string;
+    author: string;
+    year: number;
+    pagesCount: number;
+    page: number;
+  }[];
+}
+const NowReadBooks: React.FC<MyProps> = ({ books }) => {
   return (
     <>
       {books ? (
@@ -81,12 +92,23 @@ const NowReadBooks = ({ books }) => {
   );
 };
 
+/*
 NowReadBooks.propTypes = {
-  books: PropTypes.node,
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      year: PropTypes.number.isRequired,
+      pagesCount: PropTypes.number.isRequired,
+      page: PropTypes.number.isRequired,
+    }),
+  ),
 };
 
 NowReadBooks.defaultProps = {
   books: null,
 };
+*/
 
 export default NowReadBooks;
