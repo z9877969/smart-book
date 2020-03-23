@@ -6,7 +6,7 @@ import Auth from '../../pages/Auth/Auth';
 import LibraryPage from '../../pages/LibraryPage/LibraryPage';
 import TrainingPage from '../../pages/TrainingPage/TrainingPage';
 import Header from '../../components/Header/Header';
-import ProtectedRoute from '../../components/ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from '../../components/ProtectedRoute/ProtectedRoute.tsx';
 import StartPage from '../../components/StartPage/StartPage';
 import Loader from '../../components/Loader/LoaderContainer';
 import ModalNotFinishedTraining from '../../components/ModalNotFinishedTraining/ModalNotFinishedTraining';
@@ -17,37 +17,40 @@ import { actionIsTimerTimeEnded } from '../../redux/timer/timerAction';
 
 function App() {
   const dispatch = useDispatch();
-  
+
   // selectors
   const token = useSelector(state => state.session.token);
   const user = useSelector(state => state.user);
   const isTimeEnded = useSelector(state => state.timer.isTimerTimeEnded);
   const timeEndState = useSelector(state => state.training.timeEnd);
   const training = useSelector(state => state.training);
-  const isOpenModalNotFinished = useSelector(state => state.isModalsOpen.notFinishedModalReducer);
+  const isOpenModalNotFinished = useSelector(
+    state => state.isModalsOpen.notFinishedModalReducer,
+  );
 
-  // effects  
+  // effects
   useEffect(() => {
     dispatch(refreshUser(token));
   }, []);
 
   // handle if timer pass from 0 on TrainingPage
   useEffect(() => {
-    if(isTimeEnded && user && user.haveTraining){ 
-      dispatch(openModalNotFinished()) 
+    if (isTimeEnded && user && user.haveTraining) {
+      dispatch(openModalNotFinished());
     }
   }, [isTimeEnded]);
 
   // handle if user login or refresh app
   useEffect(() => {
-    const isTimerTimeEnded = timeEndState ? Date.parse(timeEndState) - Date.now() < 0 : false;
+    const isTimerTimeEnded = timeEndState
+      ? Date.parse(timeEndState) - Date.now() < 0
+      : false;
     dispatch(actionIsTimerTimeEnded(isTimerTimeEnded));
-  }, [training.trainingId])
-
+  }, [training.trainingId]);
 
   return (
     <>
-      <Loader />      
+      <Loader />
       {isOpenModalNotFinished && <ModalNotFinishedTraining />}
       <CssBaseline />
       <Header />
