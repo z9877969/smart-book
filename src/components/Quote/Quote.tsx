@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Quote.module.css';
 
-const Quote = () => {
+const Quote: React.FC = () => {
   return (
     <div className={styles.wrapperQuote}>
       <p className={styles.quote}>

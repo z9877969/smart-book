@@ -5,7 +5,7 @@ import RegistrationForm from '../../components/RegistrationForm/ContainerRegistr
 import LoginForm from '../../components/LoginForm/LoginForm';
 // import GoogleButton from '../../components/GoogleButton/GoogleButton';
 import styles from './Auth.module.css';
-import Quote from '../../components/Quote/Quote';
+import Quote from '../../components/Quote/Quote.tsx';
 import QuoteRegistration from '../../components/QuoteRegistration/QuoteRegistration';
 
 const Auth = props => {
