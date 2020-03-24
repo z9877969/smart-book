@@ -11,15 +11,38 @@ import { bookUpdate } from '../../redux/books/BooksOperations';
 import { getUserToken } from '../../redux/selectors/sessionSelectors';
 import img from './images/library.png';
 
-const ReadBooks = ({ books }) => {
-  const token = useSelector(state => getUserToken(state));
+//interfaces
+interface MyProps {
+  books?: Book[];
+  finishTime?: number;
+  countBooks?: number;
+}
+interface Book {
+  _id?: string;
+  title?: string;
+  author?: string;
+  year?: number;
+  pagesCount?: number;
+  rating?: number;
+  comment?: string;
+}
+interface State {
+  token?: string;
+}
+
+const ReadBooks: React.FC<MyProps> = ({ books }) => {
+  const token = useSelector((state: State) => getUserToken(state));
   const dispatch = useDispatch();
 
-  const handleClick = book => {
+  const handleClick = (book: string) => {
     dispatch(openModalSummary());
     dispatch(ActionSetUpdatedBook(book));
   };
-  const handleBookUpdate = (book, event, value) => {
+  const handleBookUpdate = (
+    book: Book,
+    _event: React.ChangeEvent<{}>,
+    value: number,
+  ) => {
     const updatedBook = book;
     updatedBook.rating = value;
     dispatch(bookUpdate(token, updatedBook));
@@ -141,8 +164,10 @@ const ReadBooks = ({ books }) => {
 ReadBooks.defaultProps = {
   books: null,
 };
+/*
 ReadBooks.propTypes = {
   books: PropTypes.arrayOf(Object),
 };
+*/
 
 export default ReadBooks;
