@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './QuoteRegistration.module.css';
 
-const QuoteRegistration = () => {
+const QuoteRegistration: React.FC = () => {
   const width = document.documentElement.clientWidth;
 
   return (
