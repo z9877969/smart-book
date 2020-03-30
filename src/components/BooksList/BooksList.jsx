@@ -4,7 +4,7 @@ import StartingSteps from '../StartingSteps/StartingSteps';
 
 import NowReadBooks from '../NowReadBooks/NowReadBooks';
 import PlanReadBooks from '../PlanReadBooks/PlanReadBooks';
-import ReadBooks from '../ReadBooks/ReadBooks';
+import ReadBooks from '../ReadBooks/ReadBooks.tsx';
 import NextStepButton from '../NextStepButton/NextStepButton';
 
 const BooksList = () => {
