@@ -13,18 +13,18 @@ import img from './images/library.png';
 
 //interfaces
 interface MyProps {
-  books?: Book[];
+  books: Book[] | null;
   finishTime?: number;
   countBooks?: number;
 }
 interface Book {
-  _id?: string;
-  title?: string;
-  author?: string;
-  year?: number;
-  pagesCount?: number;
-  rating?: number;
-  comment?: string;
+  _id: string;
+  title: string;
+  author: string;
+  year: number;
+  pagesCount: number;
+  rating: any;
+  comment: string;
 }
 interface State {
   token?: string;
@@ -41,10 +41,10 @@ const ReadBooks: React.FC<MyProps> = ({ books }) => {
   const handleBookUpdate = (
     book: Book,
     _event: React.ChangeEvent<{}>,
-    value: number,
+    value: any,
   ) => {
     const updatedBook = book;
-    updatedBook.rating = value;
+    updatedBook.rating = +value;
     dispatch(bookUpdate(token, updatedBook));
   };
   return (
