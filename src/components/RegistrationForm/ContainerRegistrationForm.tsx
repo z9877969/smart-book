@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import RegistrationForm from './RegistrationForm.tsx';
+import RegistrationForm from './RegistrationForm';
 import { registration } from '../../services/API';
 import withAuthRedirect from '../WithAuthRedirect/WithAuthRedirect';
 import withConnectByGoogle from '../../hoc/WithConnectByGoogle';
