@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const FormOfRegistration = ({
+const FormOfRegistration: React.FC = ({
   formik,
   onChange,
   onSubmit,
@@ -141,7 +141,7 @@ const FormOfRegistration = ({
         size="large"
         type="submit"
         variant="contained"
-        // className={css.logInButton}
+        className={css.logInButton}
         // color="var(--rusty-orange)"
         color="primary"
       >

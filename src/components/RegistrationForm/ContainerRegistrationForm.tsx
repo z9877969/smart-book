@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import RegistrationForm from './RegistrationForm';
+import RegistrationForm from './RegistrationForm.tsx';
 import { registration } from '../../services/API';
 import withAuthRedirect from '../WithAuthRedirect/WithAuthRedirect';
 import withConnectByGoogle from '../../hoc/WithConnectByGoogle';
 
-const ContainerRegistrationForm = () => {
+const ContainerRegistrationForm: React.FC = () => {
   const dispatch = useDispatch();
 
   const formik = useFormik({
