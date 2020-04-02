@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { useEffect, ChangeEvent, FormEvent } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -23,7 +23,19 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const FormOfRegistration = ({
+//interfaces
+interface MyProps {
+  formik: any;
+  onChange: (eventOrPath: string | ChangeEvent<any>) => void;
+  onSubmit: (e?: FormEvent<HTMLFormElement> | undefined) => void;
+  onBlur: (eventOrString: any) => void | ((e: any) => void);
+  userName: string;
+  email: string;
+  password: string;
+  passwordRepeat: string;
+}
+
+const FormOfRegistration: React.FC<MyProps> = ({
   formik,
   onChange,
   onSubmit,
@@ -141,7 +153,7 @@ const FormOfRegistration = ({
         size="large"
         type="submit"
         variant="contained"
-        // className={css.logInButton}
+        className={css.logInButton}
         // color="var(--rusty-orange)"
         color="primary"
       >
